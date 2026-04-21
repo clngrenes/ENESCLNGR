@@ -62,7 +62,10 @@
   --space-3: clamp(1rem, 2.5vw, 1.5rem);     /* 16→24px fluid */
   --space-4: clamp(2rem, 4.5vw, 3rem);       /* 32→48px fluid */
   --space-5: clamp(3rem, 5.5vw, 4.5rem);     /* 48→72px fluid */
-  --space-6: 6rem;                            /* 96px — page padding only */
+  --space-6: 6rem;                            /* 96px — page padding, large stacks */
+
+  /* Vertical gap between sibling sections in <main> (project pages, about, imprint, …) */
+  --space-main-sections: var(--space-6);
 
   /* --- Layout --- */
   --max-width: 90rem;         /* 1440px */
@@ -100,6 +103,7 @@
   :root {
     --page-padding: var(--space-4);
     --page-padding-y: var(--space-3);
+    --space-main-sections: var(--space-5);
     --text-xl:   2rem;       /* 32px */
     --text-lg:   1.625rem;   /* 26px */
     --text-md:   1.25rem;    /* 20px */

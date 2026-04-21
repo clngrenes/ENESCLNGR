@@ -2,11 +2,6 @@
    Pulse Project Page — Page-specific styles
    ============================================ */
 
-/* Slightly tighter section rhythm after removing hero meta cards */
-.pulse > main {
-  gap: var(--space-4);
-}
-
 /* Tight grids (collage rhythm): meta + multi-column content */
 .project-meta {
   gap: var(--space-1);
