@@ -115,6 +115,7 @@
     --text-lg:   1.375rem;   /* 22px */
     --text-md:   1.125rem;   /* 18px */
     --text-work: 1.125rem;   /* 18px */
+    --text-body-lg: 0.9375rem; /* 15px — one step above --text-body on small screens */
     --text-body: 0.875rem;   /* 14px */
     --text-sm:   0.75rem;    /* 12px */
   }

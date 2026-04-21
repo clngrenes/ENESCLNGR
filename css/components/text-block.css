@@ -1,10 +1,10 @@
 /* ============================================
    Text Block Component
    4 variants from Figma COMPONENTS frame:
-   - secondary default  (Mocha-1 bg / Mocha-4 text / 24px)
-   - secondary big      (Mocha-1 bg / Mocha-4 text / 32px)
-   - primary default    (Mocha-4 bg / Mocha-1 text / 24px)
-   - primary big        (Mocha-4 bg / Mocha-1 text / 32px)
+   - secondary default  (Mocha-1 bg / Mocha-4 text / --text-body-lg)
+   - secondary big      (Mocha-1 bg / Mocha-4 text / --text-md)
+   - primary default    (Mocha-4 bg / Mocha-1 text / --text-body-lg)
+   - primary big        (Mocha-4 bg / Mocha-1 text / --text-md)
 
    Square corners per Figma (cornerRadius=0).
    ============================================ */
@@ -23,7 +23,7 @@
 .text-block--secondary p,
 .text-block--secondary .text-block__body {
   font-family: var(--font-body);
-  font-size: var(--text-body);
+  font-size: var(--text-body-lg);
   font-weight: var(--weight-regular);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking);
@@ -32,7 +32,7 @@
 
 .text-block--secondary.text-block--big p,
 .text-block--secondary.text-block--big .text-block__body {
-  font-size: var(--text-body-lg);
+  font-size: var(--text-md);
 }
 
 /* --- Primary (dark) --- */
@@ -44,7 +44,7 @@
 .text-block--primary p,
 .text-block--primary .text-block__body {
   font-family: var(--font-body);
-  font-size: var(--text-body);
+  font-size: var(--text-body-lg);
   font-weight: var(--weight-regular);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking);
@@ -53,5 +53,5 @@
 
 .text-block--primary.text-block--big p,
 .text-block--primary.text-block--big .text-block__body {
-  font-size: var(--text-body-lg);
+  font-size: var(--text-md);
 }
