@@ -107,10 +107,33 @@
   display: block;
 }
 
-/* Two-column insights under poster strip: title + body left; stacked findings right */
+/* Root-cause poster insights component */
+.pulse__poster-insights {
+  margin-top: var(--space-3);
+  gap: var(--space-3);
+}
+
+.pulse__poster-insights-col {
+  gap: var(--space-1);
+}
+
+.pulse__poster-insights-header {
+  flex: none;
+}
+
 .pulse__poster-insights-title {
   margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking);
   color: var(--color-text-inverse);
+}
+
+/* Left column body fills remaining height to match right column */
+.pulse__poster-insights-col > .pulse__poster-insights-body-fill {
+  flex: 1;
 }
 
 /* Phone mockup — taller, show top of UI */
@@ -128,6 +151,10 @@
 @media (max-width: 768px) {
   .pulse__poster-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pulse__poster-insights {
+    margin-top: var(--space-2);
   }
 
   .pulse__research-strip {
