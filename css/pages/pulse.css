@@ -12,6 +12,18 @@
   gap: var(--space-1);
 }
 
+/* Pulse hero — four secondary meta cells, one line each (uses .project-meta gap from above) */
+.pulse__project-meta .text-block--secondary p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.pulse__project-meta .text-block--secondary {
+  min-width: 0;
+}
+
 .pulse__meta-group {
   display: grid;
   grid-template-rows: auto 1fr;
