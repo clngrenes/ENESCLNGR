@@ -107,6 +107,12 @@
   display: block;
 }
 
+/* Two-column insights under poster strip: title + body left; stacked findings right */
+.pulse__poster-insights-title {
+  margin: 0;
+  color: var(--color-text-inverse);
+}
+
 /* Phone mockup — taller, show top of UI */
 .pulse__phone-visual {
   min-height: clamp(22rem, 38vw, 34rem);
