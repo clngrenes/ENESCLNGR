@@ -95,27 +95,42 @@
   gap: var(--space-1);
 }
 
-.pulse__poster-row {
+/*
+ * Root cause — one 10-column grid for posters + insights:
+ * - Row 1: five posters, each spans 2 tracks (2+2+2+2+2 = 10).
+ * - Row 2: insights span 6 + 4 tracks (same gutter as after poster 3).
+ * Gutter positions match because every gutter falls on a track boundary.
+ */
+.pulse__root-cause-layout {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(10, minmax(0, 1fr));
   gap: var(--space-1);
 }
 
-.pulse__poster-row img {
+.pulse__poster-cell {
+  grid-column: span 2;
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   display: block;
 }
 
-/* Root-cause poster insights component — column gap matches poster grid gap */
-.pulse__poster-insights {
-  margin-top: 0;
-  gap: var(--space-1);
+.pulse__poster-insights-left {
+  grid-column: span 6;
 }
 
-.pulse__poster-insights-col {
+.pulse__poster-insights-right {
+  grid-column: span 4;
+}
+
+.pulse__poster-insights-left,
+.pulse__poster-insights-right {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-1);
+  min-width: 0;
+  min-height: 0;
+  align-self: stretch;
 }
 
 .pulse__poster-insights-header {
@@ -150,8 +165,18 @@
 }
 
 @media (max-width: 768px) {
-  .pulse__poster-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .pulse__root-cause-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pulse__poster-cell,
+  .pulse__poster-insights-left,
+  .pulse__poster-insights-right {
+    grid-column: span 1;
+  }
+
+  .pulse__poster-cell {
+    aspect-ratio: 4 / 3;
   }
 
   .pulse__research-strip {

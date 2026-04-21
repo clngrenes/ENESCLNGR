@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/components/project-collage.css?v=2">
   <link rel="stylesheet" href="css/components/project-visual.css">
   <link rel="stylesheet" href="css/components/feature-card.css">
-  <link rel="stylesheet" href="css/pages/pulse.css?v=6">
+  <link rel="stylesheet" href="css/pages/pulse.css?v=7">
 </head>
 <body>
   <div class="page pulse">
@@ -116,16 +116,15 @@
       <section class="section pulse__root-cause-section">
         <h2 class="heading-lg">Finding the Root Cause</h2>
 
-        <div class="pulse__poster-row" aria-label="Root cause research posters">
-          <img src="ASSETS/images/PULSE/poster-1.jpg" alt="Root cause poster 1" loading="lazy">
-          <img src="ASSETS/images/PULSE/poster-2.jpg" alt="Root cause poster 2" loading="lazy">
-          <img src="ASSETS/images/PULSE/poster-3.jpg" alt="Root cause poster 3" loading="lazy">
-          <img src="ASSETS/images/PULSE/poster-4.jpg" alt="Root cause poster 4" loading="lazy">
-          <img src="ASSETS/images/PULSE/poster-5.jpg" alt="Root cause poster 5" loading="lazy">
-        </div>
+        <!-- 10-column grid: row 1 = five posters (span 2 each); row 2 = insights 6+4 so gutters align -->
+        <div class="pulse__root-cause-layout" aria-label="Root cause research and survey insights">
+          <img class="pulse__poster-cell" src="ASSETS/images/PULSE/poster-1.jpg" alt="Root cause poster 1" loading="lazy">
+          <img class="pulse__poster-cell" src="ASSETS/images/PULSE/poster-2.jpg" alt="Root cause poster 2" loading="lazy">
+          <img class="pulse__poster-cell" src="ASSETS/images/PULSE/poster-3.jpg" alt="Root cause poster 3" loading="lazy">
+          <img class="pulse__poster-cell" src="ASSETS/images/PULSE/poster-4.jpg" alt="Root cause poster 4" loading="lazy">
+          <img class="pulse__poster-cell" src="ASSETS/images/PULSE/poster-5.jpg" alt="Root cause poster 5" loading="lazy">
 
-        <div class="columns-equal-height columns-equal-height--6-4 pulse__poster-insights">
-          <div class="columns-equal-height__col columns-equal-height__col--natural pulse__poster-insights-col">
+          <div class="pulse__poster-insights-left pulse__poster-insights-col">
             <div class="text-block text-block--primary text-block--big pulse__poster-insights-header">
               <p class="pulse__poster-insights-title">The Reality Check</p>
             </div>
@@ -133,7 +132,7 @@
               <p>We wanted to hear directly from young people, not just our immediate circle. By putting up quick QR-code posters around our university campus and local spots in Schwäbisch Gmünd, we made it as easy as possible for them to jump straight into our survey.</p>
             </div>
           </div>
-          <div class="columns-equal-height__col columns-equal-height__col--natural pulse__poster-insights-col">
+          <div class="pulse__poster-insights-right pulse__poster-insights-col">
             <div class="text-block text-block--secondary">
               <p>While 76% express a strong willingness to donate, 54% are stopped by uncertainty about basic eligibility rules. The intention is there, but the knowledge is missing.</p>
             </div>
