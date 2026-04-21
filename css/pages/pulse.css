@@ -91,7 +91,8 @@
 }
 
 .pulse__root-cause-section.section {
-  gap: var(--space-2);
+  /* Match poster strip gutters: same token vertically (h2 ↔ posters ↔ insights) */
+  gap: var(--space-1);
 }
 
 .pulse__poster-row {
@@ -107,10 +108,10 @@
   display: block;
 }
 
-/* Root-cause poster insights component */
+/* Root-cause poster insights component — column gap matches poster grid gap */
 .pulse__poster-insights {
-  margin-top: var(--space-3);
-  gap: var(--space-3);
+  margin-top: 0;
+  gap: var(--space-1);
 }
 
 .pulse__poster-insights-col {
@@ -151,10 +152,6 @@
 @media (max-width: 768px) {
   .pulse__poster-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .pulse__poster-insights {
-    margin-top: var(--space-2);
   }
 
   .pulse__research-strip {
