@@ -1,0 +1,55 @@
+/* ============================================
+   Feature Card Component
+   Dark (primary) tile — title always visible,
+   body text expands smoothly on hover.
+   Same grid-row trick as cv-entry--expandable.
+   ============================================ */
+
+.feature-card {
+  background-color: var(--color-surface-mid);
+  padding: var(--space-3);
+  cursor: default;
+  transition: background-color 0.2s ease;
+}
+
+.feature-card__title {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking);
+  color: var(--color-text-inverse);
+}
+
+/* Height expand via grid-row trick */
+.feature-card__body-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover .feature-card__body-wrap {
+  grid-template-rows: 1fr;
+}
+
+.feature-card__body-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.feature-card__body {
+  padding-top: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking);
+  color: var(--color-text-inverse);
+  opacity: 0;
+  transition: opacity 0.25s ease 0.08s;
+}
+
+.feature-card:hover .feature-card__body {
+  opacity: 1;
+}

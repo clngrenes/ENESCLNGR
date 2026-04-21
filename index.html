@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enes Cilingir — UX Designer</title>
+
+  <!-- Theme init: must run before paint to prevent flash -->
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components/nav.css?v=3">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/button.css">
+  <link rel="stylesheet" href="css/components/tag.css">
+  <link rel="stylesheet" href="css/components/work-card.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+</head>
+<body>
+  <div class="page home">
+
+    <!-- Nav -->
+    <nav class="nav" data-nav-page="home"></nav>
+
+    <!-- Main Content -->
+    <main class="home__hero">
+
+      <!-- Hero Heading -->
+      <h1 class="heading-xl">I design what a product should be, not just what it looks like.</h1>
+
+      <!-- Selected Work -->
+      <section class="home__selected-work">
+        <div class="home__work-grid">
+
+          <!-- Card 1: PULSE -->
+          <a href="project-pulse.html" class="work-card work-card--pulse">
+            <div class="work-card__inner">
+              <div class="work-card__media">
+                <img class="work-card__image" src="assets/images/COVERS/pulse-cover.jpg" alt="Pulse — Blood donation app concept" loading="lazy">
+              </div>
+              <div class="work-card__content">
+                <div class="work-card__tags">
+                  <span class="tag">Application</span>
+                  <span class="tag">2024</span>
+                </div>
+                <h3 class="work-card__title">How Might We Encourage The Youth For Blood Donation?</h3>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 2: MYKORRIZHA -->
+          <a href="project-mykorrizha.html" class="work-card work-card--mykorrizha">
+            <div class="work-card__inner">
+              <div class="work-card__media">
+                <img class="work-card__image" src="assets/images/COVERS/mykorrizha-cover.jpg" alt="Mykrozziha — Education ecosystem concept" loading="lazy">
+              </div>
+              <div class="work-card__content">
+                <div class="work-card__tags">
+                  <span class="tag">Application</span>
+                  <span class="tag">2024</span>
+                </div>
+                <h3 class="work-card__title">Mykrozziha ─ The new age of education</h3>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 3: NECKBAND -->
+          <a href="project-neckband.html" class="work-card work-card--neckband">
+            <div class="work-card__inner">
+              <div class="work-card__media">
+                <img class="work-card__image" src="assets/images/neckband-cover.jpg" alt="Neckband — Tangible navigation device" loading="lazy">
+              </div>
+              <div class="work-card__content">
+                <div class="work-card__tags">
+                  <span class="tag">Tangible Design</span>
+                  <span class="tag">2026</span>
+                </div>
+                <h3 class="work-card__title">Orientation should not be a privilege.</h3>
+              </div>
+            </div>
+          </a>
+
+          <div class="work-card work-card--blank" aria-hidden="true"></div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span class="footer__copyright">&copy; 2026 Enes Cilingir</span>
+      <a href="imprint.html" class="footer__link">Imprint</a>
+    </footer>
+
+  </div>
+
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/copy-mail.js"></script>
+</body>
+</html>

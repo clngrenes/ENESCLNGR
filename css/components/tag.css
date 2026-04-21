@@ -1,0 +1,23 @@
+/* ============================================
+   Tag Component
+   Small label chips — solid background, uppercase.
+   Used on work cards and project meta.
+   ============================================ */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-xxs);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  white-space: nowrap;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}

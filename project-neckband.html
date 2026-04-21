@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neckband — Enes Cilingir</title>
+
+  <!-- Theme init: runs before paint to prevent flash -->
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components/nav.css?v=3">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/button.css">
+  <link rel="stylesheet" href="css/components/text-block.css">
+  <link rel="stylesheet" href="css/components/section.css">
+  <link rel="stylesheet" href="css/components/project-collage.css">
+  <link rel="stylesheet" href="css/components/project-visual.css">
+  <link rel="stylesheet" href="css/pages/neckband.css">
+</head>
+<body>
+  <div class="page neckband">
+
+    <!-- Nav with scroll progress bar -->
+    <nav class="nav" data-nav-page="neckband" data-nav-progress="true"></nav>
+
+    <!-- Main Content -->
+    <main>
+
+      <!-- ─── SECTION 1: Hero ─────────────────────────────────────── -->
+      <section class="section section--loose">
+
+        <!-- Collage: 2-row alternating proportions -->
+        <div class="project-collage">
+          <div class="project-collage__row project-collage__row--narrow-wide">
+            <div class="project-collage__item"></div>
+            <div class="project-collage__item"></div>
+          </div>
+          <div class="project-collage__row project-collage__row--wide-narrow">
+            <div class="project-collage__item"></div>
+            <div class="project-collage__item"></div>
+          </div>
+        </div>
+
+        <!-- Hero heading -->
+        <h1 class="heading-xl">Are ears and eyes necessary for spatial orientation?</h1>
+
+        <!-- Project meta: 4 info blocks in equal grid -->
+        <div class="project-meta">
+          <div class="text-block text-block--secondary">
+            <p>Tangible Design<br>Ottavio Cambieri</p>
+          </div>
+          <div class="text-block text-block--secondary">
+            <p>Faruk<br>Laura<br>Enes</p>
+          </div>
+          <div class="text-block text-block--secondary">
+            <p>4 Week Sprint</p>
+          </div>
+          <div class="text-block text-block--secondary">
+            <p>Eesti Kunstiakadeemia</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ─── SECTION 2: Orientation ──────────────────────────────── -->
+      <section class="section section--tight">
+
+        <h2 class="heading-lg">Orientation should not be a privilege.</h2>
+
+        <!-- 6:4 columns — text left, visual right -->
+        <div class="columns-equal-height columns-equal-height--6-4">
+
+          <!-- Left: stacked text blocks -->
+          <div class="columns-equal-height__col columns-equal-height__col--natural">
+            <div class="text-block text-block--primary text-block--big">
+              <p>A white cane tells you what's on the ground. It can't see the sign at chest height, the person approaching from behind, or the crowd closing in. That gap has been unsolved for decades.</p>
+            </div>
+            <div class="text-block text-block--secondary">
+              <p>Every day, millions of people navigate cities with a tool designed in the 1930s. Solutions have emerged since, but most rely on audio feedback, look clinical, or aren't built for real life. The result is a constant state of alertness that never fully switches off. 54% experience a head-level collision at least once a year. 43% permanently change the way they walk afterward. What if your body could simply feel what your eyes can't see?</p>
+            </div>
+          </div>
+
+          <!-- Right: visual placeholder -->
+          <div class="columns-equal-height__col">
+            <div class="project-visual"></div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ─── SECTION 3: We went looking ─────────────────────────── -->
+      <section class="section">
+
+        <h2 class="heading-lg">We went looking for answers. We found something more important.</h2>
+
+        <!-- Row A: text left, visual right -->
+        <div class="columns-equal-height">
+
+          <div class="columns-equal-height__col columns-equal-height__col--natural">
+            <div class="text-block text-block--secondary">
+              <p>The greatest sacrifice is the renunciation of solitude.</p>
+            </div>
+            <div class="text-block text-block--primary text-block--big">
+              <p>The research kept returning to one word. not safety, not navigation. Freedom. The freedom to walk alone, without running a constant calculation in your head.</p>
+            </div>
+            <div class="text-block text-block--secondary">
+              <p>In a world built for sighted people, blindness forces a life marked by uncertainty. Not occasionally — every single day.</p>
+            </div>
+          </div>
+
+          <div class="columns-equal-height__col">
+            <div class="project-visual"></div>
+          </div>
+
+        </div>
+
+        <!-- Row B: visual left, text right -->
+        <div class="columns-equal-height">
+
+          <div class="columns-equal-height__col">
+            <div class="project-visual"></div>
+          </div>
+
+          <div class="columns-equal-height__col columns-equal-height__col--natural">
+            <div class="text-block text-block--primary text-block--big">
+              <p>We mapped two ordinary journeys. What we found wasn't a technical problem — it was a mental one.</p>
+            </div>
+            <div class="text-block text-block--secondary">
+              <p>Walking to a bus stop. Passing a blocked sidewalk. Both scenarios revealed the same pattern: the uncertainty never switches off.</p>
+            </div>
+            <div class="text-block text-block--secondary">
+              <p>Every step is an active decision. That exhaustion is invisible from the outside and completely real from within.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span class="footer__copyright">&copy; 2026 Enes Cilingir</span>
+      <a href="imprint.html" class="footer__link">Imprint</a>
+    </footer>
+
+  </div>
+
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/copy-mail.js"></script>
+  <script src="assets/js/scroll-progress.js"></script>
+</body>
+</html>

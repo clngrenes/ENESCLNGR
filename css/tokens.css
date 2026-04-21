@@ -1,0 +1,121 @@
+/* ============================================
+   Design Tokens
+   All visual decisions live here.
+   No component file should contain a raw value.
+   ============================================ */
+
+:root {
+  /* --- Colors --- */
+  --color-mocha-6: #3D2614;
+  --color-mocha-5: #645142;
+  --color-mocha-4: #8B7C70;
+  --color-mocha-3: #B1A79E;
+  --color-mocha-2: #D8D2CC;
+  --color-mocha-1: #ECE7E3;
+
+  --color-bg-primary: #FFFCFA;
+  --color-bg-secondary: #FFFEFD;
+
+  /* Semantic aliases */
+  --color-text-primary: var(--color-mocha-6);
+  --color-text-secondary: var(--color-mocha-5);
+  --color-text-body: var(--color-mocha-4);
+  --color-text-inverse: var(--color-mocha-1);
+
+  --color-surface-primary: var(--color-mocha-1);
+  --color-surface-dark: var(--color-mocha-5);
+  --color-surface-mid: var(--color-mocha-4);
+
+  --color-border: var(--color-mocha-2);
+
+  /* Glassmorphism nav — light mode */
+  --color-nav-bg:     rgba(236, 231, 227, 0.75);
+  --color-nav-border: rgba(177, 167, 158, 0.35);
+
+  /* --- Typography --- */
+  --font-display: 'Gambarino', serif;
+  --font-body: 'Geist', sans-serif;
+
+  /* Awwwards-quality type scale — refined, smaller */
+  --text-xl:      2.5rem;    /* 40px — Gambarino hero h1 */
+  --text-lg:      1.875rem;  /* 30px — page h2 */
+  --text-md:      1.375rem;  /* 22px — section h3 */
+  --text-work:    1.5rem;    /* 24px — work card titles */
+  --text-body-lg: 1.0625rem; /* 17px — big pull quotes */
+  --text-body:    0.9375rem; /* 15px — standard body */
+  --text-sm:      0.8125rem; /* 13px — UI / buttons / nav */
+  --text-xs:      0.75rem;   /* 12px — captions */
+  --text-xxs:     0.6875rem; /* 11px — tags / labels */
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+
+  --weight-regular: 400;
+  --weight-semibold: 600;
+
+  /* Letter spacing — -4% tracking applied to all text */
+  --tracking: -0.04em;
+
+  /* --- Spacing --- */
+  --space-1: 0.375rem;                        /*  6px — fixed */
+  --space-2: 0.75rem;                         /* 12px — fixed */
+  --space-3: clamp(1rem, 2.5vw, 1.5rem);     /* 16→24px fluid */
+  --space-4: clamp(2rem, 4.5vw, 3rem);       /* 32→48px fluid */
+  --space-5: clamp(3rem, 5.5vw, 4.5rem);     /* 48→72px fluid */
+  --space-6: 6rem;                            /* 96px — page padding only */
+
+  /* --- Layout --- */
+  --max-width: 90rem;         /* 1440px */
+  --content-width: 78rem;     /* 1248px */
+  --page-padding: var(--space-6);
+  --page-padding-y: var(--space-4);   /* 48px top/bottom — rem so it scales */
+  --border-radius-sm: 0.375rem;  /* 6px */
+  --border-radius: 0.5rem;       /* 8px */
+  --border-radius-lg: 0.75rem;   /* 12px */
+}
+
+/* --- Dark mode token overrides --- */
+[data-theme="dark"] {
+  --color-bg-primary: var(--color-mocha-6);
+  --color-bg-secondary: var(--color-mocha-5);
+
+  --color-text-primary: var(--color-mocha-1);
+  --color-text-secondary: var(--color-mocha-2);
+  --color-text-body: var(--color-mocha-3);
+  --color-text-inverse: var(--color-mocha-6);
+
+  --color-surface-primary: var(--color-mocha-5);
+  --color-surface-dark: var(--color-mocha-2);
+  --color-surface-mid: var(--color-mocha-3);
+
+  --color-border: var(--color-mocha-4);
+
+  /* Glassmorphism nav — dark mode */
+  --color-nav-bg:     rgba(61, 38, 20, 0.78);
+  --color-nav-border: rgba(139, 124, 112, 0.3);
+}
+
+/* --- Responsive token overrides --- */
+@media (max-width: 1024px) {
+  :root {
+    --page-padding: var(--space-4);
+    --page-padding-y: var(--space-3);
+    --text-xl:   2rem;       /* 32px */
+    --text-lg:   1.625rem;   /* 26px */
+    --text-md:   1.25rem;    /* 20px */
+    --text-work: 1.25rem;    /* 20px */
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding: var(--space-3);
+    --page-padding-y: var(--space-2);
+    --text-xl:   1.75rem;    /* 28px */
+    --text-lg:   1.375rem;   /* 22px */
+    --text-md:   1.125rem;   /* 18px */
+    --text-work: 1.125rem;   /* 18px */
+    --text-body: 0.875rem;   /* 14px */
+    --text-sm:   0.75rem;    /* 12px */
+  }
+}

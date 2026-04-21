@@ -1,0 +1,22 @@
+/* ============================================
+   Neckband Project Page — Page-specific styles
+   Global layout: .page.neckband
+   All tokens and components from shared files.
+   ============================================ */
+
+/* Tight grids: meta + columns (match collage cell rhythm). */
+.project-meta {
+  gap: var(--space-1);
+}
+
+.columns-equal-height,
+.columns-equal-height__col {
+  gap: var(--space-1);
+}
+
+/* More uniform vertical space: collage ↔ title ↔ meta, and section headings ↔ content */
+.section,
+.section.section--loose,
+.section.section--tight {
+  gap: var(--space-3);
+}

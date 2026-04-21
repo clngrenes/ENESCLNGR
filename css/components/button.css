@@ -1,0 +1,156 @@
+/* ============================================
+   Button Component
+   Variants: active (filled), inactive (ghost + border)
+   Square corners per Figma (cornerRadius=0).
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking);
+  border-radius: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.15s ease;
+}
+
+/* Active / filled variant */
+.btn--active {
+  background-color: var(--color-surface-dark);
+  color: var(--color-text-inverse);
+  border: 1px solid transparent;
+}
+
+.btn--active:hover {
+  opacity: 0.88;
+}
+
+.btn--copy {
+  position: relative;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.btn__copy-label,
+.btn__copy-icon {
+  transition: opacity 0.24s ease, filter 0.28s ease, transform 0.28s ease;
+}
+
+.btn__copy-label {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.btn__copy-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--text-sm) * var(--leading-normal));
+  height: calc(var(--text-sm) * var(--leading-normal));
+  color: var(--color-surface-dark);
+  opacity: 0;
+  filter: blur(8px);
+  transform: translate(-50%, -50%) scale(0.86);
+  pointer-events: none;
+}
+
+.btn__copy-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.btn__copy-icon circle {
+  fill: currentColor;
+}
+
+.btn__copy-icon path {
+  fill: none;
+  stroke: var(--color-text-inverse);
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.btn--copy[data-copy-state="done"] .btn__copy-label,
+.btn--copy[data-copy-state="error"] .btn__copy-label {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(-2px);
+}
+
+.btn--copy[data-copy-state="done"] .btn__copy-icon {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.btn--copy[data-copy-state="error"] .btn__copy-icon {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate(-50%, -50%) scale(1);
+  color: var(--color-text-inverse);
+}
+
+.btn--copy[data-copy-state="error"] .btn__copy-icon circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.btn--copy[data-copy-state="error"] .btn__copy-icon path {
+  stroke: currentColor;
+}
+
+/* Inactive / ghost variant */
+.btn--inactive {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.btn--inactive:hover {
+  border-color: var(--color-mocha-4);
+  color: var(--color-text-primary);
+}
+
+/* Icon-only button — same height as text buttons, square via equal padding */
+.btn--icon {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  padding: var(--space-2);
+  justify-content: center;
+}
+
+.btn--icon:hover {
+  color: var(--color-text-primary);
+}
+
+/* SVG sized to match text line-height so button height = padding×2 + line-height */
+.btn--icon svg {
+  display: block;
+  width: calc(var(--text-sm) * var(--leading-normal));
+  height: calc(var(--text-sm) * var(--leading-normal));
+}
+
+/* Mobile — tighter padding so nav fits on 375px */
+@media (max-width: 768px) {
+  .btn {
+    padding: var(--space-1) var(--space-2);
+  }
+
+  .btn--icon {
+    padding: var(--space-1);
+  }
+}

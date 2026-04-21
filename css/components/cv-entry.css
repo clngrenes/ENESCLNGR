@@ -1,0 +1,202 @@
+/* ============================================
+   CV Entry Component
+   Square corners per Figma (cornerRadius=0).
+   Row header + hover reveals skill tags (blur fade).
+   Uses CSS grid row trick for smooth height.
+   ============================================ */
+
+.cv-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: var(--space-3);
+  background-color: var(--color-surface-primary);
+  border-radius: 0;
+  cursor: default;
+}
+
+.cv-entry:focus-visible {
+  outline: 2px solid var(--color-border);
+  outline-offset: 2px;
+}
+
+.cv-entry__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.cv-entry__header .cv-entry__company {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  flex: 1;
+  min-width: 0;
+}
+
+/* Push type + date to the right when type is present */
+.cv-entry__header > .cv-entry__type {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* No type: date aligns to the end */
+.cv-entry__header:not(:has(> .cv-entry__type)) > .cv-entry__date {
+  margin-left: auto;
+}
+
+.cv-entry__role {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.cv-entry__company-name {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.cv-entry__date {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+/* Skills wrapper — collapses height smoothly */
+.cv-entry__skills-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.cv-entry:hover .cv-entry__skills-wrapper,
+.cv-entry:focus-within .cv-entry__skills-wrapper {
+  grid-template-rows: 1fr;
+}
+
+/* Inner container required for grid-template-rows trick */
+.cv-entry__skills-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Skills row — three equal columns up to content max width */
+.cv-entry__skills {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  width: 100%;
+  max-width: var(--content-width);
+  padding-top: var(--space-3);
+  /* Blur-fade in */
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(-4px);
+  transition:
+    opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0.05s,
+    filter 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0.05s,
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0.05s;
+}
+
+.cv-entry:hover .cv-entry__skills,
+.cv-entry:focus-within .cv-entry__skills {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* One step darker than row (surface-primary): border tone + secondary text */
+.cv-entry__skill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-2) var(--space-3);
+  min-height: calc(var(--space-2) * 2 + var(--text-sm) * var(--leading-tight));
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking);
+  color: var(--color-text-secondary);
+  background-color: var(--color-border);
+  border-radius: 0;
+}
+
+[data-theme="dark"] .cv-entry__skill {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
+
+/* Download CV — full-width dark row */
+.cv-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background-color: var(--color-surface-dark);
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cv-download__text {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking);
+  color: var(--color-text-inverse);
+}
+
+.cv-download:hover {
+  opacity: 0.88;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .cv-entry__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+
+  .cv-entry__header > .cv-entry__type {
+    margin-left: 0;
+  }
+
+  .cv-entry__header:not(:has(> .cv-entry__type)) > .cv-entry__date {
+    margin-left: 0;
+  }
+
+  .cv-entry__skills {
+    grid-template-columns: 1fr;
+    max-width: none;
+  }
+}

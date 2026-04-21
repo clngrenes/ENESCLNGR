@@ -1,0 +1,28 @@
+/* ============================================
+   Project Visual Component
+   Full-height placeholder/image slot used in
+   project page two-column layouts.
+   Sits inside a columns-equal-height__col and
+   stretches to fill column height via flex: 1.
+   ============================================ */
+
+.project-visual {
+  flex: 1;
+  background-color: var(--color-surface-primary);
+  overflow: hidden;
+  min-height: 20rem;
+  transition: background-color 0.2s ease;
+}
+
+.project-visual__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .project-visual {
+    min-height: 16rem;
+  }
+}

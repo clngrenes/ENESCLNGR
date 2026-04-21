@@ -1,0 +1,101 @@
+/* ============================================
+   Section Component
+   Generic content section wrapper
+   ============================================ */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.section--tight {
+  gap: var(--space-2);
+}
+
+.section--loose {
+  gap: var(--space-4);
+}
+
+/* ============================================
+   Equal-height columns layout
+   Reusable for About + all project pages.
+   Children stretch to match tallest sibling.
+   Use flex children inside to fill height.
+   ============================================ */
+
+.columns-equal-height {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.columns-equal-height__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.columns-equal-height__col--sticky {
+  position: sticky;
+  top: var(--space-3);
+  align-self: start;
+}
+
+/* Flex children fill available height */
+.columns-equal-height__col > .text-block {
+  flex: 1;
+}
+
+/* Column variant: natural child heights (no flex:1 stretch) */
+.columns-equal-height__col--natural > .text-block {
+  flex: none;
+}
+
+/* Asymmetric column ratios */
+.columns-equal-height--6-4 {
+  grid-template-columns: 6fr 4fr;
+}
+
+.columns-equal-height--4-6 {
+  grid-template-columns: 4fr 6fr;
+}
+
+/* Project meta: 4-column info block grid */
+.project-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+/* 3-column equal grid — HMW blocks, personas */
+.columns-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+@media (max-width: 768px) {
+  .columns-equal-height {
+    grid-template-columns: 1fr;
+  }
+
+  .columns-equal-height--6-4,
+  .columns-equal-height--4-6 {
+    grid-template-columns: 1fr;
+  }
+
+  .columns-equal-height__col--sticky {
+    position: static;
+    order: -1;
+  }
+
+  .project-meta {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .columns-three {
+    grid-template-columns: 1fr;
+  }
+}

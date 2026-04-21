@@ -1,0 +1,159 @@
+/* ============================================
+   Nav Component
+   Square corners, Mocha-1 background.
+   Logo: Mocha-5 color.
+   Variants: default, with-progress (project pages)
+   ============================================ */
+
+.nav {
+  --nav-stroke: color-mix(in srgb, var(--color-text-secondary) 72%, var(--color-border) 28%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2);
+  background-color: var(--color-nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-nav-border);
+  border-radius: 0;
+  gap: var(--space-4);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+
+  /* Sticky — floats at top-padding offset as content scrolls beneath */
+  position: sticky;
+  top: var(--page-padding-y);
+  z-index: 100;
+}
+
+/* Prevent navbar height collapse before JS injects markup */
+.nav:empty {
+  min-height: calc(var(--space-2) * 2 + var(--text-sm) * var(--leading-normal) + 2px);
+}
+
+.nav__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--nav-stroke);
+  inline-size: calc(var(--space-2) * 2 + var(--text-sm) * var(--leading-normal));
+  block-size: calc(var(--space-2) * 2 + var(--text-sm) * var(--leading-normal));
+  padding: 0;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav__logo svg {
+  /* Match text height since we added padding to the container */
+  height: calc(var(--text-sm) * var(--leading-normal));
+  width: auto;
+  display: block;
+}
+
+.nav__logo:hover {
+  background-color: var(--color-surface-dark);
+  color: var(--color-text-inverse);
+  border-color: transparent;
+}
+
+/* Scroll progress indicator (project pages only)
+   Boxed like the buttons — border, matching padding, fills remaining space */
+.nav__progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--nav-stroke);
+  transition: border-color 0.2s ease;
+}
+
+.nav__progress-track {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  background-color: var(--nav-stroke);
+  overflow: hidden;
+  transition: background-color 0.2s ease;
+}
+
+/* Keep nav strokes visible over content while scrolling */
+.nav .btn--inactive,
+.nav .btn--icon {
+  border-color: var(--nav-stroke);
+}
+
+.nav__progress-fill {
+  position: absolute;
+  inset: 0;
+  right: auto;
+  width: 0%;
+  background-color: var(--color-text-secondary);
+  transition: width 0.08s linear, background-color 0.2s ease;
+}
+
+.nav__progress-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  min-width: 3.5ch;
+  text-align: right;
+  transition: color 0.2s ease;
+}
+
+/* Tablet + mobile: hide LinkedIn — higher specificity beats .btn */
+@media (max-width: 1024px) {
+  .nav__right .nav__linkedin {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav {
+    gap: var(--space-1);
+    padding: var(--space-1);
+  }
+
+  .nav__left {
+    gap: var(--space-1);
+  }
+
+  .nav__right {
+    gap: var(--space-1);
+  }
+
+  .nav__logo {
+    inline-size: calc(var(--space-2) * 2 + var(--text-sm) * var(--leading-normal));
+    block-size: calc(var(--space-2) * 2 + var(--text-sm) * var(--leading-normal));
+  }
+
+  .nav__logo svg {
+    /* Match standard button text height */
+    height: calc(var(--text-sm) * var(--leading-normal));
+    width: auto;
+  }
+
+  /* Progress bar hidden on mobile — not enough room */
+  .nav__progress {
+    display: none;
+  }
+}

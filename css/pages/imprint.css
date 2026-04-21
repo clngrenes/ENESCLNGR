@@ -1,0 +1,29 @@
+.imprint__section {
+  max-width: 42rem;
+}
+
+.imprint__title {
+  margin-bottom: var(--space-4);
+}
+
+.imprint__notice {
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+}
+
+.imprint__notice a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.imprint .text-block a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.imprint .text-block a:hover {
+  opacity: 0.85;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Enes Cilingir</title>
+
+  <!-- Theme init: must run before paint to prevent flash -->
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components/nav.css?v=3">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/button.css">
+  <link rel="stylesheet" href="css/pages/gallery.css?v=3">
+</head>
+<body>
+  <div class="page gallery">
+
+    <!-- Nav -->
+    <nav class="nav" data-nav-page="gallery"></nav>
+
+    <!-- Main Content -->
+    <main>
+      <div class="gallery__grid">
+
+        <!-- Item 1: Row 1, left -->
+        <div class="gallery__item gallery__item--1">
+          <img class="gallery__image" src="assets/images/REACH/phone-bottom.jpg" alt="Reach app on phone" loading="lazy">
+        </div>
+
+        <!-- Item 2: Row 1, right -->
+        <div class="gallery__item gallery__item--2">
+          <img class="gallery__image" src="assets/images/REACH/reachlogo.jpg" alt="Reach project logo" loading="lazy">
+        </div>
+
+        <!-- Item 3: Row 2, left -->
+        <div class="gallery__item gallery__item--3">
+          <img class="gallery__image" src="assets/images/COVERS/aidea-cover.jpg" alt="Aidea project cover" loading="lazy">
+        </div>
+
+        <!-- Item 4: Row 2, right -->
+        <div class="gallery__item gallery__item--4">
+          <video class="gallery__image" autoplay loop muted playsinline>
+            <source src="assets/images/AIDEA/logo.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Item 5: Row 3, left (tall/narrow box) -->
+        <div class="gallery__item gallery__item--5">
+          <img class="gallery__image" src="assets/images/COVERS/retarget-cover.jpg" alt="Retarget project cover" loading="lazy">
+        </div>
+
+        <!-- Item 6: Row 3, right top -->
+        <div class="gallery__item gallery__item--6">
+          <img class="gallery__image" src="assets/images/RETARGET/mockups-secondary.png" alt="Retarget project mockups" loading="lazy">
+        </div>
+
+        <!-- Item 7: Row 4, right bottom -->
+        <div class="gallery__item gallery__item--7">
+          <img class="gallery__image" src="assets/images/RETARGET/logo-combination.png" alt="Retarget logo combinations" loading="lazy">
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span class="footer__copyright">&copy; 2026 Enes Cilingir</span>
+      <a href="imprint.html" class="footer__link">Imprint</a>
+    </footer>
+
+  </div>
+
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/copy-mail.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+/* ============================================
+   Project Collage Component
+   Two-row image grid used in project page heroes.
+   Row proportions alternate narrow/wide — 4fr/6fr.
+   Reusable across all project pages.
+   ============================================ */
+
+.project-collage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.project-collage__row {
+  display: grid;
+  gap: var(--space-1);
+  height: clamp(14rem, 27vw, 25rem); /* ~400px at 1440px viewport */
+}
+
+/* Narrow left, wide right (4:6) */
+.project-collage__row--narrow-wide {
+  grid-template-columns: 4fr 6fr;
+}
+
+/* Wide left, narrow right (6:4) */
+.project-collage__row--wide-narrow {
+  grid-template-columns: 6fr 4fr;
+}
+
+.project-collage__item {
+  overflow: hidden;
+  background-color: var(--color-surface-primary);
+  transition: background-color 0.2s ease;
+}
+
+.project-collage__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .project-collage__row,
+  .project-collage__row--narrow-wide,
+  .project-collage__row--wide-narrow {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .project-collage__item {
+    aspect-ratio: 16 / 10;
+  }
+}
