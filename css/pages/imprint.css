@@ -1,5 +1,5 @@
 .imprint__section {
-  max-width: 56rem;
+  max-width: var(--content-width);
   display: grid;
   gap: var(--space-2);
 }
@@ -10,16 +10,6 @@
 
 .imprint .text-block {
   padding: var(--space-3);
-}
-
-.imprint .text-block p {
-  font-size: var(--text-body-lg);
-  line-height: 1.45;
-  color: var(--color-text-secondary);
-}
-
-.imprint .text-block p strong {
-  color: var(--color-text-primary);
 }
 
 .imprint__notice {
