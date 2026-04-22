@@ -14,9 +14,15 @@ function initScrollProgress() {
   var sectionEntries = Array.prototype.slice.call(
     document.querySelectorAll('main > section')
   ).map(function (section, index) {
-    var heading = section.querySelector('h2, h1');
-    var text = heading ? heading.textContent.trim() : '';
-    if (!text) text = 'Section ' + (index + 1);
+    var dataLabel = section.getAttribute('data-section-label');
+    var text;
+    if (dataLabel) {
+      text = dataLabel;
+    } else {
+      var heading = section.querySelector('h2, h1');
+      text = heading ? heading.textContent.trim().split(' ')[0] : '';
+      if (!text) text = 'Section';
+    }
     return {
       el: section,
       label: text
