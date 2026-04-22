@@ -1,39 +1,4 @@
 (function () {
-  function getSessionStorage(key) {
-    try {
-      return sessionStorage.getItem(key);
-    } catch(e) {
-      return null;
-    }
-  }
-
-  function setSessionStorage(key, value) {
-    try {
-      sessionStorage.setItem(key, value);
-    } catch(e) {}
-  }
-
-  function removePreloaderInstant() {
-    var preloader = document.getElementById('preloader');
-    if (preloader) preloader.style.display = 'none';
-    if (document.body) document.body.classList.remove('is-loading');
-  }
-
-  // Prevent running again if already finished
-  if (getSessionStorage('site_preloaded') && !window.location.search.includes('force_preload')) {
-    // Already preloaded this session -> hide immediately and trigger reveal
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() {
-        removePreloaderInstant();
-        document.body.classList.add('is-revealing-instant');
-      });
-    } else {
-      removePreloaderInstant();
-      document.body.classList.add('is-revealing-instant');
-    }
-    return;
-  }
-
   function initPreloader() {
     var preloader = document.getElementById('preloader');
     var progressCircle = document.getElementById('preloader-progress');
@@ -46,52 +11,110 @@
       return;
     }
 
+    // Critical images to preload globally so navigation feels instant
+    var globalImagesToPreload = [
+      'ASSETS/COVERS/pulse-cover.jpg?v=8',
+      'ASSETS/images/PULSE/screens.jpg',
+      'ASSETS/COVERS/mykorrizha-cover.jpg?v=2',
+      'ASSETS/images/MYKORRIZHA/teacher-view.jpg',
+      'ASSETS/images/PULSE/appicon.jpg',
+      'ASSETS/images/PULSE/124.jpg'
+    ];
+
+    // Combine DOM images and global explicit images
+    var totalImages = 0;
+    var loadedImages = 0;
     var circumference = 301.59;
-    var duration = 900; // 0.9s smooth fill animation
-    var startTime = null;
+    
+    var imagesToTrack = [];
 
-    function animateProgress(timestamp) {
-      if (!startTime) startTime = timestamp;
-      var elapsed = timestamp - startTime;
-      var percent = Math.min(elapsed / duration, 1);
-      
-      // Ease out quartic for a snappier start
-      var easePercent = 1 - Math.pow(1 - percent, 4);
-      var offset = circumference - (easePercent * circumference);
-      
-      progressCircle.style.strokeDashoffset = offset + 'px';
+    // 1. Gather all DOM images
+    for (var i = 0; i < document.images.length; i++) {
+      imagesToTrack.push(document.images[i]);
+    }
 
-      if (percent < 1) {
-        requestAnimationFrame(animateProgress);
-      } else {
-        finishLoading();
+    // 2. Create JS Image objects for global ones
+    for (var j = 0; j < globalImagesToPreload.length; j++) {
+      var img = new Image();
+      img.src = globalImagesToPreload[j];
+      imagesToTrack.push(img);
+    }
+
+    totalImages = imagesToTrack.length;
+
+    // Fallback: If it takes longer than 6 seconds, just force open
+    var fallbackTimeout = setTimeout(finishLoading, 6000);
+    var isFinished = false;
+
+    // We use a target offset and smoothly animate towards it via rAF
+    var currentOffset = circumference;
+    var targetOffset = circumference;
+
+    function updateVisualProgress() {
+      if (isFinished) return;
+      
+      // Smooth lerp towards the target offset
+      currentOffset += (targetOffset - currentOffset) * 0.15;
+      progressCircle.style.strokeDashoffset = currentOffset + 'px';
+
+      // Keep animating until finished
+      requestAnimationFrame(updateVisualProgress);
+    }
+
+    function setTargetProgress(percent) {
+      targetOffset = circumference - (percent * circumference);
+    }
+
+    function onImageLoaded() {
+      loadedImages++;
+      var percent = totalImages > 0 ? (loadedImages / totalImages) : 1;
+      
+      // Ensure we never go backwards and always progress
+      setTargetProgress(percent);
+      
+      if (loadedImages >= totalImages) {
+        // All loaded! Wait a tiny bit for the smooth bar to catch up
+        setTimeout(finishLoading, 300);
       }
     }
 
     function finishLoading() {
-      // Small pause at 100% before sliding up
+      if (isFinished) return;
+      isFinished = true;
+      clearTimeout(fallbackTimeout);
+      
+      // Force ring to full
+      progressCircle.style.strokeDashoffset = '0px';
+      
       setTimeout(function() {
         preloader.classList.add('is-hidden');
         if (document.body) {
           document.body.classList.remove('is-loading');
           document.body.classList.add('is-revealing');
         }
-        setSessionStorage('site_preloaded', 'true');
         
-        // Remove DOM element after CSS transition (0.9s) finishes
         setTimeout(function() {
-          if (preloader.parentNode) {
-            preloader.parentNode.removeChild(preloader);
-          }
+          if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
         }, 1000);
-      }, 300);
+      }, 200);
     }
 
-    // Give the browser a moment to paint the empty ring before animating
-    requestAnimationFrame(function(timestamp) {
-      startTime = timestamp;
-      requestAnimationFrame(animateProgress);
-    });
+    if (totalImages === 0) {
+      finishLoading();
+    } else {
+      // Start the visual lerp loop
+      requestAnimationFrame(updateVisualProgress);
+
+      for (var k = 0; k < totalImages; k++) {
+        var trackImg = imagesToTrack[k];
+        if (trackImg.complete) {
+          onImageLoaded();
+        } else {
+          trackImg.addEventListener('load', onImageLoaded, false);
+          trackImg.addEventListener('error', onImageLoaded, false);
+        }
+      }
+    }
   }
 
   if (document.readyState === 'loading') {
