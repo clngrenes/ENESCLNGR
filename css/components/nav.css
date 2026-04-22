@@ -16,7 +16,7 @@
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--color-nav-border);
   border-radius: 0;
-  gap: var(--space-4);
+  gap: var(--space-2);
   transition: background-color 0.2s ease, border-color 0.2s ease;
 
   /* Sticky — floats at top-padding offset as content scrolls beneath */
@@ -40,6 +40,14 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+}
+
+.nav__center {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+  min-width: 0;
 }
 
 .nav__logo {
@@ -123,9 +131,10 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  padding: 0 var(--space-2);
+  box-sizing: border-box;
+  padding: var(--space-2);
   border: 1px solid var(--nav-stroke);
-  min-height: calc(var(--text-sm) * var(--leading-normal) + var(--space-1));
+  block-size: calc(var(--space-2) * 2 + var(--text-sm) * var(--leading-normal));
   max-width: 22ch;
   transition: border-color 0.2s ease;
 }
@@ -188,6 +197,10 @@
   }
 
   .nav__right {
+    gap: var(--space-1);
+  }
+
+  .nav__center {
     gap: var(--space-1);
   }
 
