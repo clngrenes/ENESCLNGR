@@ -82,18 +82,19 @@ body.is-loading {
 }
 
 /* ============================================
-   Page Reveal Animation (Home)
+   Page Reveal Animation (Global)
    ============================================ */
 
 /* Hide initially while loading or revealing */
 body.is-loading .nav,
-body.is-loading .home__hero .heading-xl,
-body.is-loading .home__selected-work,
+body.is-loading main,
 body.is-loading .footer,
 body.is-revealing .nav,
-body.is-revealing .home__hero .heading-xl,
-body.is-revealing .home__selected-work,
-body.is-revealing .footer {
+body.is-revealing main,
+body.is-revealing .footer,
+body.is-revealing-instant .nav,
+body.is-revealing-instant main,
+body.is-revealing-instant .footer {
   opacity: 0;
   filter: blur(12px);
   transform: translateY(24px);
@@ -101,8 +102,7 @@ body.is-revealing .footer {
 }
 
 body.is-revealing-instant .nav,
-body.is-revealing-instant .home__hero .heading-xl,
-body.is-revealing-instant .home__selected-work,
+body.is-revealing-instant main,
 body.is-revealing-instant .footer {
   opacity: 1;
   filter: blur(0);
@@ -117,21 +117,15 @@ body.is-revealing .nav {
   pointer-events: auto;
 }
 
-body.is-revealing .home__hero .heading-xl {
+body.is-revealing main {
   animation: revealFadeBlur 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   animation-delay: 0.25s;
   pointer-events: auto;
 }
 
-body.is-revealing .home__selected-work {
-  animation: revealFadeBlur 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.45s;
-  pointer-events: auto;
-}
-
 body.is-revealing .footer {
   animation: revealFadeBlur 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.6s;
+  animation-delay: 0.45s;
   pointer-events: auto;
 }
 

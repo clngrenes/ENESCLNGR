@@ -21,29 +21,32 @@
       'ASSETS/images/PULSE/124.jpg'
     ];
 
-    // Combine DOM images and global explicit images
     var totalImages = 0;
     var loadedImages = 0;
     var circumference = 301.59;
-    
     var imagesToTrack = [];
 
-    // 1. Gather all DOM images
+    // 1. Gather all DOM images and load them via JS Image objects to bypass lazy-load blocking
     for (var i = 0; i < document.images.length; i++) {
-      imagesToTrack.push(document.images[i]);
+      var src = document.images[i].src;
+      if (src) {
+        var img = new Image();
+        img.src = src;
+        imagesToTrack.push(img);
+      }
     }
 
-    // 2. Create JS Image objects for global ones
+    // 2. Add global ones
     for (var j = 0; j < globalImagesToPreload.length; j++) {
-      var img = new Image();
-      img.src = globalImagesToPreload[j];
-      imagesToTrack.push(img);
+      var globalImg = new Image();
+      globalImg.src = globalImagesToPreload[j];
+      imagesToTrack.push(globalImg);
     }
 
     totalImages = imagesToTrack.length;
 
     // Fallback: If it takes longer than 6 seconds, just force open
-    var fallbackTimeout = setTimeout(finishLoading, 6000);
+    var fallbackTimeout = setTimeout(finishLoading, 4000);
     var isFinished = false;
 
     // We use a target offset and smoothly animate towards it via rAF
