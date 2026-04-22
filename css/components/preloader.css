@@ -16,8 +16,8 @@ body.is-loading {
   align-items: center;
   justify-content: center;
   /* Cool sliding up transition */
-  transition: transform 0.9s cubic-bezier(0.85, 0, 0.15, 1), 
-              border-radius 0.9s cubic-bezier(0.85, 0, 0.15, 1);
+  transition: transform 0.7s cubic-bezier(0.7, 0, 0.2, 1), 
+              border-radius 0.7s cubic-bezier(0.7, 0, 0.2, 1);
 }
 
 .preloader.is-hidden {
@@ -68,16 +68,16 @@ body.is-loading {
   fill: none;
   stroke: var(--color-border);
   stroke-width: 1px;
-  opacity: 0.3; /* Much softer background ring */
+  opacity: 0.15; /* Much softer background ring */
 }
 
 .preloader__progress {
   fill: none;
   stroke: var(--color-text-primary);
-  stroke-width: 1.5px;
+  stroke-width: 1px;
   /* 2 * PI * r = 2 * 3.14159 * 48 = ~301.59 */
-  stroke-dasharray: 301.59;
-  stroke-dashoffset: 301.59; /* Empty start */
+  stroke-dasharray: 301.59px;
+  stroke-dashoffset: 301.59px; /* Empty start */
   stroke-linecap: round;
 }
 
@@ -100,28 +100,38 @@ body.is-revealing .footer {
   pointer-events: none;
 }
 
+body.is-revealing-instant .nav,
+body.is-revealing-instant .home__hero .heading-xl,
+body.is-revealing-instant .home__selected-work,
+body.is-revealing-instant .footer {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 /* Animate in when is-revealing is added */
 body.is-revealing .nav {
   animation: revealFadeBlur 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.4s;
+  animation-delay: 0.1s;
   pointer-events: auto;
 }
 
 body.is-revealing .home__hero .heading-xl {
   animation: revealFadeBlur 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.5s;
+  animation-delay: 0.25s;
   pointer-events: auto;
 }
 
 body.is-revealing .home__selected-work {
   animation: revealFadeBlur 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.65s;
+  animation-delay: 0.45s;
   pointer-events: auto;
 }
 
 body.is-revealing .footer {
   animation: revealFadeBlur 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.75s;
+  animation-delay: 0.6s;
   pointer-events: auto;
 }
 
