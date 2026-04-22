@@ -67,18 +67,17 @@ body.is-loading {
 .preloader__track {
   fill: none;
   stroke: var(--color-border);
-  stroke-width: 2px;
-  opacity: 0.2; /* Much softer background ring */
+  stroke-width: 1px;
+  opacity: 0.3; /* Much softer background ring */
 }
 
 .preloader__progress {
   fill: none;
   stroke: var(--color-text-primary);
-  stroke-width: 2px;
+  stroke-width: 1.5px;
   /* 2 * PI * r = 2 * 3.14159 * 48 = ~301.59 */
   stroke-dasharray: 301.59;
   stroke-dashoffset: 301.59; /* Empty start */
-  transition: stroke-dashoffset 0.4s ease-out;
   stroke-linecap: round;
 }
 
