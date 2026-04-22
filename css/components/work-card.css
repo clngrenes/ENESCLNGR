@@ -59,8 +59,8 @@
   bottom: var(--work-card-hover-inset-bottom);
   width: calc(100% - (var(--work-card-hover-inset) * 2));
   height: calc(100% - var(--work-card-hover-inset) - var(--work-card-hover-inset-bottom));
-  object-fit: contain;
-  object-position: center top;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Secondary image is hidden by default */
