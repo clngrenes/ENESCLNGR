@@ -106,6 +106,33 @@
   gap: var(--space-2);
 }
 
+.pulse__final-designs-section.section {
+  gap: var(--space-2);
+}
+
+.pulse__final-designs-layout.columns-equal-height {
+  align-items: start;
+}
+
+/* Compact 10-column screen wall so visuals stay lighter */
+.pulse__final-screens {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: var(--space-1);
+}
+
+.pulse__final-screen {
+  grid-column: span 2;
+  width: 100%;
+  aspect-ratio: 3 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+.pulse__final-features {
+  gap: var(--space-1);
+}
+
 .pulse__takeaways-placeholder {
   flex: 1;
   width: 100%;
@@ -192,6 +219,15 @@
 }
 
 @media (max-width: 768px) {
+  .pulse__final-screens {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pulse__final-screen {
+    grid-column: span 1;
+    aspect-ratio: 4 / 5;
+  }
+
   .pulse__root-cause-layout {
     grid-template-columns: 1fr;
   }
