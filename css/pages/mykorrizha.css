@@ -21,6 +21,10 @@
   gap: var(--space-2);
 }
 
+.mykorrizha__ai-layout {
+  gap: var(--space-1);
+}
+
 .mykorrizha__ai-col {
   display: flex;
   flex-direction: column;
@@ -81,17 +85,49 @@
   gap: var(--space-1);
 }
 
-/* Force full width on the final block and remove top margin/gap so it touches the elements above */
+/* Force full width on the final block */
 .mykorrizha__system-footer {
-  margin-top: calc(-1 * var(--space-1));
+  /* margin-top removed to restore normal gap based on user feedback */
 }
 
 @media (max-width: 768px) {
   .mykorrizha__system-row {
     grid-template-columns: 1fr;
   }
-  
-  .mykorrizha__system-footer {
-    margin-top: 0;
+}
+
+/* ============================================
+   Skills Section Layout
+   ============================================ */
+
+.mykorrizha__skills-section.section {
+  gap: var(--space-2);
+}
+
+.mykorrizha__skills-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-1);
+}
+
+.mykorrizha__skills-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.mykorrizha__placeholder--tall {
+  min-height: clamp(20rem, 30vw, 28rem);
+  flex: none;
+}
+
+.mykorrizha__placeholder--very-tall {
+  min-height: clamp(34rem, 45vw, 42rem);
+  flex: none;
+}
+
+@media (max-width: 768px) {
+  .mykorrizha__skills-layout {
+    grid-template-columns: 1fr;
   }
 }
