@@ -102,6 +102,17 @@
   gap: var(--space-1);
 }
 
+.pulse__takeaways-section.section {
+  gap: var(--space-2);
+}
+
+.pulse__takeaways-placeholder {
+  flex: 1;
+  width: 100%;
+  min-height: clamp(18rem, 30vw, 26rem);
+  background-color: var(--color-border);
+}
+
 /*
  * Root cause — one 10-column grid for posters + insights:
  * - Row 1: five posters, each spans 2 tracks (2+2+2+2+2 = 10).
