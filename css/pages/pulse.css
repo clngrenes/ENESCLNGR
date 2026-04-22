@@ -113,6 +113,15 @@
   background-color: var(--color-border);
 }
 
+/* Key takeaways: primary stays natural; secondary cards grow to match visual column height */
+.pulse__takeaways-col > .text-block--primary {
+  flex: none;
+}
+
+.pulse__takeaways-col > .text-block--secondary {
+  flex: 1;
+}
+
 /*
  * Root cause — one 10-column grid for posters + insights:
  * - Row 1: five posters, each spans 2 tracks (2+2+2+2+2 = 10).
