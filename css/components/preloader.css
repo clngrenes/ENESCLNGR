@@ -68,6 +68,7 @@ body.is-loading {
   fill: none;
   stroke: var(--color-border);
   stroke-width: 2px;
+  opacity: 0.2; /* Much softer background ring */
 }
 
 .preloader__progress {
@@ -77,5 +78,63 @@ body.is-loading {
   /* 2 * PI * r = 2 * 3.14159 * 48 = ~301.59 */
   stroke-dasharray: 301.59;
   stroke-dashoffset: 301.59; /* Empty start */
-  transition: stroke-dashoffset 0.2s ease-out;
+  transition: stroke-dashoffset 0.4s ease-out;
+  stroke-linecap: round;
+}
+
+/* ============================================
+   Page Reveal Animation (Home)
+   ============================================ */
+
+/* Hide initially while loading or revealing */
+body.is-loading .nav,
+body.is-loading .home__hero .heading-xl,
+body.is-loading .home__selected-work,
+body.is-loading .footer,
+body.is-revealing .nav,
+body.is-revealing .home__hero .heading-xl,
+body.is-revealing .home__selected-work,
+body.is-revealing .footer {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(24px);
+  pointer-events: none;
+}
+
+/* Animate in when is-revealing is added */
+body.is-revealing .nav {
+  animation: revealFadeBlur 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.4s;
+  pointer-events: auto;
+}
+
+body.is-revealing .home__hero .heading-xl {
+  animation: revealFadeBlur 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.5s;
+  pointer-events: auto;
+}
+
+body.is-revealing .home__selected-work {
+  animation: revealFadeBlur 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.65s;
+  pointer-events: auto;
+}
+
+body.is-revealing .footer {
+  animation: revealFadeBlur 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.75s;
+  pointer-events: auto;
+}
+
+@keyframes revealFadeBlur {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
 }
