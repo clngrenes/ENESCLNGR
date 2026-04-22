@@ -97,6 +97,14 @@
   min-height: clamp(12rem, 22vw, 18rem);
 }
 
+.pulse__problem-layout {
+  grid-template-columns: 1fr;
+}
+
+.pulse__problem-visual-wrap {
+  min-height: clamp(12rem, 24vw, 18rem);
+}
+
 .pulse__root-cause-section.section {
   /* Match poster strip gutters: same token vertically (h2 ↔ posters ↔ insights) */
   gap: var(--space-1);
@@ -114,23 +122,31 @@
   align-items: start;
 }
 
-/* Compact 10-column screen wall so visuals stay lighter */
-.pulse__final-screens {
-  display: grid;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
-  gap: var(--space-1);
+/* Single preview screen on the left; card hover swaps source */
+.pulse__final-screen-stage {
+  width: 100%;
+  min-height: 0;
 }
 
 .pulse__final-screen {
-  grid-column: span 2;
   width: 100%;
   aspect-ratio: 3 / 5;
   object-fit: cover;
   display: block;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.pulse__final-screen.is-swapping {
+  opacity: 0.55;
+  filter: blur(1.5px);
 }
 
 .pulse__final-features {
   gap: var(--space-1);
+}
+
+.pulse__feature-card.is-active {
+  outline: 1px solid var(--color-border);
 }
 
 .pulse__takeaways-placeholder {
@@ -219,12 +235,7 @@
 }
 
 @media (max-width: 768px) {
-  .pulse__final-screens {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .pulse__final-screen {
-    grid-column: span 1;
     aspect-ratio: 4 / 5;
   }
 
