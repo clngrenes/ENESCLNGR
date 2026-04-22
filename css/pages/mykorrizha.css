@@ -64,6 +64,12 @@
 }
 
 .mykorrizha__system-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.mykorrizha__system-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-1);
@@ -75,25 +81,17 @@
   gap: var(--space-1);
 }
 
-/* Specific heights for placeholders in masonry */
-.mykorrizha__placeholder--tall {
-  min-height: clamp(20rem, 30vw, 28rem);
-  flex: none; /* keep exact height rather than stretching */
-}
-
-/* Force full width on the final block */
+/* Force full width on the final block and remove top margin/gap so it touches the elements above */
 .mykorrizha__system-footer {
-  grid-column: 1 / -1;
-  margin-top: calc(-1 * var(--space-1)); /* optional pull-up if needed, or just normal margin */
+  margin-top: calc(-1 * var(--space-1));
 }
 
 @media (max-width: 768px) {
-  .mykorrizha__system-layout {
+  .mykorrizha__system-row {
     grid-template-columns: 1fr;
   }
   
   .mykorrizha__system-footer {
-    grid-column: 1;
     margin-top: 0;
   }
 }
