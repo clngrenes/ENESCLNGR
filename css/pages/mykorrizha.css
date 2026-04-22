@@ -39,104 +39,61 @@
    Interactive Neural/Fungi Visual
    ============================================ */
 
-.mykorrizha__ai-visual {
+.mykorrizha__placeholder {
   flex: 1;
   width: 100%;
   min-height: clamp(24rem, 40vw, 36rem);
   background-color: var(--color-border);
-  position: relative;
-  overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: crosshair;
+  padding: var(--space-3);
+  box-sizing: border-box;
 }
 
-.mykorrizha__nodes {
-  position: absolute;
-  inset: var(--space-4);
+.mykorrizha__placeholder-text {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
 }
 
-.m-node {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background-color: var(--color-text-primary);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-              background-color 0.4s ease;
-  z-index: 2;
+/* ============================================
+   System Section Layout
+   ============================================ */
+
+.mykorrizha__system-section.section {
+  gap: var(--space-2);
 }
 
-.m-node::after {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 1px solid var(--color-text-primary);
-  opacity: 0;
-  transform: scale(0.5);
-  transition: all 0.4s ease;
+.mykorrizha__system-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-1);
 }
 
-.m-node--1 { left: 20%; top: 30%; animation: floatNode 6s ease-in-out infinite; }
-.m-node--2 { left: 80%; top: 20%; animation: floatNode 7s ease-in-out infinite 1s; }
-.m-node--3 { left: 30%; top: 70%; animation: floatNode 5s ease-in-out infinite 2s; }
-.m-node--4 { left: 70%; top: 80%; animation: floatNode 8s ease-in-out infinite 0.5s; }
-/* Central core node */
-.m-node--5 { 
-  left: 50%; 
-  top: 50%; 
-  animation: floatNode 6s ease-in-out infinite 1.5s; 
-  width: 18px; 
-  height: 18px; 
-  background-color: var(--color-text-primary);
+.mykorrizha__system-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
 }
 
-@keyframes floatNode {
-  0%, 100% { transform: translate(-50%, -50%) translate(0, 0); }
-  50% { transform: translate(-50%, -50%) translate(0, 12px); }
+/* Specific heights for placeholders in masonry */
+.mykorrizha__placeholder--tall {
+  min-height: clamp(20rem, 30vw, 28rem);
+  flex: none; /* keep exact height rather than stretching */
 }
 
-.m-connections {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+/* Force full width on the final block */
+.mykorrizha__system-footer {
+  grid-column: 1 / -1;
+  margin-top: calc(-1 * var(--space-1)); /* optional pull-up if needed, or just normal margin */
 }
 
-.m-line {
-  stroke: var(--color-text-secondary);
-  stroke-width: 1.5px;
-  stroke-dasharray: 6 6;
-  opacity: 0.35;
-  transition: opacity 0.4s ease, stroke-dasharray 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: marchLine 30s linear infinite;
-}
-
-@keyframes marchLine {
-  to { stroke-dashoffset: -200; }
-}
-
-/* Hover Interactivity: "Synapses firing / Mykorrizha growing" */
-
-.mykorrizha__ai-visual:hover .m-node {
-  transform: translate(-50%, -50%) scale(1.4);
-}
-
-.mykorrizha__ai-visual:hover .m-node--5 {
-  transform: translate(-50%, -50%) scale(1.8);
-}
-
-.mykorrizha__ai-visual:hover .m-node::after {
-  opacity: 0.4;
-  transform: scale(1.1);
-}
-
-.mykorrizha__ai-visual:hover .m-line {
-  opacity: 0.8;
-  /* Connect the dots solid */
-  stroke-dasharray: 100 0;
-  animation: none;
-  stroke-width: 2px;
+@media (max-width: 768px) {
+  .mykorrizha__system-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .mykorrizha__system-footer {
+    grid-column: 1;
+    margin-top: 0;
+  }
 }
