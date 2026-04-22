@@ -22,8 +22,7 @@
   display: grid;
   grid-template-columns: repeat(10, minmax(0, 1fr));
   grid-template-areas:
-    "pulse pulse pulse pulse pulse pulse myko myko myko myko"
-    "neck neck neck neck blank blank blank blank blank blank";
+    "pulse pulse pulse pulse pulse pulse myko myko myko myko";
   gap: var(--space-2);
 }
 
@@ -35,20 +34,12 @@
   grid-area: myko;
 }
 
-.home__work-grid .work-card--neckband {
-  grid-area: neck;
-}
-
-.home__work-grid .work-card--blank {
-  grid-area: blank;
-}
 
 @media (max-width: 1024px) {
   .home__work-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
-      "pulse myko"
-      "neck blank";
+      "pulse myko";
     gap: var(--space-2);
   }
 }
@@ -58,9 +49,7 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "pulse"
-      "myko"
-      "neck"
-      "blank";
+      "myko";
     gap: var(--space-2);
   }
 }
