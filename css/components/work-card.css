@@ -38,25 +38,29 @@
 
 .work-card__image {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   border-radius: 0;
   display: block;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              inset 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .work-card:hover .work-card__image,
 .work-card:focus-visible .work-card__image {
-  inset: var(--work-card-hover-inset) var(--work-card-hover-inset) var(--work-card-hover-inset-bottom) var(--work-card-hover-inset);
-  width: auto;
-  height: auto;
+  top: var(--work-card-hover-inset);
+  left: var(--work-card-hover-inset);
+  right: var(--work-card-hover-inset);
+  bottom: var(--work-card-hover-inset-bottom);
+  width: calc(100% - (var(--work-card-hover-inset) * 2));
+  height: calc(100% - var(--work-card-hover-inset) - var(--work-card-hover-inset-bottom));
   object-fit: contain;
+  object-position: center top;
 }
 
 /* Secondary image is hidden by default */
