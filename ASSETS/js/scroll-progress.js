@@ -7,6 +7,7 @@
 function initScrollProgress() {
   var fill  = document.getElementById('scroll-fill');
   var label = document.getElementById('scroll-label');
+  var sectionBox = document.getElementById('scroll-section');
   var sectionLabel = document.querySelector('#scroll-section .nav__progress-section-label');
   if (!fill || !label) return;
 
@@ -33,7 +34,18 @@ function initScrollProgress() {
       if (focusY >= top) current = sectionEntries[i];
     }
 
-    sectionLabel.textContent = current.label;
+    if (sectionLabel.textContent !== current.label) {
+      sectionLabel.textContent = current.label;
+      if (sectionBox) {
+        sectionBox.classList.remove('is-changing');
+        window.requestAnimationFrame(function () {
+          sectionBox.classList.add('is-changing');
+          window.setTimeout(function () {
+            sectionBox.classList.remove('is-changing');
+          }, 240);
+        });
+      }
+    }
   }
 
   function update() {

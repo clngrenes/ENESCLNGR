@@ -17,7 +17,7 @@
         '<a href="gallery.html" class="btn ' + (isGallery ? 'btn--active' : 'btn--inactive') + '">Gallery</a>' +
       '</div>' +
       (withProgress
-        ? '<div class="nav__progress" aria-hidden="true"><div class="nav__progress-track"><div class="nav__progress-fill" id="scroll-fill"></div></div><span class="nav__progress-label" id="scroll-label">0%</span><span class="nav__progress-section" id="scroll-section"><span class="nav__progress-dot" aria-hidden="true"></span><span class="nav__progress-section-label">Hero</span></span></div>'
+        ? '<div class="nav__progress" aria-hidden="true"><div class="nav__progress-track"><div class="nav__progress-fill" id="scroll-fill"></div></div><span class="nav__progress-label" id="scroll-label">0%</span></div><span class="nav__section-indicator" id="scroll-section" aria-hidden="true"><span class="nav__progress-dot" aria-hidden="true"></span><span class="nav__progress-section-label">Hero</span></span>'
         : '') +
       '<div class="nav__right">' +
         '<button id="theme-toggle" class="btn btn--icon" aria-label="Switch to dark mode"></button>' +
