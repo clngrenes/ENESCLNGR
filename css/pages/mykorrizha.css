@@ -131,3 +131,29 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================
+   Learned Section Layout
+   ============================================ */
+
+.mykorrizha__learned-section.section {
+  gap: var(--space-2);
+}
+
+.mykorrizha__learned-layout {
+  gap: var(--space-1);
+}
+
+.mykorrizha__learned-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.mykorrizha__learned-col > .text-block--primary {
+  flex: none;
+}
+
+.mykorrizha__learned-col > .text-block--secondary {
+  flex: 1;
+}
