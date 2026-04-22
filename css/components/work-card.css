@@ -15,8 +15,9 @@
   text-decoration: none;
   border: 1px solid var(--color-border);
   transition: transform 0.24s ease;
-  /* One inset for image + content: badges/text and image edges stay aligned */
-  --work-card-hover-inset: var(--space-2);
+  /* Very small inset on top/left/right, slightly more on bottom for text */
+  --work-card-hover-inset: var(--space-1);
+  --work-card-hover-inset-bottom: 72px; /* reduced bottom padding */
 }
 
 .work-card__inner {
@@ -32,14 +33,7 @@
   height: 100%;
   overflow: hidden;
   padding: 0;
-  transition: padding 0.28s ease;
   background-color: var(--color-surface-primary);
-}
-
-.work-card:hover .work-card__media,
-.work-card:focus-visible .work-card__media {
-  /* Uniform inset on all sides so image and content share same rhythm */
-  padding: var(--work-card-hover-inset);
 }
 
 .work-card__image {
@@ -49,14 +43,38 @@
   object-position: center;
   border-radius: 0;
   display: block;
-  transition: inset 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              inset 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .work-card:hover .work-card__image,
 .work-card:focus-visible .work-card__image {
-  object-fit: contain;
-  object-position: center top;
-  inset: var(--work-card-hover-inset) var(--work-card-hover-inset) 100px var(--work-card-hover-inset);
+  inset: var(--work-card-hover-inset) var(--work-card-hover-inset) var(--work-card-hover-inset-bottom) var(--work-card-hover-inset);
+}
+
+/* Secondary image is hidden by default */
+.work-card__image--secondary {
+  opacity: 0;
+  filter: blur(8px);
+  transform: scale(1.05); /* Slight zoom out effect */
+}
+
+/* On hover, primary fades out and blurs */
+.work-card:hover .work-card__image--primary,
+.work-card:focus-visible .work-card__image--primary {
+  opacity: 0;
+  filter: blur(8px);
+  transform: scale(0.95); /* Shrinks back */
+}
+
+/* On hover, secondary fades in and unblurs */
+.work-card:hover .work-card__image--secondary,
+.work-card:focus-visible .work-card__image--secondary {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
 }
 
 .work-card__content {
