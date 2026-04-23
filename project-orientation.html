@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orientation — Enes</title>
+  <title>Orientation — Enes Cilingir</title>
   <meta name="description" content="Orientation should not be a privilege.">
+
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="ASSETS/FAVICON/favicon.ico">
@@ -14,59 +16,37 @@
   <link rel="manifest" href="ASSETS/FAVICON/site.webmanifest">
 
   <!-- Core CSS -->
-  <link rel="stylesheet" href="css/base.css?v=2">
-  <link rel="stylesheet" href="css/typography.css?v=2">
-  <link rel="stylesheet" href="css/layout.css?v=2">
+  <link rel="stylesheet" href="css/tokens.css?v=1">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css?v=3">
   
   <!-- Component CSS -->
   <link rel="stylesheet" href="css/components/nav.css?v=9">
+  <link rel="stylesheet" href="css/components/footer.css">
   <link rel="stylesheet" href="css/components/button.css?v=2">
+  <link rel="stylesheet" href="css/components/tag.css">
+  <link rel="stylesheet" href="css/components/work-card.css?v=7">
   <link rel="stylesheet" href="css/components/text-block.css?v=2">
   <link rel="stylesheet" href="css/components/section.css?v=2">
-  <link rel="stylesheet" href="css/components/project-collage.css?v=2">
+  <link rel="stylesheet" href="css/components/project-collage.css?v=3">
+  <link rel="stylesheet" href="css/components/project-visual.css">
   <link rel="stylesheet" href="css/components/feature-card.css?v=2">
-  <link rel="stylesheet" href="css/components/work-card.css?v=2">
+  <link rel="stylesheet" href="css/components/preloader.css">
   
   <!-- Page-specific CSS -->
-  <link rel="stylesheet" href="css/pages/orientation.css?v=1">
+  <link rel="stylesheet" href="css/pages/orientation.css?v=2">
 
-  <!-- Scripts -->
-  <script src="assets/js/theme.js" defer></script>
-  <script src="assets/js/nav.js" defer></script>
-  <script src="assets/js/scroll-progress.js" defer></script>
-  <script src="assets/js/preloader.js" defer></script>
-  
-  <!-- Lenis Smooth Scroll -->
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
-      });
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
-    });
-  </script>
 </head>
 
 <body class="is-loading">
-  <!-- Preloader overlay -->
-  <div class="preloader">
-    <svg class="preloader__logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <circle class="preloader__track" cx="50" cy="50" r="45" />
-      <circle class="preloader__progress" cx="50" cy="50" r="45" />
-    </svg>
+  <!-- Preloader Overlay -->
+  <div id="preloader" class="preloader">
+    <div class="preloader__inner">
+      <svg class="preloader__ring" viewBox="0 0 100 100">
+        <circle class="preloader__track" cx="50" cy="50" r="48"></circle>
+        <circle class="preloader__progress" id="preloader-progress" cx="50" cy="50" r="48"></circle>
+      </svg>
+    </div>
   </div>
 
   <div class="scroll-blur scroll-blur--top"></div>
@@ -74,158 +54,173 @@
 
   <!-- Navigation is injected via nav.js -->
 
-  <main class="main-content">
-    <article class="project-detail">
-      
-      <!-- ─── HERO COLLAGE ────────────────────────────────────────── -->
-      <section class="section section--hero" data-section-label="Hero">
-        <div class="project-collage">
-          <div class="project-collage__item">
-            <div class="orientation__placeholder">Image Placeholder</div>
-          </div>
-          <div class="project-collage__item">
-            <div class="orientation__placeholder">Image Placeholder</div>
-          </div>
-          <div class="project-collage__item">
-            <div class="orientation__placeholder">Image Placeholder</div>
-          </div>
-          <div class="project-collage__item">
-            <div class="orientation__placeholder">Image Placeholder</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ─── PROJECT INFO ────────────────────────────────────────── -->
-      <section class="section" data-section-label="Intro">
-        <h1 class="heading-xl">Are ears and eyes necessary for spatial orientation?</h1>
+  <div class="page-wrapper">
+    <main class="main-content">
+      <article class="project-detail">
         
-        <div class="orientation__project-meta">
-          <div class="text-block text-block--secondary">
-            <p>Tangible Design<br>Ottavio Cambieri</p>
+        <!-- ─── HERO COLLAGE ────────────────────────────────────────── -->
+        <section class="section section--hero" data-section-label="Hero">
+          <div class="project-collage">
+            <div class="project-collage__item">
+              <div class="orientation__placeholder">Image Placeholder</div>
+            </div>
+            <div class="project-collage__item">
+              <div class="orientation__placeholder">Image Placeholder</div>
+            </div>
+            <div class="project-collage__item">
+              <div class="orientation__placeholder">Image Placeholder</div>
+            </div>
+            <div class="project-collage__item">
+              <div class="orientation__placeholder">Image Placeholder</div>
+            </div>
           </div>
-          <div class="text-block text-block--secondary">
-            <p>Faruk<br>Laura<br>Enes</p>
-          </div>
-          <div class="text-block text-block--secondary">
-            <p>4 Week Sprint</p>
-          </div>
-          <div class="text-block text-block--secondary">
-            <p>Eesti Kunstiakadeemia</p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ─── SECTION 2: The Problem ────────────────────────────────── -->
-      <section class="section" data-section-label="Problem">
-        <h2 class="heading-lg">Orientation should not be a privilege.</h2>
-
-        <div class="columns-equal-height columns-equal-height--6-4">
-          <div class="columns-equal-height__col">
-            <div class="text-block text-block--primary text-block--big">
-              <p>A white cane tells you what's on the ground. It can't see the sign at chest height, the person approaching from behind, or the crowd closing in. That gap has been unsolved for decades.</p>
-            </div>
-            <div class="text-block text-block--secondary">
-              <p>Every day, millions of people navigate cities with a tool designed in the 1930s. Solutions have emerged since, but most rely on audio feedback, look clinical, or aren't built for real life. The result is a constant state of alertness that never fully switches off. 54% experience a head-level collision at least once a year. 43% permanently change the way they walk afterward. What if your body could simply feel what your eyes can't see?</p>
-            </div>
-          </div>
-          <div class="columns-equal-height__col">
-            <div class="orientation__placeholder orientation__placeholder--tall">Image Placeholder</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ─── SECTION 3: Insights ───────────────────────────────────── -->
-      <section class="section" data-section-label="Insights">
-        <h2 class="heading-lg">We went looking for answers. We found something more important.</h2>
-
-        <div class="columns-equal-height columns-equal-height--5-5 orientation__answers-layout">
-          <div class="columns-equal-height__col">
-            <div class="text-block text-block--secondary">
-              <p>The greatest sacrifice is the renunciation of solitude.</p>
-            </div>
-            <div class="text-block text-block--primary text-block--big">
-              <p>The research kept returning to one word. not safety, not navigation. Freedom. The freedom to walk alone, without running a constant calculation in your head.</p>
-            </div>
-            <div class="text-block text-block--secondary">
-              <p>In a world built for sighted people, blindness forces a life marked by uncertainty. Not occasionally — every single day.</p>
-            </div>
-            <div class="orientation__placeholder orientation__placeholder--square">Image Placeholder</div>
-          </div>
+        <!-- ─── PROJECT INFO ────────────────────────────────────────── -->
+        <section class="section" data-section-label="Intro">
+          <h1 class="heading-xl">Are ears and eyes necessary for spatial orientation?</h1>
           
-          <div class="columns-equal-height__col">
-            <div class="orientation__placeholder orientation__placeholder--square">Image Placeholder</div>
-            <div class="text-block text-block--primary text-block--big">
-              <p>We mapped two ordinary journeys. What we found wasn't a technical problem — it was a mental one.</p>
+          <div class="orientation__project-meta">
+            <div class="text-block text-block--secondary">
+              <p>Tangible Design<br>Ottavio Cambieri</p>
             </div>
             <div class="text-block text-block--secondary">
-              <p>Walking to a bus stop. Passing a blocked sidewalk. Both scenarios revealed the same pattern: the uncertainty never switches off.</p>
+              <p>Faruk<br>Laura<br>Enes</p>
             </div>
             <div class="text-block text-block--secondary">
-              <p>Every step is an active decision. That exhaustion is invisible from the outside and completely real from within.</p>
+              <p>4 Week Sprint</p>
+            </div>
+            <div class="text-block text-block--secondary">
+              <p>Eesti Kunstiakadeemia</p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ─── MORE PROJECTS ───────────────────────────────────────── -->
-      <section class="section section--more-projects" data-section-label="More">
-        <h2 class="heading-lg">More Projects</h2>
-        <div class="more-projects-grid">
-          
-          <!-- Card 1: PULSE -->
-          <a href="project-pulse.html" class="work-card work-card--pulse has-secondary">
-            <div class="work-card__inner">
-              <div class="work-card__media">
-                <img class="work-card__image work-card__image--primary" src="ASSETS/COVERS/pulse-cover.jpg?v=8" alt="Pulse — Blood donation app concept" loading="lazy">
-                <img class="work-card__image work-card__image--secondary" src="ASSETS/images/PULSE/screens.jpg" alt="Pulse screens" loading="lazy">
+        <!-- ─── SECTION 2: The Problem ────────────────────────────────── -->
+        <section class="section" data-section-label="Problem">
+          <h2 class="heading-lg">Orientation should not be a privilege.</h2>
+
+          <div class="columns-equal-height columns-equal-height--6-4">
+            <div class="columns-equal-height__col">
+              <div class="text-block text-block--primary text-block--big">
+                <p>A white cane tells you what's on the ground. It can't see the sign at chest height, the person approaching from behind, or the crowd closing in. That gap has been unsolved for decades.</p>
               </div>
-              <div class="work-card__content">
-                <div class="work-card__tags">
-                  <span class="tag">Application</span>
-                  <span class="tag">2024</span>
-                </div>
-                <h3 class="work-card__title">How Might We Encourage The Youth For Blood Donation?</h3>
+              <div class="text-block text-block--secondary">
+                <p>Every day, millions of people navigate cities with a tool designed in the 1930s. Solutions have emerged since, but most rely on audio feedback, look clinical, or aren't built for real life. The result is a constant state of alertness that never fully switches off. 54% experience a head-level collision at least once a year. 43% permanently change the way they walk afterward. What if your body could simply feel what your eyes can't see?</p>
               </div>
             </div>
-          </a>
+            <div class="columns-equal-height__col">
+              <div class="orientation__placeholder orientation__placeholder--tall">Image Placeholder</div>
+            </div>
+          </div>
+        </section>
 
-          <!-- Card 2: MYKORRIZHA -->
-          <a href="project-mykorrizha.html" class="work-card work-card--mykorrizha has-secondary">
-            <div class="work-card__inner">
-              <div class="work-card__media">
-                <img class="work-card__image work-card__image--primary" src="ASSETS/COVERS/mykorrizha-cover.jpg?v=2" alt="Mykrozziha — Education ecosystem concept" loading="lazy">
-                <img class="work-card__image work-card__image--secondary" src="ASSETS/images/MYKORRIZHA/teacher-view.jpg" alt="Mykrozziha teacher view" loading="lazy">
+        <!-- ─── SECTION 3: Insights ───────────────────────────────────── -->
+        <section class="section" data-section-label="Insights">
+          <h2 class="heading-lg">We went looking for answers. We found something more important.</h2>
+
+          <div class="columns-equal-height columns-equal-height--5-5 orientation__answers-layout">
+            <div class="columns-equal-height__col">
+              <div class="text-block text-block--secondary">
+                <p>The greatest sacrifice is the renunciation of solitude.</p>
               </div>
-              <div class="work-card__content">
-                <div class="work-card__tags">
-                  <span class="tag">Application</span>
-                  <span class="tag">2024</span>
-                </div>
-                <h3 class="work-card__title">Mykrozziha ─ The new age of education</h3>
+              <div class="text-block text-block--primary text-block--big">
+                <p>The research kept returning to one word. not safety, not navigation. Freedom. The freedom to walk alone, without running a constant calculation in your head.</p>
+              </div>
+              <div class="text-block text-block--secondary">
+                <p>In a world built for sighted people, blindness forces a life marked by uncertainty. Not occasionally — every single day.</p>
+              </div>
+              <div class="orientation__placeholder orientation__placeholder--square">Image Placeholder</div>
+            </div>
+            
+            <div class="columns-equal-height__col">
+              <div class="orientation__placeholder orientation__placeholder--square">Image Placeholder</div>
+              <div class="text-block text-block--primary text-block--big">
+                <p>We mapped two ordinary journeys. What we found wasn't a technical problem — it was a mental one.</p>
+              </div>
+              <div class="text-block text-block--secondary">
+                <p>Walking to a bus stop. Passing a blocked sidewalk. Both scenarios revealed the same pattern: the uncertainty never switches off.</p>
+              </div>
+              <div class="text-block text-block--secondary">
+                <p>Every step is an active decision. That exhaustion is invisible from the outside and completely real from within.</p>
               </div>
             </div>
-          </a>
+          </div>
+        </section>
 
-          <!-- Card 3: AIDEA -->
-          <a href="project-aidea.html" class="work-card">
-            <div class="work-card__inner">
-              <div class="work-card__media">
-                <img class="work-card__image work-card__image--primary" src="ASSETS/COVERS/aidea-cover.jpg?v=2" alt="Aidea Project" loading="lazy">
-              </div>
-              <div class="work-card__content">
-                <div class="work-card__tags">
-                  <span class="tag">Invention Design</span>
-                  <span class="tag">2025</span>
+        <!-- ─── MORE PROJECTS ───────────────────────────────────────── -->
+        <section class="section section--more-projects" data-section-label="More">
+          <h2 class="heading-lg">More Projects</h2>
+          <div class="more-projects-grid">
+            
+            <!-- Card 1: PULSE -->
+            <a href="project-pulse.html" class="work-card work-card--pulse has-secondary">
+              <div class="work-card__inner">
+                <div class="work-card__media">
+                  <img class="work-card__image work-card__image--primary" src="ASSETS/COVERS/pulse-cover.jpg?v=8" alt="Pulse — Blood donation app concept" loading="lazy">
+                  <img class="work-card__image work-card__image--secondary" src="ASSETS/images/PULSE/screens.jpg" alt="Pulse screens" loading="lazy">
                 </div>
-                <h3 class="work-card__title">Bridging imagination and execution</h3>
+                <div class="work-card__content">
+                  <div class="work-card__tags">
+                    <span class="tag">Application</span>
+                    <span class="tag">2024</span>
+                  </div>
+                  <h3 class="work-card__title">How Might We Encourage The Youth For Blood Donation?</h3>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
 
-        </div>
-      </section>
-    </article>
-  </main>
+            <!-- Card 2: MYKORRIZHA -->
+            <a href="project-mykorrizha.html" class="work-card work-card--mykorrizha has-secondary">
+              <div class="work-card__inner">
+                <div class="work-card__media">
+                  <img class="work-card__image work-card__image--primary" src="ASSETS/COVERS/mykorrizha-cover.jpg?v=2" alt="Mykrozziha — Education ecosystem concept" loading="lazy">
+                  <img class="work-card__image work-card__image--secondary" src="ASSETS/images/MYKORRIZHA/teacher-view.jpg" alt="Mykrozziha teacher view" loading="lazy">
+                </div>
+                <div class="work-card__content">
+                  <div class="work-card__tags">
+                    <span class="tag">Application</span>
+                    <span class="tag">2024</span>
+                  </div>
+                  <h3 class="work-card__title">Mykrozziha ─ The new age of education</h3>
+                </div>
+              </div>
+            </a>
 
+            <!-- Card 3: AIDEA -->
+            <a href="project-aidea.html" class="work-card">
+              <div class="work-card__inner">
+                <div class="work-card__media">
+                  <img class="work-card__image work-card__image--primary" src="ASSETS/COVERS/aidea-cover.jpg?v=2" alt="Aidea Project" loading="lazy">
+                </div>
+                <div class="work-card__content">
+                  <div class="work-card__tags">
+                    <span class="tag">Invention Design</span>
+                    <span class="tag">2025</span>
+                  </div>
+                  <h3 class="work-card__title">Bridging imagination and execution</h3>
+                </div>
+              </div>
+            </a>
+
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <span class="footer__copyright">&copy; 2026 Enes Cilingir</span>
+      <a href="imprint.html" class="footer__link">Imprint</a>
+    </footer>
+
+  </div>
+
+  <script src="ASSETS/js/preloader.js"></script>
+  <script src="ASSETS/js/nav.js?v=9"></script>
+  <script src="ASSETS/js/theme.js"></script>
+  <script src="ASSETS/js/copy-mail.js"></script>
+  <script src="ASSETS/js/scroll-progress.js?v=5"></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="ASSETS/js/smooth-scroll.js"></script>
 </body>
 </html>
