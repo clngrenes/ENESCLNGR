@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIDEA — Enes Cilingir</title>
+
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+
+  <link rel="stylesheet" href="css/tokens.css?v=1">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css?v=1">
+  <link rel="stylesheet" href="css/components/nav.css?v=9">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/button.css?v=2">
+  <link rel="stylesheet" href="css/components/tag.css">
+  <link rel="stylesheet" href="css/components/work-card.css?v=7">
+  <link rel="stylesheet" href="css/components/text-block.css?v=2">
+  <link rel="stylesheet" href="css/components/section.css">
+  <link rel="stylesheet" href="css/components/project-collage.css?v=3">
+  <link rel="stylesheet" href="css/pages/aidea.css?v=1">
+  <link rel="stylesheet" href="css/components/preloader.css">
+</head>
+<body class="is-loading">
+  <!-- Preloader Overlay -->
+  <div id="preloader" class="preloader">
+    <div class="preloader__inner">
+      <svg class="preloader__ring" viewBox="0 0 100 100">
+        <circle class="preloader__track" cx="50" cy="50" r="48"></circle>
+        <circle class="preloader__progress" id="preloader-progress" cx="50" cy="50" r="48"></circle>
+      </svg>
+      <svg class="preloader__logo" width="53" height="49" viewBox="0 0 53 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40.1755 44.5455H26.961C21.951 44.5455 19.4423 38.488 22.9852 34.9458C24.3745 33.5568 23.3906 31.1818 21.4258 31.1818C20.8409 31.1818 20.28 31.4141 19.8664 31.8276L8.54563 43.146C6.38489 45.3062 7.91521 49 10.971 49H45.6788C49.4675 49 52.5387 45.9294 52.5387 42.1416V32.4678C52.5387 31.7576 51.9629 31.1818 51.2525 31.1818H44.8917C44.1813 31.1818 43.6055 31.7576 43.6055 32.4678V41.1162C43.6055 43.0101 42.0698 44.5455 40.1755 44.5455Z" fill="currentColor"/>
+        <path d="M22.9415 14.0542C19.3985 10.512 21.9072 4.45454 26.9172 4.45454H40.1755C42.0698 4.45454 43.6055 5.98985 43.6055 7.88376L43.6055 16.5322C43.6055 17.2424 44.1813 17.8182 44.8917 17.8182H51.2525C51.9629 17.8182 52.5388 17.2424 52.5388 16.5322V6.85843C52.5388 3.07063 49.4675 0 45.6789 0H10.9272C7.87144 0 6.34111 3.69375 8.50186 5.85403L19.8226 17.1724C20.2362 17.5859 20.7971 17.8182 21.382 17.8182C23.3468 17.8182 24.3308 15.4432 22.9415 14.0542Z" fill="currentColor"/>
+        <path d="M9.00192 33.5009C11.2918 33.5009 13.3821 32.6461 14.9707 31.2381C17.3429 29.1358 19.9552 26.7009 23.1249 26.7009H50.3112C51.5262 26.7009 52.5112 25.7159 52.5112 24.5009C52.5112 23.2859 51.5262 22.3009 50.3112 22.3009H23.1249C19.9552 22.3009 17.3429 19.866 14.9707 17.7637C13.3821 16.3558 11.2918 15.5009 9.00192 15.5009C4.0303 15.5009 0 19.5304 0 24.5009C0 29.4715 4.0303 33.5009 9.00192 33.5009ZM12.9292 26.7009C12.1584 28.0735 10.6885 29.0009 9.00192 29.0009C6.51611 29.0009 4.50096 26.9862 4.50096 24.5009C4.50096 22.0156 6.51611 20.0009 9.00192 20.0009C10.6885 20.0009 12.1584 20.9283 12.9292 22.3009C13.2946 22.9514 13.5029 23.7018 13.5029 24.5009C13.5029 25.3 13.2946 26.0504 12.9292 26.7009Z" fill="currentColor"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="page aidea">
+
+    <!-- Nav -->
+    <nav class="nav" data-nav-page="aidea" data-nav-progress="true"></nav>
+
+    <main>
+
+      <!-- ─── HERO ──────────────────────────────────────────────────── -->
+      <section class="section section--loose" data-section-label="Home">
+
+        <div class="project-collage">
+          <div class="project-collage__row project-collage__row--narrow-wide">
+            <div class="project-collage__item">
+              <img class="project-collage__image" src="ASSETS/images/AIDEA/logo.jpg" alt="Aidea logo" loading="eager" decoding="async">
+            </div>
+            <div class="project-collage__item project-collage__item--stroked-media">
+              <img class="project-collage__image" src="ASSETS/images/AIDEA/sketch-end.jpg" alt="Aidea concept sketch" loading="eager" decoding="async">
+            </div>
+          </div>
+          <div class="project-collage__row project-collage__row--wide-narrow">
+            <div class="project-collage__item project-collage__item--embed">
+              <!-- Using the logo.mp4 directly as a looping background video -->
+              <video class="project-collage__embed aidea__hero-video" src="ASSETS/images/AIDEA/logo.mp4" autoplay loop muted playsinline loading="lazy"></video>
+            </div>
+            <div class="project-collage__item">
+              <img class="project-collage__image" src="ASSETS/images/AIDEA/pen.jpg" alt="Aidea smart pen" loading="eager" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <h1 class="heading-xl">An AI-powered creative assistant that transforms simple sketches into professional visualizations. AIDEA bridges the gap between imagination and execution, helping anyone communicate their ideas visually – regardless of drawing skills.</h1>
+
+        <div class="project-meta aidea__project-meta" role="list" aria-label="Project details">
+          <div class="text-block text-block--secondary" role="listitem">
+            <p>Invention Design</p>
+          </div>
+          <div class="text-block text-block--secondary" role="listitem">
+            <p>Enes Cilingir</p>
+          </div>
+          <div class="text-block text-block--secondary" role="listitem">
+            <p>2025</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ─── SECTION 2: The Problem ────────────────────────────────── -->
+      <section class="section" data-section-label="Problem">
+        <h2 class="heading-lg">The Problem</h2>
+
+        <div class="columns-equal-height columns-equal-height--6-4">
+          <div class="columns-equal-height__col">
+            <div class="text-block text-block--primary text-block--big">
+              <p>Ideas often fail not because of lack of imagination, but because of implementation barriers.</p>
+            </div>
+            <div class="text-block text-block--secondary">
+              <p>In an experiment by designer Gianluca Gimini, over 500 people were asked to draw a bicycle from memory. Only about 25% could draw it correctly – 75% instead created creative but inaccurate variations.</p>
+            </div>
+            <div class="text-block text-block--secondary">
+              <p>We see the potential to revolutionize how people sketch, refine, and share ideas – regardless of drawing abilities, through a symbiosis of creativity and artificial intelligence.<br><br>How many brilliant ideas have vanished from our minds simply because we couldn't express them visually? How many groundbreaking concepts remain trapped in our thoughts, waiting for the right tool to set them free?</p>
+            </div>
+          </div>
+          <div class="columns-equal-height__col">
+            <!-- Using an image from AIDEA folder -->
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/ai-section.jpg" alt="Aidea problem visualization" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── SECTION 3: Who Is AIDEA For? ────────────────────────── -->
+      <section class="section" data-section-label="Target">
+        <h2 class="heading-lg">Who Is AIDEA For?</h2>
+
+        <div class="columns-equal-height columns-equal-height--4-6">
+          <div class="columns-equal-height__col">
+            <div class="text-block text-block--secondary">
+              <p>AIDEA is designed for everyone who has ideas but struggles to bring them to life visually. Whether you're a student brainstorming for a presentation, a professional sketching out concepts in meetings, or someone who simply wants to explore their creativity – AIDEA makes visual thinking accessible to all. You don't need to be an artist; you just need to have ideas worth sharing.</p>
+            </div>
+          </div>
+          <div class="columns-equal-height__col">
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/target-group.jpg" alt="AIDEA Target Users" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── SECTION 4: What Makes AIDEA Special ─────────────────── -->
+      <section class="section" data-section-label="Special">
+        <h2 class="heading-lg">What Makes AIDEA Special</h2>
+
+        <div class="text-block text-block--primary text-block--big">
+          <p>This is our house. And you know what? That's exactly how the best ideas begin: with crooked lines, no perspective, but full of imagination.</p>
+        </div>
+
+        <div class="columns-equal-height">
+          <div class="columns-equal-height__col">
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/sketch-start.jpg" alt="Early sketch of the house inside AIDEA" loading="lazy">
+            <span class="aidea__caption">Early sketch of the house inside AIDEA</span>
+          </div>
+          <div class="columns-equal-height__col">
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/sketch-end.jpg" alt="AIDEA refined concept of the house" loading="lazy">
+            <span class="aidea__caption">AIDEA refined concept of the house</span>
+          </div>
+        </div>
+
+        <div class="text-block text-block--secondary">
+          <p>What if that rough sketch could become a polished concept in seconds? No perfect drawing skills required, still unmistakably your style – but elevated through AI.</p>
+        </div>
+      </section>
+
+      <!-- ─── SECTION 5: The Smart Pen Concept ────────────────────── -->
+      <section class="section" data-section-label="Concept">
+        <h2 class="heading-lg">The Smart Pen Concept</h2>
+
+        <div class="columns-equal-height columns-equal-height--6-4">
+          <div class="columns-equal-height__col">
+            <div class="text-block text-block--primary text-block--big">
+              <p>This smart pen brings AI directly into your hand – no menus, no distractions.</p>
+            </div>
+            <div class="text-block text-block--secondary">
+              <p>Hold the button down and it helps you draw: lines become clearer, shapes more consistent. One click refines your sketch, a double-click undoes the last step. You decide what happens – the AI supports you, not the other way around.</p>
+            </div>
+            <div class="text-block text-block--secondary">
+              <p>The pen features advanced pressure sensitivity, gesture recognition, and seamless integration with our AI system. Every stroke you make is analyzed and enhanced, turning your natural drawing movements into precise, professional lines while preserving your unique artistic style.</p>
+            </div>
+          </div>
+          <div class="columns-equal-height__col">
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/pen.jpg" alt="Smart pen concept sketch for AIDEA" loading="lazy">
+            <span class="aidea__caption">Smart pen concept sketch for AIDEA</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── SECTION 6: Interface Design & Features ──────────────── -->
+      <section class="section aidea__features-section" data-section-label="Interface">
+        <h2 class="heading-lg">Interface Design</h2>
+
+        <!-- Feature 1 -->
+        <div class="aidea__feature-row">
+          <div class="aidea__feature-text">
+            <h3 class="heading-md">From Rough to Refined – Instantly</h3>
+            <div class="text-block text-block--secondary">
+              <p>Messy lines, disproportionate shapes, or duplicate contours? No problem. The AI Refiner recognizes weaknesses in your sketch and cleans them up automatically – either live while drawing or manually with a button press. Your style remains intact, but the form becomes clear and precise.</p>
+            </div>
+          </div>
+          <div class="aidea__feature-visual">
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/function.jpg" alt="AI Refiner function" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="aidea__feature-row aidea__feature-row--reversed">
+          <div class="aidea__feature-text">
+            <h3 class="heading-md">Sketch Smarter – With One Button</h3>
+            <div class="text-block text-block--secondary">
+              <p>Like a second hand that shows you how your sketch could continue – before you even know it yourself. When you hold the pen button long, AIDEA recognizes what you're planning and places a transparent, style-appropriate guide line under your hand. You see a possible continuation – for example, how a roof might run or what a window could look like – and can trace or ignore this line. It's not autopilot – it's creative co-sketching. In your style. In real time.</p>
+            </div>
+          </div>
+          <div class="aidea__feature-visual">
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/canvas.jpg" alt="Creative co-sketching" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="aidea__feature-row">
+          <div class="aidea__feature-text">
+            <h3 class="heading-md">One Sketch – Many Views</h3>
+            <div class="text-block text-block--secondary">
+              <p>The modes in AIDEA aren't rigid editing phases, but flexible views of your sketch – they automatically adapt depending on how far along you are. You switch between Sketch, Color, Image, and CAD to see your idea from different perspectives – as a sketch, colored concept, realistically interpreted image, or 3D model. Your original remains preserved – each view helps you work purposefully without disrupting the creative process.</p>
+            </div>
+          </div>
+          <div class="aidea__feature-visual aidea__visual-grid">
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/mode.jpg" alt="Mode view 1" loading="lazy">
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/color-mode.jpg" alt="Color mode view" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="aidea__feature-row aidea__feature-row--reversed">
+          <div class="aidea__feature-text">
+            <h3 class="heading-md">Locked-In – Your Creative Version History</h3>
+            <div class="text-block text-block--secondary">
+              <p>With the Locked-Function, you save targeted intermediate states of your sketch – so-called Locks. These "checkpoints" function like an intelligent version system.<br><br>You can jump back to any saved state, compare variants or take new directions from there. Ideal for creative branches: Design different styles, try alternative roof shapes or perspectives – without losing your previous work. Each Lock saves not only the graphic, but also the mode (e.g. Sketch, Color or CAD), so you can specifically track developments. AIDEA thinks of the design process not as linear, but as a branched path. And you decide which way to continue.</p>
+            </div>
+          </div>
+          <div class="aidea__feature-visual">
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/history.jpg" alt="Saved sketch states within AIDEA" loading="lazy">
+            <span class="aidea__caption">Saved sketch states within AIDEA</span>
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="aidea__feature-row">
+          <div class="aidea__feature-text">
+            <h3 class="heading-md">Smart Tools That Think With You</h3>
+            <div class="text-block text-block--secondary">
+              <p>These tools feel familiar – but they're smarter, more flexible, and built to support your creative flow with the power of AI.<br><br>The Sketch Pen smooths your lines in real time, adapting to your drawing style. The intelligent Eraser removes elements while AI regenerates spaces naturally. The Lasso Tool moves elements with structural awareness, while AI Assist provides context-aware suggestions. For precision, the Ruler Tool creates accurate lines, Grid Toggle provides alignment, and Shape Tool adds forms that integrate seamlessly. The Symmetry Tool mirrors your work for patterns and facades.</p>
+            </div>
+          </div>
+          <div class="aidea__feature-visual">
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/tools.jpg" alt="AIDEA Tools Interface" loading="lazy">
+            <span class="aidea__caption">AIDEA Tools Interface</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ─── SECTION 7: Collaboration ─────────────────────────────── -->
+      <section class="section" data-section-label="Collab">
+        <h2 class="heading-lg">Real-time Collaboration</h2>
+
+        <div class="columns-equal-height columns-equal-height--4-6">
+          <div class="columns-equal-height__col">
+            <div class="text-block text-block--primary text-block--big">
+              <p>Design together, wherever you are. AIDEA lets distributed teams co-create on the same canvas with zero friction.</p>
+            </div>
+            <div class="text-block text-block--secondary">
+              <p>One designer can block out structure while another experiments with lighting, landscaping, or interior elements — every stroke appears instantly for both people.<br><br>Under the hood, session handoff keeps edits conflict-free, version history lets you rewind if a direction doesn't land, and shared palettes ensure the team is always working with the same visual language. Whether it's a quick client jam or an all-day studio sprint, everyone stays aligned without screen-sharing fatigue.</p>
+            </div>
+          </div>
+          <div class="columns-equal-height__col">
+            <img class="aidea__visual" src="ASSETS/images/AIDEA/realtime.jpg" alt="Real-time Collaboration" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── SECTION 8: Prototype ─────────────────────────────────── -->
+      <section class="section" data-section-label="Prototype">
+        <h2 class="heading-lg">Prototype & Implementation</h2>
+
+        <div class="text-block text-block--secondary">
+          <p>We wanted to know: How realistic can our prototype become today? Using ComfyUI and advanced AI models, we built a working prototype that demonstrates AIDEA's core capabilities.</p>
+        </div>
+        
+        <div class="aidea__full-visual">
+          <img class="aidea__visual" src="ASSETS/images/AIDEA/image-mode.jpg" alt="AIDEA working prototype" loading="lazy">
+        </div>
+
+        <div class="text-block text-block--secondary">
+          <p>This walkthrough shows how the prototype translates a quick sketch into a refined visualization. From the initial capture to the generated concepts, every step is explained so designers understand how the system interprets their intent.<br><br>This approach opens new possibilities for how we think, sketch, and collaborate. When AI becomes a thoughtful assistant rather than an automated replacement, it empowers designers to explore ideas they never could before, making the creative process more intuitive and accessible to everyone.</p>
+        </div>
+      </section>
+
+      <!-- ─── SECTION 9: Conclusion ────────────────────────────────── -->
+      <section class="section" data-section-label="Conclusion">
+        <h2 class="heading-lg">Conclusion</h2>
+
+        <div class="text-block text-block--primary text-block--big">
+          <p>AIDEA showed us that the best creative tools stay humble: they clean up the noise so people can stay in their flow. The closer we kept the assistant to the hand, the more natural every decision felt.</p>
+        </div>
+        <div class="text-block text-block--secondary">
+          <p>We now have a sketching companion that speeds up the rough moments without sanding off the author's voice. That balance—human lead, machine support—is the direction we're committed to pushing forward.</p>
+        </div>
+      </section>
+
+      <!-- ─── MORE PROJECTS ────────────────────────────────────────── -->
+      <section class="section">
+        <h2 class="heading-lg">More Projects</h2>
+        <div class="more-projects-grid">
+          
+          <!-- Card 1: PULSE -->
+          <a href="project-pulse.html" class="work-card has-secondary">
+            <div class="work-card__inner">
+              <div class="work-card__media">
+                <img class="work-card__image work-card__image--primary" src="ASSETS/COVERS/pulse-cover.jpg?v=8" alt="Pulse Project" loading="lazy">
+                <img class="work-card__image work-card__image--secondary" src="ASSETS/images/PULSE/screens.jpg" alt="Pulse screens" loading="lazy">
+              </div>
+              <div class="work-card__content">
+                <div class="work-card__tags">
+                  <span class="tag">Application</span>
+                  <span class="tag">2024</span>
+                </div>
+                <h3 class="work-card__title">How Might We Encourage The Youth For Blood Donation?</h3>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 2: MYKORRIZHA -->
+          <a href="project-mykorrizha.html" class="work-card has-secondary">
+            <div class="work-card__inner">
+              <div class="work-card__media">
+                <img class="work-card__image work-card__image--primary" src="ASSETS/COVERS/mykorrizha-cover.jpg?v=2" alt="Mykrozziha Project" loading="lazy">
+                <img class="work-card__image work-card__image--secondary" src="ASSETS/images/MYKORRIZHA/teacher-view.jpg" alt="Mykrozziha teacher view" loading="lazy">
+              </div>
+              <div class="work-card__content">
+                <div class="work-card__tags">
+                  <span class="tag">Application</span>
+                  <span class="tag">2024</span>
+                </div>
+                <h3 class="work-card__title">Mykrozziha ─ The new age of education</h3>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 3: REPS -->
+          <a href="https://apps.apple.com/app/id6757077504" target="_blank" rel="noopener" class="work-card">
+            <div class="work-card__inner">
+              <div class="work-card__media">
+                <img class="work-card__image work-card__image--primary" src="ASSETS/COVERS/reps-cover.jpg?v=2" alt="Reps Project" loading="lazy" style="border: 1px solid var(--color-border); box-sizing: border-box;">
+              </div>
+              <div class="work-card__content">
+                <div class="work-card__tags">
+                  <span class="tag">iOS App</span>
+                  <span class="tag">2026</span>
+                </div>
+                <h3 class="work-card__title">Building the smartest workout tracker</h3>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 4: ORIENTATION -->
+          <a href="#" class="work-card">
+            <div class="work-card__inner">
+              <div class="work-card__media">
+                <img class="work-card__image work-card__image--primary" src="ASSETS/COVERS/orientation-cover.jpg?v=2" alt="Orientation Project" loading="lazy">
+              </div>
+              <div class="work-card__content">
+                <div class="work-card__tags">
+                  <span class="tag">Tangible Design</span>
+                  <span class="tag">2026</span>
+                </div>
+                <h3 class="work-card__title">Orientation should not be a privilege</h3>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <span class="footer__copyright">&copy; 2026 Enes Cilingir</span>
+      <a href="imprint.html" class="footer__link">Imprint</a>
+    </footer>
+
+  </div>
+
+  <script src="ASSETS/js/preloader.js"></script>
+  <script src="ASSETS/js/nav.js?v=9"></script>
+  <script src="ASSETS/js/theme.js"></script>
+  <script src="ASSETS/js/copy-mail.js"></script>
+  <script src="ASSETS/js/scroll-progress.js?v=5"></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="ASSETS/js/smooth-scroll.js"></script>
+</body>
+</html>

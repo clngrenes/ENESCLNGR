@@ -7,7 +7,7 @@
 
 .feature-card {
   background-color: var(--color-surface-mid);
-  padding: var(--space-3);
+  padding: var(--space-2) var(--space-3);
   cursor: default;
   transition: background-color 0.2s ease;
 }
@@ -15,8 +15,8 @@
 .feature-card__title {
   display: block;
   font-family: var(--font-body);
-  font-size: var(--text-body);
-  font-weight: var(--weight-semibold);
+  font-size: var(--text-md);
+  font-weight: var(--weight-regular);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking);
   color: var(--color-text-inverse);

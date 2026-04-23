@@ -1,0 +1,91 @@
+/* ============================================
+   AIDEA Project Page — Page-specific styles
+   ============================================ */
+
+/* Project Meta alignment */
+.aidea__project-meta {
+  display: flex;
+  gap: var(--space-1);
+}
+.aidea__project-meta > * {
+  flex: 1;
+}
+
+/* Base visual container */
+.aidea__visual {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+.aidea__caption {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+  text-align: center;
+}
+
+/* Hero Video */
+.aidea__hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Feature Rows for Interface section */
+.aidea__feature-row {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+.aidea__feature-row:last-child {
+  margin-bottom: 0;
+}
+
+.aidea__feature-row--reversed {
+  flex-direction: row-reverse;
+}
+
+.aidea__feature-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.aidea__feature-visual {
+  flex: 1;
+  min-width: 0;
+}
+
+.aidea__visual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-1);
+}
+
+.aidea__full-visual {
+  width: 100%;
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .aidea__feature-row,
+  .aidea__feature-row--reversed {
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+  
+  .aidea__visual-grid {
+    grid-template-columns: 1fr;
+  }
+}
