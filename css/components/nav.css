@@ -107,6 +107,11 @@
   border-color: var(--nav-stroke);
 }
 
+.nav .btn--inactive:hover,
+.nav .btn--icon:hover {
+  border-color: transparent;
+}
+
 .nav__progress-fill {
   position: absolute;
   inset: 0;
