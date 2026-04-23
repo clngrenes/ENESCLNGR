@@ -1,0 +1,85 @@
+/* ============================================
+   Orientation Project Page — Page-specific styles
+   ============================================ */
+
+/* Project Meta alignment */
+.orientation__project-meta {
+  display: flex;
+  gap: var(--space-1);
+}
+.orientation__project-meta > * {
+  flex: 1;
+}
+
+/* Placeholder for missing images */
+.orientation__placeholder {
+  width: 100%;
+  background-color: var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+}
+
+.orientation__placeholder--tall {
+  min-height: clamp(16rem, 28vw, 24rem);
+}
+
+.orientation__placeholder--square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Base visual container */
+.orientation__visual {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.orientation__visual--no-border {
+  border: none;
+  border-radius: 0;
+}
+
+.orientation__caption {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+  text-align: center;
+}
+
+/* Custom layout for "We went looking for answers" section */
+.orientation__answers-layout {
+  align-items: stretch;
+}
+
+.orientation__answers-layout .columns-equal-height__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+/* Make sure text blocks don't stretch unnecessarily if we want them natural */
+.orientation__answers-layout .text-block {
+  flex: none;
+}
+
+/* Make placeholders fill remaining space if needed, or just be tall */
+.orientation__answers-layout .orientation__placeholder {
+  flex: 1;
+  min-height: clamp(16rem, 28vw, 24rem);
+}
+
+.orientation__answers-layout .orientation__placeholder--square {
+  flex: none;
+  aspect-ratio: 1 / 1;
+  min-height: auto;
+}
