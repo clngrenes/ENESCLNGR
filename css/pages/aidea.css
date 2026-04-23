@@ -18,6 +18,13 @@
   display: block;
   object-fit: cover;
   border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.aidea__visual--no-border {
+  border: none;
+  border-radius: 0;
 }
 
 .aidea__caption {
