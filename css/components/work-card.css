@@ -70,9 +70,9 @@
   transform: scale(1.05); /* Slight zoom out effect */
 }
 
-/* On hover, primary fades out and blurs */
-.work-card:hover .work-card__image--primary,
-.work-card:focus-visible .work-card__image--primary {
+/* On hover, primary fades out and blurs ONLY if secondary exists */
+.work-card.has-secondary:hover .work-card__image--primary,
+.work-card.has-secondary:focus-visible .work-card__image--primary {
   opacity: 0;
   filter: blur(8px);
   transform: scale(0.95); /* Shrinks back */
