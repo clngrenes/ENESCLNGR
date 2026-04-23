@@ -54,19 +54,17 @@
 
   <!-- Navigation is injected via nav.js -->
 
-  <div class="page-wrapper">
-    <main class="main-content">
-      <article class="project-detail">
+  <div class="page orientation">
+
+    <!-- Nav -->
+    <nav class="nav" data-nav-page="orientation" data-nav-progress="true"></nav>
+
+    <main>
         
         <!-- ─── HERO COLLAGE ────────────────────────────────────────── -->
         <section class="section section--hero" data-section-label="Hero">
-          <div class="project-collage">
-            <div class="project-collage__item">
-              <div class="orientation__placeholder">Image Placeholder</div>
-            </div>
-            <div class="project-collage__item">
-              <div class="orientation__placeholder">Image Placeholder</div>
-            </div>
+        <div class="project-collage">
+          <div class="project-collage__row project-collage__row--narrow-wide">
             <div class="project-collage__item">
               <div class="orientation__placeholder">Image Placeholder</div>
             </div>
@@ -74,23 +72,32 @@
               <div class="orientation__placeholder">Image Placeholder</div>
             </div>
           </div>
+          <div class="project-collage__row project-collage__row--wide-narrow">
+            <div class="project-collage__item">
+              <div class="orientation__placeholder">Image Placeholder</div>
+            </div>
+            <div class="project-collage__item">
+              <div class="orientation__placeholder">Image Placeholder</div>
+            </div>
+          </div>
+        </div>
         </section>
 
         <!-- ─── PROJECT INFO ────────────────────────────────────────── -->
         <section class="section" data-section-label="Intro">
           <h1 class="heading-xl">Are ears and eyes necessary for spatial orientation?</h1>
           
-          <div class="orientation__project-meta">
-            <div class="text-block text-block--secondary">
+          <div class="project-meta orientation__project-meta" role="list" aria-label="Project details">
+            <div class="text-block text-block--secondary" role="listitem">
               <p>Tangible Design<br>Ottavio Cambieri</p>
             </div>
-            <div class="text-block text-block--secondary">
+            <div class="text-block text-block--secondary" role="listitem">
               <p>Faruk<br>Laura<br>Enes</p>
             </div>
-            <div class="text-block text-block--secondary">
+            <div class="text-block text-block--secondary" role="listitem">
               <p>4 Week Sprint</p>
             </div>
-            <div class="text-block text-block--secondary">
+            <div class="text-block text-block--secondary" role="listitem">
               <p>Eesti Kunstiakadeemia</p>
             </div>
           </div>
@@ -205,7 +212,6 @@
 
           </div>
         </section>
-      </article>
     </main>
 
     <footer class="footer">
