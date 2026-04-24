@@ -194,10 +194,14 @@
   object-fit: cover;
 }
 
-/* Interface copy column stacks heading + text like other project pages */
+/* Interface copy column — primary = feature title, secondary = body (matches grid) */
 .aidea__interface-copy {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
   min-width: 0;
+}
+
+.aidea__interface-copy > .text-block--primary {
+  flex: none;
 }
