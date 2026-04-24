@@ -18,6 +18,8 @@
   /* Very small inset on top/left/right, slightly more on bottom for text */
   --work-card-hover-inset: var(--space-2);
   --work-card-hover-inset-bottom: 76px; /* reduced bottom padding */
+  /* Air above the tag row: insets on the sides, plus one spacing step to match scale (Pulse, AIDEA, all work cards) */
+  --work-card-content-padding-top: calc(var(--work-card-hover-inset) + var(--space-1));
 }
 
 .work-card__inner {
@@ -49,6 +51,7 @@
   border-radius: 0;
   display: block;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
 }
 
 .work-card:hover .work-card__image,
@@ -101,7 +104,8 @@
   pointer-events: none;
   z-index: 1;
   border-radius: inherit;
-  transition: opacity 0.3s ease, top 0.4s cubic-bezier(0.4, 0, 0.2, 1), left 0.4s cubic-bezier(0.4, 0, 0.2, 1), right 0.4s cubic-bezier(0.4, 0, 0.2, 1), bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #000;
+  transition: opacity 0.2s ease, top 0.4s cubic-bezier(0.4, 0, 0.2, 1), left 0.4s cubic-bezier(0.4, 0, 0.2, 1), right 0.4s cubic-bezier(0.4, 0, 0.2, 1), bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .work-card:hover .work-card__yt-wrapper,
@@ -113,9 +117,22 @@
   bottom: var(--work-card-hover-inset-bottom);
 }
 
-.work-card__yt-wrapper.is-playing {
+/* [data-yt-id]: on hover, hide static/secondary cover immediately; show iframe layer.
+   (Playback still starts in JS; a brief YouTube buffer is unavoidable.) */
+.work-card[data-yt-id]:hover .work-card__image,
+.work-card[data-yt-id]:focus-within .work-card__image,
+.work-card[data-yt-id]:focus-visible .work-card__image {
+  opacity: 0 !important;
+  filter: none !important;
+  transform: none !important;
+  pointer-events: none;
+}
+
+.work-card[data-yt-id]:hover .work-card__yt-wrapper,
+.work-card[data-yt-id]:focus-within .work-card__yt-wrapper,
+.work-card[data-yt-id]:focus-visible .work-card__yt-wrapper {
   opacity: 1;
-  z-index: 2;
+  z-index: 5;
 }
 
 /* Make iframe act like object-fit: cover */
@@ -151,6 +168,7 @@
 .work-card:hover .work-card__content,
 .work-card:focus-visible .work-card__content {
   padding: var(--work-card-hover-inset);
+  padding-top: var(--work-card-content-padding-top);
   opacity: 1;
   transform: translateY(0);
 }

@@ -1,10 +1,14 @@
 /**
- * YouTube hover videos on work cards: starts at 10s, 2x speed, muted.
- * Loads the IFrame API only after preloader (siteRevealed) to avoid main-thread lag.
+ * YouTube on work cards: start ~10s, 2x, muted.
+ * - IFrame API loads only after `siteRevealed` (after page preloader).
+ * - Cover images are hidden in CSS on hover; iframe layer is shown immediately
+ *   (YouTube may still show a short internal buffer — not the site preloader).
+ * - cue at ready; play on enter, pause on leave.
  */
 (function () {
   var YT_START_SECONDS = 10;
-  var inited = false;
+  var scriptRequested = false;
+  var playersBuilt = false;
 
   function getStartSeconds(card) {
     var raw = card.getAttribute('data-yt-start');
@@ -14,16 +18,15 @@
   }
 
   function loadYouTubeAPI() {
-    if (inited) return;
     if (window.YT && window.YT.Player) {
-      inited = true;
       initPlayers();
       return;
     }
     if (document.querySelector('script[src*="youtube.com/iframe_api"]')) {
       return;
     }
-    inited = true;
+    if (scriptRequested) return;
+    scriptRequested = true;
     var tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     tag.async = true;
@@ -31,9 +34,9 @@
     first.parentNode.insertBefore(tag, first);
   }
 
-  var playersBuilt = false;
   function initPlayers() {
     if (playersBuilt) return;
+    if (!window.YT || !window.YT.Player) return;
     var cards = document.querySelectorAll('.work-card[data-yt-id]');
     if (!cards.length) return;
     playersBuilt = true;
@@ -41,7 +44,7 @@
     var schedule =
       window.requestIdleCallback ||
       function (cb) {
-        setTimeout(cb, 120);
+        setTimeout(cb, 16);
       };
 
     cards.forEach(function (card) {
@@ -68,7 +71,10 @@
     ytWrapper.appendChild(ytPlayerDiv);
     mediaContainer.appendChild(ytWrapper);
 
-    // eslint-disable-next-line no-undef
+    var player;
+    var mouseInside = false;
+
+    // eslint-disable-next-line no-undef, no-new
     new YT.Player(ytPlayerDiv.id, {
       videoId: ytId,
       playerVars: {
@@ -82,33 +88,48 @@
         modestbranding: 1,
         playsinline: 1,
         rel: 0,
-        mute: 1
+        mute: 1,
+        cc_load_policy: 0,
+        iv_load_policy: 3
       },
       events: {
         onReady: function (event) {
-          event.target.mute();
+          player = event.target;
+          player.mute();
+          if (player.cueVideoById) {
+            try {
+              player.cueVideoById(ytId, startSec, 'default');
+            } catch (e) {
+              /* no-op */
+            }
+          }
 
-          card.addEventListener('mouseenter', function () {
-            event.target.setPlaybackRate(2);
-            event.target.seekTo(startSec, true);
-            event.target.playVideo();
-            ytWrapper.classList.add('is-playing');
-          });
+          function onEnter() {
+            if (!player) return;
+            mouseInside = true;
+            player.mute();
+            player.setPlaybackRate(2);
+            player.seekTo(startSec, true);
+            player.playVideo();
+          }
 
-          card.addEventListener('mouseleave', function () {
-            event.target.pauseVideo();
-            ytWrapper.classList.remove('is-playing');
-          });
+          function onLeave() {
+            mouseInside = false;
+            if (!player) return;
+            player.pauseVideo();
+          }
+
+          card.addEventListener('mouseenter', onEnter);
+          card.addEventListener('mouseleave', onLeave);
         },
         onStateChange: function (event) {
-          if (event.data === 1) {
-            // playing
-            event.target.setPlaybackRate(2);
+          if (event.data === 1 && player) {
+            player.setPlaybackRate(2);
+            return;
           }
-          if (event.data === 0) {
-            // ended — loop from start offset
-            event.target.seekTo(startSec, true);
-            event.target.playVideo();
+          if (event.data === 0 && player) {
+            player.seekTo(getStartSeconds(card), true);
+            if (mouseInside) player.playVideo();
           }
         }
       }
@@ -134,4 +155,8 @@
   }
 
   window.addEventListener('siteRevealed', onSiteRevealed, { once: true });
+
+  if (window.YT && window.YT.Player) {
+    initPlayers();
+  }
 })();
