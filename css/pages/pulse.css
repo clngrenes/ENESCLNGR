@@ -123,12 +123,12 @@
   min-width: 0;
 }
 
-.pulse__framing-wireframe {
+.pulse__framing-figure {
   margin: 0;
   min-width: 0;
 }
 
-.pulse__framing-wireframe-img {
+.pulse__framing-block-img {
   width: 100%;
   height: auto;
   display: block;
