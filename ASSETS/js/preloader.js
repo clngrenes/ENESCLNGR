@@ -1,8 +1,10 @@
 (function () {
+  console.log('[Preloader] init —', window.location.pathname);
+
   function initPreloader() {
     var preloader = document.getElementById('preloader');
     var progressCircle = document.getElementById('preloader-progress');
-    
+
     if (!preloader || !progressCircle) {
       if (document.body) {
         document.body.classList.remove('is-loading');
@@ -12,20 +14,22 @@
       return;
     }
 
-    // Gallery page: only images in the DOM (skip home/project cover pack)
-    var isGalleryPage = document.body && document.body.getAttribute('data-page') === 'gallery';
-    var globalImagesToPreload = isGalleryPage
-      ? []
-      : [
+    // Only preload home cover pack on the home page; all other pages track DOM images only
+    var page = (document.body && document.body.getAttribute('data-page')) || '';
+    var globalImagesToPreload = page === 'home'
+      ? [
           'ASSETS/COVERS/pulse-cover.jpg?v=8',
           'ASSETS/images/PULSE/screens.jpg',
           'ASSETS/COVERS/aidea-cover.jpg?v=2',
           'ASSETS/images/AIDEA/realtime.jpg',
           'ASSETS/COVERS/mykorrizha-cover.jpg?v=2',
-          'ASSETS/images/MYKORRIZHA/teacher-view.jpg',
-          'ASSETS/images/PULSE/appicon.jpg',
-          'ASSETS/images/PULSE/124.jpg'
-        ];
+          'ASSETS/images/MYKORRIZHA/skill-tree.jpeg',
+          'ASSETS/COVERS/reps-cover.jpg?v=5',
+          'ASSETS/COVERS/reps-hover.jpg?v=1',
+          'ASSETS/COVERS/orientation-cover.jpg?v=3',
+          'ASSETS/images/ORIENTATION/Necklace Form.jpeg'
+        ]
+      : [];
 
     var totalImages = 0;
     var loadedImages = 0;

@@ -249,36 +249,24 @@
     initPlayers();
   };
 
-  var siteRevealedCalled = false;
-  function onSiteRevealed() {
-    if (siteRevealedCalled) return;
-    siteRevealedCalled = true;
-    loadYouTubeAPI();
-  }
+  // Load API immediately — in parallel with the preloader — so players are
+  // created and primed before the site reveals. siteRevealed is kept as a
+  // safety net in case the API beats the DOM being ready somehow.
+  loadYouTubeAPI();
 
-  window.addEventListener('siteRevealed', onSiteRevealed, { once: true });
-
-  if (document.body && document.body.classList.contains('is-revealing')) {
-    onSiteRevealed();
-  }
-
-  if (window.YT && window.YT.Player) {
-    initPlayers();
-  }
+  window.addEventListener('siteRevealed', function () {
+    if (!playersBuilt && window.YT && window.YT.Player) initPlayers();
+  }, { once: true });
 
   window.addEventListener('load', function () {
-    if (window.YT && window.YT.Player) {
-      initPlayers();
-    }
+    if (!playersBuilt && window.YT && window.YT.Player) initPlayers();
   });
 
   var yTry = 0;
   var yPoll = setInterval(function () {
     yTry += 1;
     if (window.YT && window.YT.Player) {
-      if (!playersBuilt) {
-        initPlayers();
-      }
+      if (!playersBuilt) initPlayers();
       clearInterval(yPoll);
     } else if (yTry > 40) {
       clearInterval(yPoll);
