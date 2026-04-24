@@ -7,6 +7,9 @@
 
 .nav {
   --nav-stroke: color-mix(in srgb, var(--color-text-secondary) 72%, var(--color-border) 28%);
+  /* Current-section box: min width = floor (short labels don’t shrink it); max = long labels + ellipsis */
+  --nav-section-box-min: 22ch;
+  --nav-section-box-max: 32ch;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -136,12 +139,15 @@
 .nav__section-indicator {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-1);
   box-sizing: border-box;
   padding: var(--space-2);
   border: 1px solid var(--nav-stroke);
   block-size: calc(var(--space-2) * 2 + var(--text-sm) * var(--leading-normal));
-  max-width: 22ch;
+  flex: 0 0 auto;
+  min-width: var(--nav-section-box-min);
+  max-width: var(--nav-section-box-max);
   transition: border-color 0.2s ease;
 }
 
@@ -162,6 +168,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .nav__section-indicator.is-changing .nav__progress-section-label,
