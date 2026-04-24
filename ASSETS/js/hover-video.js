@@ -59,7 +59,12 @@
       initPlayers();
       return;
     }
+    /* If the iframe API script is already in the DOM (cache / repeat load), the tag exists
+     * but the early return used to skip initPlayers() entirely — the API may already be ready. */
     if (document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+      if (window.YT && window.YT.Player) {
+        initPlayers();
+      }
       return;
     }
     if (scriptRequested) return;
@@ -201,8 +206,7 @@
 
   window.addEventListener('siteRevealed', onSiteRevealed, { once: true });
 
-  // Preloader can dispatch `siteRevealed` in the same turn as the first script (e.g. missing ring,
-  // or readyState not "loading") before this file runs — listener would miss the event.
+  // Preloader can dispatch `siteRevealed` before this file runs — listener would miss the event.
   if (document.body && document.body.classList.contains('is-revealing')) {
     onSiteRevealed();
   }
@@ -210,4 +214,25 @@
   if (window.YT && window.YT.Player) {
     initPlayers();
   }
+
+  /* Backup: IFrame API sometimes loads before onYouTubeIframeAPIReady is assigned (strict order). */
+  window.addEventListener('load', function () {
+    if (window.YT && window.YT.Player) {
+      initPlayers();
+    }
+  });
+
+  // Poll briefly for late API (slow networks / ad blockers with delayed inject)
+  var yTry = 0;
+  var yPoll = setInterval(function () {
+    yTry += 1;
+    if (window.YT && window.YT.Player) {
+      if (!playersBuilt) {
+        initPlayers();
+      }
+      clearInterval(yPoll);
+    } else if (yTry > 40) {
+      clearInterval(yPoll);
+    }
+  }, 150);
 })();

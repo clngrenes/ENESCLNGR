@@ -131,7 +131,7 @@
 .work-card[data-yt-id]:focus-within .work-card__yt-wrapper,
 .work-card[data-yt-id]:focus-visible .work-card__yt-wrapper {
   opacity: 1;
-  z-index: 5;
+  z-index: 10;
 }
 
 /* Make iframe act like object-fit: cover */
