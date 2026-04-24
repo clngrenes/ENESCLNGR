@@ -116,3 +116,12 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Project pages: h2 section title → first content block = space-2 (page CSS keeps .section gap at space-1) */
+.page.pulse .section > h2.heading-lg,
+.page.aidea .section > h2.heading-lg,
+.page.orientation .section > h2.heading-lg,
+.page.mykorrizha .section > h2.heading-lg {
+  margin: 0;
+  margin-bottom: calc(var(--space-2) - var(--space-1));
+}
