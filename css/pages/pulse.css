@@ -111,7 +111,28 @@
 }
 
 .pulse__framing-section.section {
-  gap: var(--space-2);
+  /* h2 → body stack; same vertical rhythm as intro ↔ HMW ↔ wireframe (see .pulse__framing-content) */
+  gap: var(--space-3);
+}
+
+/* Intro, three HMW columns, wireframe: one gutter token — matches .columns-three horizontal gap */
+.pulse__framing-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.pulse__framing-wireframe {
+  margin: 0;
+  min-width: 0;
+}
+
+.pulse__framing-wireframe-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 .pulse__takeaways-section.section {
