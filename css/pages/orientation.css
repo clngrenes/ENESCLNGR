@@ -71,7 +71,17 @@
   text-align: center;
 }
 
-/* Custom layout for "We went looking for answers" section */
+.orientation__four-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-1);
+}
+
+@media (max-width: 768px) {
+  .orientation__four-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 .orientation__answers-layout {
   align-items: stretch;
 }
