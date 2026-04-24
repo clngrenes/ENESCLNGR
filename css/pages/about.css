@@ -17,6 +17,54 @@
   gap: var(--space-2);
 }
 
+/* Don’t stretch the long bio into a single tall slab; add a second row of two blocks */
+.about__description .about__description-left > .text-block.about__story {
+  flex: none;
+}
+
+.about__twin {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.about__young-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  align-self: start;
+}
+
+.about__young-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.about__twin .about__philosophy {
+  display: flex;
+  align-items: center;
+  min-height: 0;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .about__twin {
+    grid-template-columns: 1fr;
+  }
+
+  .about__twin .about__philosophy {
+    height: auto;
+  }
+}
+
 .about__portrait {
   width: 100%;
   aspect-ratio: 1 / 1;

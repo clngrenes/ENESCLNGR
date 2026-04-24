@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/components/text-block.css?v=2">
   <link rel="stylesheet" href="css/components/section.css">
   <link rel="stylesheet" href="css/components/cv-entry.css">
-  <link rel="stylesheet" href="css/pages/about.css">
+  <link rel="stylesheet" href="css/pages/about.css?v=3">
 </head>
 <body>
   <div class="page">
@@ -34,10 +34,18 @@
         <h1 class="heading-lg">I discovered design at twelve and found my passion in creating.</h1>
 
         <div class="columns-equal-height">
-          <!-- Text column: secondary blocks stretch to match right column height -->
-          <div class="columns-equal-height__col">
-            <div class="text-block text-block--secondary">
+          <!-- Text column: story (natural height) + twin blocks fill remaining row height -->
+          <div class="columns-equal-height__col about__description-left">
+            <div class="text-block text-block--secondary about__story">
               <p>When I was a kid, all I wanted was a cool-looking gaming channel on YouTube. I quickly learned that making my own profile picture and banner didn’t just look nice—it made people stop and watch. I didn’t just want to play games; I wanted to leave a mark.<br><br>What started as a hobby soon turned into a real obsession. I loved playing around with graphics and spent years creating logos, posters, and brand identities for startups. It was exciting to turn their messy ideas into designs that people trusted and recognized instantly.<br><br>But over time, something shifted. I realized that a pretty brand is useless if the product itself doesn't work. I wanted to get to the root of the problem—building the actual tool instead of just dressing it up. That urge to solve real, everyday problems is what pulled me into product design, and it’s where I belong today.</p>
+            </div>
+            <div class="about__twin" aria-label="Photo and design philosophy">
+              <div class="about__young-frame">
+                <img class="about__young-img" src="ASSETS/images/young-me.jpg" alt="Young Enes" width="603" height="628" loading="lazy" decoding="async">
+              </div>
+              <div class="text-block text-block--primary about__philosophy">
+                <p>I design from behavior, not decoration — if the product doesn’t work, the design isn’t done.</p>
+              </div>
             </div>
           </div>
 

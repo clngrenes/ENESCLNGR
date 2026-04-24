@@ -4,6 +4,10 @@
 
 /* Tight grids (collage rhythm): meta + multi-column content */
 
+.page.orientation > main {
+  gap: var(--space-1);
+}
+
 .columns-equal-height,
 .columns-equal-height__col {
   gap: var(--space-1);
@@ -90,34 +94,38 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+/* Insights: row height = max(left, right) content; no stretched column → no huge gap under left copy */
 .orientation__answers-layout {
-  align-items: stretch;
+  align-items: start;
 }
 
 .orientation__answers-layout .columns-equal-height__col {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+  min-width: 0;
 }
 
-/* Make sure text blocks don't stretch unnecessarily if we want them natural */
 .orientation__answers-layout .text-block {
   flex: none;
 }
 
-/* Make placeholders fill remaining space if needed, or just be tall */
 .orientation__answers-layout .orientation__placeholder {
   min-height: clamp(16rem, 28vw, 24rem);
 }
 
-/* Bottom-align the Blind Person interview image with the right column (same row height) */
-.orientation__answers-layout .columns-equal-height__col:first-child .orientation__visual {
-  margin-top: auto;
+/* Walk photo: cap height so the three text blocks + image align closer to the interview column */
+.orientation__walk-visual {
+  width: 100%;
+  max-height: clamp(11rem, 26vw, 18rem);
+  height: auto;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
-  .orientation__answers-layout .columns-equal-height__col:first-child .orientation__visual {
-    margin-top: 0;
+  .orientation__walk-visual {
+    max-height: none;
   }
 }
 
