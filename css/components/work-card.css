@@ -86,6 +86,36 @@
   transform: scale(1);
 }
 
+/* ============================================
+   YouTube Hover Video
+   ============================================ */
+.work-card__yt-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.work-card__yt-wrapper.is-playing {
+  opacity: 1;
+}
+
+/* Make iframe act like object-fit: cover */
+.work-card__yt-iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border: none;
+}
+
 .work-card__content {
   position: absolute;
   left: 0;
