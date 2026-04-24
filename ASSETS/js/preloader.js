@@ -12,17 +12,20 @@
       return;
     }
 
-    // Critical images to preload globally so navigation feels instant
-    var globalImagesToPreload = [
-      'ASSETS/COVERS/pulse-cover.jpg?v=8',
-      'ASSETS/images/PULSE/screens.jpg',
-      'ASSETS/COVERS/aidea-cover.jpg?v=2',
-      'ASSETS/images/AIDEA/realtime.jpg',
-      'ASSETS/COVERS/mykorrizha-cover.jpg?v=2',
-      'ASSETS/images/MYKORRIZHA/teacher-view.jpg',
-      'ASSETS/images/PULSE/appicon.jpg',
-      'ASSETS/images/PULSE/124.jpg'
-    ];
+    // Gallery page: only images in the DOM (skip home/project cover pack)
+    var isGalleryPage = document.body && document.body.getAttribute('data-page') === 'gallery';
+    var globalImagesToPreload = isGalleryPage
+      ? []
+      : [
+          'ASSETS/COVERS/pulse-cover.jpg?v=8',
+          'ASSETS/images/PULSE/screens.jpg',
+          'ASSETS/COVERS/aidea-cover.jpg?v=2',
+          'ASSETS/images/AIDEA/realtime.jpg',
+          'ASSETS/COVERS/mykorrizha-cover.jpg?v=2',
+          'ASSETS/images/MYKORRIZHA/teacher-view.jpg',
+          'ASSETS/images/PULSE/appicon.jpg',
+          'ASSETS/images/PULSE/124.jpg'
+        ];
 
     var totalImages = 0;
     var loadedImages = 0;

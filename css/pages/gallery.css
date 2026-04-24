@@ -3,11 +3,63 @@
    10-column grid:
      Row 1 — 6 col + 4 col (Reach)
      Row 2–3 — 4 col tall (Retarget) + 6/6 stacked (mockups, logo)
-   (AIDEA row removed)
+   Staggered blur-fade: .gallery__grid--reveal (JS after preloader)
    ============================================ */
+
+@keyframes gallery-item-reveal {
+  from {
+    opacity: 0;
+    filter: blur(18px);
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
 
 .gallery {
   gap: var(--space-4);
+}
+
+/* Hidden until preloader is done, then .gallery__grid--reveal triggers staggered animation */
+.page.gallery .gallery__item {
+  opacity: 0;
+  filter: blur(18px);
+  transform: scale(0.98);
+  will-change: opacity, filter, transform;
+}
+
+.page.gallery .gallery__grid--reveal .gallery__item {
+  animation: gallery-item-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page.gallery .gallery__grid--reveal .gallery__item--1 {
+  animation-delay: 0.04s;
+}
+.page.gallery .gallery__grid--reveal .gallery__item--2 {
+  animation-delay: 0.1s;
+}
+.page.gallery .gallery__grid--reveal .gallery__item--3 {
+  animation-delay: 0.16s;
+}
+.page.gallery .gallery__grid--reveal .gallery__item--4 {
+  animation-delay: 0.22s;
+}
+.page.gallery .gallery__grid--reveal .gallery__item--5 {
+  animation-delay: 0.28s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page.gallery .gallery__item,
+  .page.gallery .gallery__grid--reveal .gallery__item {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    animation: none;
+    will-change: auto;
+  }
 }
 
 .gallery__grid {
