@@ -101,8 +101,8 @@
   grid-template-columns: 1fr;
 }
 
-.pulse__problem-visual-wrap {
-  min-height: clamp(20rem, 36vw, 26rem);
+.pulse__problem-section.section {
+  gap: var(--space-2);
 }
 
 .pulse__root-cause-section.section {
@@ -227,6 +227,22 @@
   flex: 1;
 }
 
+/* Four person photos under insights — same gutter + aspect as poster row */
+.pulse__person-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-1);
+  width: 100%;
+  min-width: 0;
+}
+
+.pulse__person-cell {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
 /* Phone mockup — taller, show top of UI */
 .pulse__phone-visual {
   min-height: clamp(22rem, 38vw, 34rem);
@@ -258,6 +274,14 @@
     aspect-ratio: 4 / 3;
   }
 
+  .pulse__person-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pulse__person-cell {
+    aspect-ratio: 4 / 3;
+  }
+
   .pulse__research-strip {
     grid-template-columns: repeat(2, 1fr);
     height: auto;
@@ -267,207 +291,4 @@
     aspect-ratio: 4 / 3;
     height: auto;
   }
-}
-
-/* ============================================
-   Pulse Stats Panel Interactive Visualization
-   ============================================ */
-
-.pulse__stat-section.section {
-  gap: var(--space-2);
-}
-
-.pulse__stat-panel {
-  --chart-65: var(--color-mocha-6);
-  --chart-45: var(--color-mocha-5);
-  --chart-25: var(--color-mocha-4);
-  --chart-under25: var(--color-mocha-3);
-  --pulse-stat-x-label-block: calc(var(--space-2) + var(--text-xs) * var(--leading-tight));
-  --pulse-stat-chart-gap: var(--space-4);
-  /* Two steps darker than text-primary: deepen mocha-6 toward black (light) / mocha-1 toward mocha-6 (dark) */
-  --pulse-stat-axis-text: color-mix(in srgb, var(--color-text-primary) 52%, black 48%);
-
-  flex: 1;
-  width: 100%;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  align-items: stretch;
-  align-self: stretch;
-  background-color: var(--color-surface-primary);
-  border: 1px solid var(--color-border);
-  padding: var(--pulse-stat-chart-gap);
-  position: relative;
-}
-
-[data-theme="dark"] .pulse__stat-panel {
-  --chart-65: var(--color-mocha-1);
-  --chart-45: var(--color-mocha-2);
-  --chart-25: var(--color-mocha-3);
-  --chart-under25: var(--color-mocha-4);
-  --pulse-stat-axis-text: color-mix(in srgb, var(--color-text-primary) 68%, var(--color-mocha-6) 32%);
-}
-
-.pulse__stat-header {
-  margin-bottom: var(--space-4);
-}
-
-.pulse__stat-title {
-  margin-top: var(--space-2);
-  line-height: var(--leading-tight);
-}
-
-.pulse__stat-content {
-  flex: 1;
-  width: 100%;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.pulse__stat-y-axis {
-  flex: 1;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  align-items: center;
-  justify-items: center;
-  min-height: 0;
-  font-family: var(--font-body);
-  font-size: var(--text-xxs);
-  color: var(--pulse-stat-axis-text);
-  padding-block: 0;
-  pointer-events: none;
-}
-
-.pulse__stat-y-axis > span:first-child {
-  grid-row: 1;
-  align-self: start;
-}
-
-.pulse__stat-y-axis > .pulse__stat-y-label {
-  grid-row: 2;
-  align-self: center;
-}
-
-.pulse__stat-y-axis > span:last-child {
-  grid-row: 3;
-  align-self: end;
-  /* Nudge a bit lower so it aligns with the darkest bottom segment edge */
-  transform: translateY(calc(-1 * var(--space-1)));
-}
-
-.pulse__stat-y-label {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  letter-spacing: var(--tracking);
-  text-transform: uppercase;
-  font-weight: var(--weight-semibold);
-}
-
-.pulse__stat-chart-area {
-  flex: 1;
-  min-height: 0;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: var(--pulse-stat-chart-gap);
-  align-items: stretch;
-  width: 100%;
-  position: relative;
-}
-
-.pulse__stat-col {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 0;
-  z-index: 2;
-}
-
-@media (max-width: 768px) {
-  .pulse__stat-panel {
-    --pulse-stat-chart-gap: var(--space-2);
-  }
-}
-
-.pulse__stat-bar {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.pulse__stat-segment {
-  width: 100%;
-  transition: filter 0.3s ease;
-  position: relative;
-}
-
-.pulse__stat-segment:hover {
-  filter: brightness(1.1);
-}
-
-.pulse__stat-segment::before {
-  content: attr(title);
-  position: absolute;
-  right: calc(100% + var(--space-2));
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--color-surface-dark);
-  color: var(--color-text-inverse);
-  padding: var(--space-1) var(--space-2);
-  border: 1px solid var(--color-border);
-  font-family: var(--font-body);
-  font-size: var(--text-xxs);
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  z-index: 10;
-}
-
-.pulse__stat-col:last-child .pulse__stat-segment::before {
-  left: calc(100% + var(--space-2));
-  right: auto;
-}
-
-.pulse__stat-segment:hover::before {
-  opacity: 1;
-}
-
-.pulse__stat-x-label {
-  flex-shrink: 0;
-  text-align: center;
-  font-family: var(--font-body);
-  font-size: var(--text-xs);
-  color: var(--pulse-stat-axis-text);
-  margin-top: var(--space-2);
-  font-weight: var(--weight-semibold);
-  min-height: calc(var(--text-xs) * var(--leading-tight));
-}
-
-.pulse__stat-center {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-width: 0;
-  min-height: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.pulse__stat-center-foot {
-  flex-shrink: 0;
-  min-height: var(--pulse-stat-x-label-block);
-}
-
-.pulse__stat-source {
-  font-family: var(--font-body);
-  font-size: var(--text-xxs);
-  color: var(--color-text-secondary);
-  border-top: 1px solid var(--color-border);
-  padding-top: var(--space-2);
-  margin-top: auto;
 }
