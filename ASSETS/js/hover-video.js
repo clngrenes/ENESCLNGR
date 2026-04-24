@@ -1,15 +1,13 @@
 /**
- * YouTube on work cards: start ~10s, 2x, muted.
- * - IFrame API loads right when `siteRevealed` fires (preloader / logo pass done).
- * - Players are built immediately (no requestIdleCallback stagger) and preloaded with
- *   loadVideoById + pause so the first hover starts faster.
- * - Muted: accidental PLAYING from preload is stopped unless the pointer is on the card.
+ * YouTube on work cards: start at data-yt-start (default 10s), 2x, muted.
+ * - IFrame API loads when `siteRevealed` fires.
+ * - Cue at 10s (lightweight); avoid heavy loadVideo pre-buffer to reduce lag; play on hover.
+ * - Muted: PLAYING from cue is paused unless pointer is on the card.
  */
 (function () {
   var YT_START_SECONDS = 10;
   var scriptRequested = false;
   var playersBuilt = false;
-  // YT.PlayerState
   var ST_PLAYING = 1;
   var ST_ENDED = 0;
 
@@ -18,6 +16,33 @@
     if (raw == null || raw === '') return YT_START_SECONDS;
     var n = parseInt(raw, 10);
     return isNaN(n) ? YT_START_SECONDS : n;
+  }
+
+  function cueAtStart(p, ytId, startSec) {
+    var opt = { videoId: ytId, startSeconds: startSec, suggestedQuality: 'default' };
+    try {
+      if (p.cueVideoById) {
+        try {
+          p.cueVideoById(opt);
+        } catch (e) {
+          p.cueVideoById(ytId, startSec, 'default');
+        }
+        return;
+      }
+    } catch (e) {
+      /* no-op */
+    }
+    try {
+      if (p.loadVideoById) {
+        try {
+          p.loadVideoById(opt);
+        } catch (e2) {
+          p.loadVideoById(ytId, startSec, 'default');
+        }
+      }
+    } catch (e3) {
+      /* no-op */
+    }
   }
 
   function ensurePreconnect() {
@@ -78,7 +103,6 @@
 
     var player;
     var mouseInside = false;
-    /** Only allow PLAYING when the user is hovering (blocks preload/autoplay) */
     var playAllowed = false;
 
     // eslint-disable-next-line no-undef, no-new
@@ -104,46 +128,23 @@
           player = event.target;
           player.mute();
           playAllowed = false;
-          function preload() {
+          cueAtStart(player, ytId, startSec);
+          setTimeout(function () {
             try {
-              if (player.loadVideoById) {
-                player.loadVideoById(ytId, startSec, 'default');
-              } else if (player.cueVideoById) {
-                player.cueVideoById(ytId, startSec, 'default');
-              }
-            } catch (e) {
-              /* no-op */
-            }
-            try {
+              player.seekTo(startSec, true);
               player.pauseVideo();
             } catch (e) {
               /* no-op */
             }
-            setTimeout(function () {
-              try {
-                player.pauseVideo();
-                player.seekTo(startSec, true);
-              } catch (e) {
-                /* no-op */
-              }
-            }, 0);
-            setTimeout(function () {
-              try {
-                player.pauseVideo();
-              } catch (e) {
-                /* no-op */
-              }
-            }, 120);
-          }
-          preload();
+          }, 0);
 
           function onEnter() {
             if (!player) return;
             mouseInside = true;
             playAllowed = true;
             player.mute();
-            player.setPlaybackRate(2);
             player.seekTo(startSec, true);
+            player.setPlaybackRate(2);
             player.playVideo();
           }
 
@@ -168,7 +169,11 @@
               }
               return;
             }
-            player.setPlaybackRate(2);
+            try {
+              player.setPlaybackRate(2);
+            } catch (e) {
+              /* no-op */
+            }
             return;
           }
           if (event.data === ST_ENDED) {
