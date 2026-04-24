@@ -201,6 +201,12 @@
 
   window.addEventListener('siteRevealed', onSiteRevealed, { once: true });
 
+  // Preloader can dispatch `siteRevealed` in the same turn as the first script (e.g. missing ring,
+  // or readyState not "loading") before this file runs — listener would miss the event.
+  if (document.body && document.body.classList.contains('is-revealing')) {
+    onSiteRevealed();
+  }
+
   if (window.YT && window.YT.Player) {
     initPlayers();
   }

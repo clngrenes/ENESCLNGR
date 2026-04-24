@@ -142,23 +142,31 @@
   border: 1px solid var(--color-border);
 }
 
+/* Left column = only as wide as the phone art; right column fills rest */
 .pulse__final-designs-layout.columns-equal-height {
   align-items: start;
   gap: var(--space-1);
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
 }
 
-/* Single preview screen on the left; card hover swaps source */
+/* Single preview screen: box hugs image — no full-column white band */
 .pulse__final-screen-stage {
-  width: 100%;
+  display: block;
+  width: fit-content;
+  width: -moz-fit-content;
+  max-width: 100%;
+  min-width: 0;
   min-height: 0;
 }
 
 .pulse__final-screen {
-  width: 100%;
+  display: block;
+  width: auto;
+  max-width: 100%;
   max-height: 70vh;
+  height: auto;
   object-fit: contain;
   object-position: left top;
-  display: block;
   box-sizing: border-box;
   border: 1px solid var(--color-border);
   transition: opacity 0.2s ease, filter 0.2s ease;
@@ -303,7 +311,17 @@
 }
 
 @media (max-width: 768px) {
+  .pulse__final-designs-layout.columns-equal-height {
+    grid-template-columns: 1fr;
+  }
+
+  .pulse__final-screen-stage {
+    width: 100%;
+  }
+
   .pulse__final-screen {
+    width: 100%;
+    max-width: 100%;
     aspect-ratio: 4 / 5;
   }
 
