@@ -15,11 +15,9 @@
   text-decoration: none;
   border: 1px solid var(--color-border);
   transition: transform 0.24s ease;
-  /* Media: L/R/Top = --work-card-hover-inset. Bottom: shorter frame so air above badges ≈ side insets. */
+  /* Media: L/R/Top = --work-card-hover-inset. Bottom: tuned so video→badges ≈ 12px like title padding-left */
   --work-card-hover-inset: var(--space-2);
-  /* Larger bottom reserve = shorter video/image; pairs with 12px padding-top on content */
-  --work-card-hover-inset-bottom: 98px;
-  /* Space above tag row: same token as insets on the video box (L/R/Top) */
+  --work-card-hover-inset-bottom: 86px;
   --work-card-content-padding-top: var(--work-card-hover-inset);
 }
 
