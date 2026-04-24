@@ -74,11 +74,14 @@
   gap: var(--space-1);
 }
 
-/* All sections: single gutter between heading and content blocks */
-.section,
-.section.section--loose,
-.section.section--tight {
+/* Sections: default tight stack; hero (section--loose) uses space-3 for collage + title + meta */
+.page.pulse .section,
+.page.pulse .section.section--tight {
   gap: var(--space-1);
+}
+
+.page.pulse .section.section--loose {
+  gap: var(--space-3);
 }
 
 /* 5-photo horizontal research strip */
@@ -113,6 +116,14 @@
   min-width: 0;
 }
 
+/* "Connecting the Touchpoints" + copy + journey: one space-1 stack */
+.pulse__framing-substack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
 .pulse__framing-figure {
   margin: 0;
   min-width: 0;
@@ -125,9 +136,14 @@
   object-fit: cover;
 }
 
+/* Wireframe block only: 1px hairline; journey image stays unstroked */
+.pulse__framing-figure--wireframe .pulse__framing-block-img {
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+}
+
 .pulse__final-designs-layout.columns-equal-height {
   align-items: start;
-  /* Tight gutter between phone mock and feature stack (matches pulse__final-features rhythm) */
   gap: var(--space-1);
 }
 
@@ -162,7 +178,8 @@
 }
 
 .pulse__final-features .pulse__feature-card.is-active {
-  outline: 1px solid var(--color-border);
+  /* Selection without outline; 1px edge only on the preview screen image */
+  filter: brightness(1.06);
 }
 
 .pulse__takeaways-figure {

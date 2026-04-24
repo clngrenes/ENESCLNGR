@@ -18,11 +18,14 @@
   gap: var(--space-1);
 }
 
-/* Uniform extra air between major blocks: collage ↔ title ↔ meta, and section h2 ↔ content */
+/* Default stack: space-1. Hero (section--loose): collage + title + meta = space-3 */
 .section,
-.section.section--loose,
 .section.section--tight {
   gap: var(--space-1);
+}
+
+.section.section--loose {
+  gap: var(--space-3);
 }
 
 /* Project Meta alignment */

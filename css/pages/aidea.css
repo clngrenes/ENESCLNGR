@@ -2,11 +2,14 @@
    AIDEA Project Page — Page-specific styles
    ============================================ */
 
-/* Spacing inside every section: token 1 (stacks, columns, meta, more projects) */
+/* Spacing: default space-1; hero (loose) uses space-3 for collage + title + meta */
 .page.aidea .section,
-.page.aidea .section.section--loose,
 .page.aidea .section.section--tight {
   gap: var(--space-1);
+}
+
+.page.aidea .section.section--loose {
+  gap: var(--space-3);
 }
 
 .page.aidea .columns-equal-height,
