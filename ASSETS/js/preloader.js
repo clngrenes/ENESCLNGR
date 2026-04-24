@@ -8,6 +8,7 @@
         document.body.classList.remove('is-loading');
         document.body.classList.add('is-revealing');
       }
+      window.dispatchEvent(new CustomEvent('siteRevealed'));
       return;
     }
 
@@ -95,6 +96,7 @@
           document.body.classList.remove('is-loading');
           document.body.classList.add('is-revealing');
         }
+        window.dispatchEvent(new CustomEvent('siteRevealed'));
         
         setTimeout(function() {
           if (preloader.parentNode) preloader.parentNode.removeChild(preloader);

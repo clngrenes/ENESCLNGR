@@ -88,20 +88,34 @@
 
 /* ============================================
    YouTube Hover Video
+   (inset matches .work-card__image hover frame — padding on top/left/right)
    ============================================ */
 .work-card__yt-wrapper {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease;
   pointer-events: none;
-  z-index: 2;
+  z-index: 1;
   border-radius: inherit;
+  transition: opacity 0.3s ease, top 0.4s cubic-bezier(0.4, 0, 0.2, 1), left 0.4s cubic-bezier(0.4, 0, 0.2, 1), right 0.4s cubic-bezier(0.4, 0, 0.2, 1), bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.work-card:hover .work-card__yt-wrapper,
+.work-card:focus-within .work-card__yt-wrapper,
+.work-card:focus-visible .work-card__yt-wrapper {
+  top: var(--work-card-hover-inset);
+  left: var(--work-card-hover-inset);
+  right: var(--work-card-hover-inset);
+  bottom: var(--work-card-hover-inset-bottom);
 }
 
 .work-card__yt-wrapper.is-playing {
   opacity: 1;
+  z-index: 2;
 }
 
 /* Make iframe act like object-fit: cover */
@@ -129,7 +143,7 @@
   transition: opacity 0.24s ease, transform 0.24s ease, padding 0.28s ease;
   will-change: opacity, transform;
   pointer-events: none;
-  z-index: 2;
+  z-index: 4;
   padding: 0;
   background-color: var(--color-surface-primary);
 }
