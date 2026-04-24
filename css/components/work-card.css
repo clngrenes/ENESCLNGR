@@ -15,11 +15,11 @@
   text-decoration: none;
   border: 1px solid var(--color-border);
   transition: transform 0.24s ease;
-  /* Very small inset on top/left/right, slightly more on bottom for text */
+  /* Very small inset on top/left/right; more on bottom to reserve the text band (shorter media frame) */
   --work-card-hover-inset: var(--space-2);
-  --work-card-hover-inset-bottom: 76px; /* reduced bottom padding */
-  /* Air above the tag row: insets on the sides, plus one spacing step to match scale (Pulse, AIDEA, all work cards) */
-  --work-card-content-padding-top: calc(var(--work-card-hover-inset) + var(--space-1));
+  --work-card-hover-inset-bottom: 86px; /* was 76: shorter video/image, clearer band for badges+title */
+  /* Same token as L/R insets: uniform space above the tag row (Pulse, AIDEA, all work cards) */
+  --work-card-content-padding-top: var(--work-card-hover-inset);
 }
 
 .work-card__inner {
