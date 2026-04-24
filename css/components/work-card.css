@@ -15,11 +15,10 @@
   text-decoration: none;
   border: 1px solid var(--color-border);
   transition: transform 0.24s ease;
-  /* Very small inset on top/left/right; more on bottom to reserve the text band (shorter media frame) */
+  /* Media frame: L/R/Top = one gutter. Bottom = reserve text band; tuned so gap image→text ≈ same gutter. */
   --work-card-hover-inset: var(--space-2);
-  --work-card-hover-inset-bottom: 86px; /* was 76: shorter video/image, clearer band for badges+title */
-  /* Same token as L/R insets: uniform space above the tag row (Pulse, AIDEA, all work cards) */
-  --work-card-content-padding-top: var(--work-card-hover-inset);
+  /* ~content stack + gutter: keeps vertical gap (image bottom → content) in line with 12px L/R/T */
+  --work-card-hover-inset-bottom: 82px;
 }
 
 .work-card__inner {
@@ -167,8 +166,8 @@
 
 .work-card:hover .work-card__content,
 .work-card:focus-visible .work-card__content {
+  /* Same 12px as media insets: top, left, right, bottom */
   padding: var(--work-card-hover-inset);
-  padding-top: var(--work-card-content-padding-top);
   opacity: 1;
   transform: translateY(0);
 }
