@@ -22,29 +22,160 @@
   gap: var(--space-1);
 }
 
-/* Project Meta alignment */
+/* Project meta — four equal cells (matches Pulse / Orientation rhythm) */
 .aidea__project-meta {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-1);
 }
-.aidea__project-meta > * {
-  flex: 1;
+
+@media (max-width: 768px) {
+  .aidea__project-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-/* Base visual container */
+/* Base visual — square corners, 1px stroke (matches Pulse / Orientation) */
 .aidea__visual {
   width: 100%;
-  height: auto;
   display: block;
   object-fit: cover;
+  box-sizing: border-box;
   border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
+  border-radius: 0;
   overflow: hidden;
 }
 
-.aidea__visual--no-border {
-  border: none;
+/* Column with a full-height image: matches text stack height in sibling column */
+.aidea__media-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+
+.aidea__media-col > .aidea__visual {
+  flex: 1;
+  min-height: clamp(12rem, 22vw, 20rem);
+  height: 100%;
+}
+
+.aidea__media-col > .aidea__interface-duo {
+  flex: 1;
+  min-height: 0;
+}
+
+.aidea__media-col > .project-collage__item--embed {
+  flex: 1;
+  min-height: clamp(12rem, 30vw, 20rem);
+}
+
+/* Interface Design: same grid + gutter rhythm as other project pages */
+.aidea__interface-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.aidea__interface-block--text-right {
+  grid-template-columns: 4fr 6fr;
+}
+
+.aidea__interface-block--text-right .columns-equal-height__col:nth-child(1) {
+  order: 2;
+}
+
+.aidea__interface-block--text-right .columns-equal-height__col:nth-child(2) {
+  order: 1;
+}
+
+@media (max-width: 768px) {
+  .aidea__interface-block--text-right {
+    grid-template-columns: 1fr;
+  }
+
+  .aidea__interface-block--text-right .columns-equal-height__col:nth-child(1),
+  .aidea__interface-block--text-right .columns-equal-height__col:nth-child(2) {
+    order: unset;
+  }
+}
+
+.aidea__interface-media--split {
+  min-height: 0;
+}
+
+.aidea__interface-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-1);
+  height: 100%;
+  min-height: clamp(12rem, 22vw, 20rem);
+  min-width: 0;
+  align-items: stretch;
+}
+
+.aidea__interface-duo .aidea__visual {
+  min-height: 0;
+  height: 100%;
+}
+
+/* Conclusion: grey area */
+.aidea__conclusion-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+
+.aidea__placeholder {
+  width: 100%;
+  flex: 1;
+  min-height: clamp(16rem, 28vw, 24rem);
+  background-color: var(--color-border);
+  border: 1px solid var(--color-border);
+  box-sizing: border-box;
+}
+
+/* Conclusion / takeaways text column */
+.aidea__takeaways-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+/* Primary card natural; secondary text blocks grow to meet grey box */
+.aidea__takeaways-col > .text-block--primary {
+  flex: none;
+}
+
+.aidea__takeaways-col > .text-block--secondary {
+  flex: 1;
+}
+
+.aidea__embed-wrap {
+  width: 100%;
+  flex: 1;
+  min-height: clamp(12rem, 30vw, 20rem);
+  border: 1px solid var(--color-border);
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   border-radius: 0;
+  background: var(--color-bg-primary);
+}
+
+.aidea__embed-wrap .project-collage__embed {
+  flex: 1;
+  min-height: 12rem;
+  border: 0;
+}
+
+/* Hero: optional secondary line */
+.aidea__hero-sub {
+  margin: 0;
+  max-width: 100%;
 }
 
 .aidea__caption {
@@ -63,56 +194,10 @@
   object-fit: cover;
 }
 
-/* Feature Rows for Interface section */
-.aidea__feature-row {
-  display: flex;
-  gap: var(--space-1);
-  align-items: center;
-  margin-bottom: var(--space-1);
-}
-.aidea__feature-row:last-child {
-  margin-bottom: 0;
-}
-
-.aidea__feature-row--reversed {
-  flex-direction: row-reverse;
-}
-
-.aidea__feature-text {
-  flex: 1;
+/* Interface copy column stacks heading + text like other project pages */
+.aidea__interface-copy {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
   min-width: 0;
-}
-
-.aidea__feature-visual {
-  flex: 1;
-  min-width: 0;
-}
-
-.aidea__visual-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-1);
-}
-
-.aidea__full-visual {
-  width: 100%;
-  margin-top: var(--space-1);
-  margin-bottom: var(--space-1);
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .aidea__feature-row,
-  .aidea__feature-row--reversed {
-    flex-direction: column;
-    gap: var(--space-1);
-    margin-bottom: var(--space-1);
-  }
-  
-  .aidea__visual-grid {
-    grid-template-columns: 1fr;
-  }
 }
