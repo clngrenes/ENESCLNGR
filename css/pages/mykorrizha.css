@@ -108,19 +108,39 @@
 }
 
 /* ============================================
-   Skills Section Layout
+   Skills Section — rigid 2×2 grid per row (aligned gutters)
    ============================================ */
 
 .mykorrizha__skills-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-1);
-}
-
-.mykorrizha__skills-col {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+  width: 100%;
+  min-width: 0;
+}
+
+.mykorrizha__skills-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-1);
+  align-items: start;
+  width: 100%;
+  min-width: 0;
+}
+
+.mykorrizha__skills-cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+  width: 100%;
+}
+
+/* Placeholders never flex-grow in this section — fill column width only */
+.mykorrizha__skills-cell .mykorrizha__placeholder {
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 0;
 }
 
 .mykorrizha__placeholder--tall {
@@ -134,7 +154,7 @@
 }
 
 @media (max-width: 768px) {
-  .mykorrizha__skills-layout {
+  .mykorrizha__skills-row {
     grid-template-columns: 1fr;
   }
 }
