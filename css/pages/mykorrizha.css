@@ -153,6 +153,30 @@
   flex: none;
 }
 
+/* One full-bleed row: title + text use full main width */
+.mykorrizha__skills-row--full {
+  grid-template-columns: 1fr;
+}
+
+.mykorrizha__skills-cell--historical {
+  width: 100%;
+  max-width: 100%;
+}
+
+.mykorrizha__skills-cell--historical .text-block {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Right column: copy block, then grey box — stack naturally */
+.mykorrizha__skills-cell--stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
 @media (max-width: 768px) {
   .mykorrizha__skills-row {
     grid-template-columns: 1fr;

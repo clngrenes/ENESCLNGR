@@ -68,7 +68,7 @@
   --space-main-sections: var(--space-6);
 
   /* --- Layout --- */
-  --max-width: 90rem;         /* 1440px */
+  --max-width: 85rem;         /* 1360px — slightly inset vs full 1440 for calmer line length; nav + main stay aligned */
   --content-width: 78rem;     /* 1248px */
   --page-padding: var(--space-6);
   --page-padding-y: var(--space-4);   /* 48px top/bottom — rem so it scales */
