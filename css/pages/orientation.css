@@ -2,6 +2,24 @@
    Orientation Project Page — Page-specific styles
    ============================================ */
 
+/* Tight grids (collage rhythm): meta + multi-column content */
+
+.columns-equal-height,
+.columns-equal-height__col {
+  gap: var(--space-1);
+}
+
+.columns-three {
+  gap: var(--space-1);
+}
+
+/* Uniform extra air between major blocks: collage ↔ title ↔ meta, and section h2 ↔ content */
+.section,
+.section.section--loose,
+.section.section--tight {
+  gap: var(--space-1);
+}
+
 /* Project Meta alignment */
 .orientation__project-meta {
   display: flex;
@@ -14,7 +32,6 @@
 /* Placeholder for missing images */
 .orientation__placeholder {
   width: 100%;
-  height: 100%;
   background-color: var(--color-border);
   display: flex;
   align-items: center;
@@ -22,14 +39,11 @@
   color: var(--color-text-secondary);
   font-family: var(--font-body);
   font-size: var(--text-sm);
-}
-
-.orientation__placeholder--tall {
   min-height: clamp(16rem, 28vw, 24rem);
 }
 
-.orientation__placeholder--square {
-  aspect-ratio: 1 / 1;
+.project-collage__item .orientation__placeholder {
+  min-height: 100%;
 }
 
 /* Base visual container */
@@ -75,12 +89,6 @@
 
 /* Make placeholders fill remaining space if needed, or just be tall */
 .orientation__answers-layout .orientation__placeholder {
-  flex: 1;
   min-height: clamp(16rem, 28vw, 24rem);
 }
 
-.orientation__answers-layout .orientation__placeholder--square {
-  flex: none;
-  aspect-ratio: 1 / 1;
-  min-height: auto;
-}
