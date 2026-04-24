@@ -70,11 +70,15 @@
   gap: var(--space-1);
 }
 
-/* Uniform extra air between major blocks: collage ↔ title ↔ meta, and section h2 ↔ content */
+.page.pulse .more-projects-grid {
+  gap: var(--space-1);
+}
+
+/* All sections: single gutter between heading and content blocks */
 .section,
 .section.section--loose,
 .section.section--tight {
-  gap: var(--space-3);
+  gap: var(--space-1);
 }
 
 /* 5-photo horizontal research strip */
@@ -101,25 +105,11 @@
   grid-template-columns: 1fr;
 }
 
-.pulse__problem-section.section {
-  gap: var(--space-2);
-}
-
-.pulse__root-cause-section.section {
-  /* Match poster strip gutters: same token vertically (h2 ↔ posters ↔ insights) */
-  gap: var(--space-1);
-}
-
-.pulse__framing-section.section {
-  /* h2 → body stack; same vertical rhythm as intro ↔ HMW ↔ wireframe (see .pulse__framing-content) */
-  gap: var(--space-3);
-}
-
-/* Intro, three HMW columns, wireframe: one gutter token — matches .columns-three horizontal gap */
+/* Intro, HMW columns, wireframe, journey: single gutter — matches .pulse__root-cause-layout */
 .pulse__framing-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-1);
   min-width: 0;
 }
 
@@ -133,14 +123,6 @@
   height: auto;
   display: block;
   object-fit: cover;
-}
-
-.pulse__takeaways-section.section {
-  gap: var(--space-2);
-}
-
-.pulse__final-designs-section.section {
-  gap: var(--space-2);
 }
 
 .pulse__final-designs-layout.columns-equal-height {
@@ -268,7 +250,7 @@
   flex: 1;
 }
 
-/* Four person photos under insights — same gutter + aspect as poster row */
+/* Four person photos — same gutter + aspect as poster row; --full = new row, full content width */
 .pulse__person-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -277,10 +259,17 @@
   min-width: 0;
 }
 
+.pulse__person-row--full {
+  grid-column: 1 / -1;
+}
+
 .pulse__person-cell {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -307,7 +296,8 @@
 
   .pulse__poster-cell,
   .pulse__poster-insights-left,
-  .pulse__poster-insights-right {
+  .pulse__poster-insights-right,
+  .pulse__person-row--full {
     grid-column: span 1;
   }
 

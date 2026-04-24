@@ -1,4 +1,10 @@
 .vercel
+# Duplicate loose assets at repo root (canonical copies live under ASSETS/)
+/person-*.jpg
+/figma-work.jpg
+/journey-flow.jpg
+/takeaway-pic.jpg
+/wireframesblock.jpg
 node_modules/
 .next/
 out/

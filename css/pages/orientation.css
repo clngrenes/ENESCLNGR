@@ -13,6 +13,11 @@
   gap: var(--space-1);
 }
 
+.project-meta,
+.more-projects-grid {
+  gap: var(--space-1);
+}
+
 /* Uniform extra air between major blocks: collage ↔ title ↔ meta, and section h2 ↔ content */
 .section,
 .section.section--loose,

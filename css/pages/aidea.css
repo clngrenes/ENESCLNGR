@@ -2,6 +2,23 @@
    AIDEA Project Page — Page-specific styles
    ============================================ */
 
+/* Spacing inside every section: token 1 (stacks, columns, meta, more projects) */
+.page.aidea .section,
+.page.aidea .section.section--loose,
+.page.aidea .section.section--tight {
+  gap: var(--space-1);
+}
+
+.page.aidea .columns-equal-height,
+.page.aidea .columns-equal-height__col {
+  gap: var(--space-1);
+}
+
+.page.aidea .project-meta,
+.page.aidea .more-projects-grid {
+  gap: var(--space-1);
+}
+
 /* Project Meta alignment */
 .aidea__project-meta {
   display: flex;
@@ -46,9 +63,9 @@
 /* Feature Rows for Interface section */
 .aidea__feature-row {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-1);
   align-items: center;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-1);
 }
 .aidea__feature-row:last-child {
   margin-bottom: 0;
@@ -62,7 +79,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-1);
   min-width: 0;
 }
 
@@ -79,8 +96,8 @@
 
 .aidea__full-visual {
   width: 100%;
-  margin-top: var(--space-2);
-  margin-bottom: var(--space-2);
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-1);
 }
 
 /* Mobile responsive */
@@ -88,8 +105,8 @@
   .aidea__feature-row,
   .aidea__feature-row--reversed {
     flex-direction: column;
-    gap: var(--space-3);
-    margin-bottom: var(--space-4);
+    gap: var(--space-1);
+    margin-bottom: var(--space-1);
   }
   
   .aidea__visual-grid {

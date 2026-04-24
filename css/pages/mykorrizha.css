@@ -2,6 +2,22 @@
    Mykorrizha Project Page — Page-specific styles
    ============================================ */
 
+/* Spacing inside every section */
+.page.mykorrizha .section,
+.page.mykorrizha .section.section--loose,
+.page.mykorrizha .section.section--tight {
+  gap: var(--space-1);
+}
+
+.page.mykorrizha .columns-equal-height,
+.page.mykorrizha .columns-equal-height__col {
+  gap: var(--space-1);
+}
+
+.page.mykorrizha .more-projects-grid {
+  gap: var(--space-1);
+}
+
 /* Tight grids for project meta matching Pulse */
 .mykorrizha__project-meta {
   gap: var(--space-1);
@@ -17,10 +33,6 @@
 }
 
 /* AI Section Layout */
-.mykorrizha__ai-section.section {
-  gap: var(--space-2);
-}
-
 .mykorrizha__ai-layout {
   gap: var(--space-1);
 }
@@ -63,10 +75,6 @@
    System Section Layout
    ============================================ */
 
-.mykorrizha__system-section.section {
-  gap: var(--space-2);
-}
-
 .mykorrizha__system-layout {
   display: flex;
   flex-direction: column;
@@ -100,10 +108,6 @@
    Skills Section Layout
    ============================================ */
 
-.mykorrizha__skills-section.section {
-  gap: var(--space-2);
-}
-
 .mykorrizha__skills-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -135,10 +139,6 @@
 /* ============================================
    Learned Section Layout
    ============================================ */
-
-.mykorrizha__learned-section.section {
-  gap: var(--space-2);
-}
 
 .mykorrizha__learned-layout {
   gap: var(--space-1);
