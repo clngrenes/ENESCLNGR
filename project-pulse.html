@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/components/project-collage.css?v=3">
   <link rel="stylesheet" href="css/components/project-visual.css">
   <link rel="stylesheet" href="css/components/feature-card.css">
-  <link rel="stylesheet" href="css/pages/pulse.css?v=19">
+  <link rel="stylesheet" href="css/pages/pulse.css?v=20">
   <link rel="stylesheet" href="css/components/preloader.css">
 </head>
 <body class="is-loading">
@@ -235,7 +235,7 @@
           </div>
 
           <div class="columns-equal-height__col columns-equal-height__col--natural pulse__final-features">
-            <div class="feature-card pulse__feature-card is-active" data-screen="ASSETS/images/PULSE/ui-challenge.jpg" data-screen-alt="Pulse UI challenge screen">
+            <div class="feature-card pulse__feature-card is-active" tabindex="0" data-screen="ASSETS/images/PULSE/ui-challenge.jpg" data-screen-alt="Pulse UI challenge screen">
               <span class="feature-card__title">Collective Challenges</span>
               <div class="feature-card__body-wrap">
                 <div class="feature-card__body-inner">
@@ -243,7 +243,7 @@
                 </div>
               </div>
             </div>
-            <div class="feature-card pulse__feature-card" data-screen="ASSETS/images/PULSE/ui-gruppenansicht.jpg" data-screen-alt="Pulse UI community overview screen">
+            <div class="feature-card pulse__feature-card" tabindex="0" data-screen="ASSETS/images/PULSE/ui-gruppenansicht.jpg" data-screen-alt="Pulse UI community overview screen">
               <span class="feature-card__title">Giving Made Simple</span>
               <div class="feature-card__body-wrap">
                 <div class="feature-card__body-inner">
@@ -251,7 +251,7 @@
                 </div>
               </div>
             </div>
-            <div class="feature-card pulse__feature-card" data-screen="ASSETS/images/PULSE/ui-fragebogen.png" data-screen-alt="Pulse UI eligibility check screen">
+            <div class="feature-card pulse__feature-card" tabindex="0" data-screen="ASSETS/images/PULSE/ui-fragebogen.png" data-screen-alt="Pulse UI eligibility check screen">
               <span class="feature-card__title">Smart Eligibility Check</span>
               <div class="feature-card__body-wrap">
                 <div class="feature-card__body-inner">
@@ -259,7 +259,7 @@
                 </div>
               </div>
             </div>
-            <div class="feature-card pulse__feature-card" data-screen="ASSETS/images/PULSE/ui-terminauswahl.jpg" data-screen-alt="Pulse UI appointment finder screen">
+            <div class="feature-card pulse__feature-card" tabindex="0" data-screen="ASSETS/images/PULSE/ui-terminauswahl.jpg" data-screen-alt="Pulse UI appointment finder screen">
               <span class="feature-card__title">Appointment Finder</span>
               <div class="feature-card__body-wrap">
                 <div class="feature-card__body-inner">
@@ -267,7 +267,7 @@
                 </div>
               </div>
             </div>
-            <div class="feature-card pulse__feature-card" data-screen="ASSETS/images/PULSE/ui-termine.jpg" data-screen-alt="Pulse UI personal schedule screen">
+            <div class="feature-card pulse__feature-card" tabindex="0" data-screen="ASSETS/images/PULSE/ui-termine.jpg" data-screen-alt="Pulse UI personal schedule screen">
               <span class="feature-card__title">Personal Schedule</span>
               <div class="feature-card__body-wrap">
                 <div class="feature-card__body-inner">
@@ -275,7 +275,7 @@
                 </div>
               </div>
             </div>
-            <div class="feature-card pulse__feature-card" data-screen="ASSETS/images/PULSE/ui-verlauf.jpg" data-screen-alt="Pulse UI donation history screen">
+            <div class="feature-card pulse__feature-card" tabindex="0" data-screen="ASSETS/images/PULSE/ui-verlauf.jpg" data-screen-alt="Pulse UI donation history screen">
               <span class="feature-card__title">Donation History</span>
               <div class="feature-card__body-wrap">
                 <div class="feature-card__body-inner">
@@ -305,7 +305,16 @@
           </div>
 
           <div class="columns-equal-height__col">
-            <div class="pulse__takeaways-placeholder" aria-label="Key takeaways visual placeholder"></div>
+            <figure class="pulse__takeaways-figure">
+              <img
+                class="pulse__takeaways-img"
+                src="ASSETS/images/PULSE/takeaway-box.jpg?v=1"
+                alt="Key takeaways — synthesis"
+                width="2000"
+                height="2000"
+                loading="lazy"
+              >
+            </figure>
           </div>
         </div>
       </section>
@@ -386,5 +395,6 @@
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="ASSETS/js/smooth-scroll.js"></script>
   <script src="ASSETS/js/hover-video.js?v=8"></script>
+  <script src="ASSETS/js/pulse-final-screens.js?v=1"></script>
 </body>
 </html>

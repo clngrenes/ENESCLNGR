@@ -145,6 +145,8 @@
 
 .pulse__final-designs-layout.columns-equal-height {
   align-items: start;
+  /* Tight gutter between phone mock and feature stack (matches pulse__final-features rhythm) */
+  gap: var(--space-1);
 }
 
 /* Single preview screen on the left; card hover swaps source */
@@ -159,6 +161,8 @@
   object-fit: contain;
   object-position: left top;
   display: block;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
   transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
@@ -171,15 +175,31 @@
   gap: var(--space-1);
 }
 
-.pulse__feature-card.is-active {
+.pulse__final-features .pulse__feature-card {
+  cursor: pointer;
+}
+
+.pulse__final-features .pulse__feature-card.is-active {
   outline: 1px solid var(--color-border);
 }
 
-.pulse__takeaways-placeholder {
-  flex: 1;
+.pulse__takeaways-figure {
+  margin: 0;
   width: 100%;
-  min-height: clamp(18rem, 30vw, 26rem);
-  background-color: var(--color-border);
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.pulse__takeaways-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
 }
 
 /* Key takeaways: primary stays natural; secondary cards grow to match visual column height */
