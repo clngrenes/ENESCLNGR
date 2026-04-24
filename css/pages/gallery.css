@@ -1,9 +1,9 @@
 /* ============================================
    Gallery Page Styles
-   10-column Figma grid:
-     Row 1 — 6 col + 4 col
-     Row 2 — 4 col + 6 col
-     Row 3 — 4 col tall (spans 2 rows) + 6 col top + 6 col bottom
+   10-column grid:
+     Row 1 — 6 col + 4 col (Reach)
+     Row 2–3 — 4 col tall (Retarget) + 6/6 stacked (mockups, logo)
+   (AIDEA row removed)
    ============================================ */
 
 .gallery {
@@ -35,19 +35,13 @@
 .gallery__item--1 { grid-column: 1 / 7; }
 .gallery__item--2 { grid-column: 7 / 11; }
 
-/* Row 2: 4 + 6 */
-.gallery__item--3 { grid-column: 1 / 5; }
-.gallery__item--4 { grid-column: 5 / 11; }
-
-/* Row 3: tall left (2 rows) + right stacked top */
-.gallery__item--5 { grid-column: 1 / 5; grid-row: 3 / 5; }
-.gallery__item--6 { grid-column: 5 / 11; }
-
-/* Row 4: right stacked bottom */
-.gallery__item--7 { grid-column: 5 / 11; }
+/* Row 2–3: tall left + two stacked on the right */
+.gallery__item--3 { grid-column: 1 / 5; grid-row: 2 / 4; }
+.gallery__item--4 { grid-column: 5 / 11; grid-row: 2 / 3; }
+.gallery__item--5 { grid-column: 5 / 11; grid-row: 3 / 4; }
 
 .gallery__item--4::after,
-.gallery__item--7::after {
+.gallery__item--5::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -65,9 +59,7 @@
   .gallery__item--2,
   .gallery__item--3,
   .gallery__item--4,
-  .gallery__item--5,
-  .gallery__item--6,
-  .gallery__item--7 {
+  .gallery__item--5 {
     grid-column: 1 / -1;
     grid-row: auto;
   }

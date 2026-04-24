@@ -1,8 +1,8 @@
 /**
  * YouTube on work cards: start at data-yt-start (default 10s), 2x, muted.
  * - IFrame API loads when `siteRevealed` fires.
- * - Cue at 10s (lightweight); avoid heavy loadVideo pre-buffer to reduce lag; play on hover.
- * - Muted: PLAYING from cue is paused unless pointer is on the card.
+ * - On ready: loadVideoById + one muted play→pause to decode the first frame (avoids black “tap to play” on hover).
+ * - mouseenter / pointerenter / touchstart: play. mouseleave / pointerleave / touch outside: pause.
  */
 (function () {
   var YT_START_SECONDS = 10;
@@ -10,6 +10,7 @@
   var playersBuilt = false;
   var ST_PLAYING = 1;
   var ST_ENDED = 0;
+  var ST_BUFFERING = 3;
 
   function getStartSeconds(card) {
     var raw = card.getAttribute('data-yt-start');
@@ -18,14 +19,14 @@
     return isNaN(n) ? YT_START_SECONDS : n;
   }
 
-  function cueAtStart(p, ytId, startSec) {
+  function loadAtStart(p, ytId, startSec) {
     var opt = { videoId: ytId, startSeconds: startSec, suggestedQuality: 'default' };
     try {
-      if (p.cueVideoById) {
+      if (p.loadVideoById) {
         try {
-          p.cueVideoById(opt);
+          p.loadVideoById(opt);
         } catch (e) {
-          p.cueVideoById(ytId, startSec, 'default');
+          p.loadVideoById(ytId, startSec, 'default');
         }
         return;
       }
@@ -33,14 +34,10 @@
       /* no-op */
     }
     try {
-      if (p.loadVideoById) {
-        try {
-          p.loadVideoById(opt);
-        } catch (e2) {
-          p.loadVideoById(ytId, startSec, 'default');
-        }
+      if (p.cueVideoById) {
+        p.cueVideoById({ videoId: ytId, startSeconds: startSec, suggestedQuality: 'default' });
       }
-    } catch (e3) {
+    } catch (e2) {
       /* no-op */
     }
   }
@@ -59,8 +56,6 @@
       initPlayers();
       return;
     }
-    /* If the iframe API script is already in the DOM (cache / repeat load), the tag exists
-     * but the early return used to skip initPlayers() entirely — the API may already be ready. */
     if (document.querySelector('script[src*="youtube.com/iframe_api"]')) {
       if (window.YT && window.YT.Player) {
         initPlayers();
@@ -109,83 +104,140 @@
     var player;
     var mouseInside = false;
     var playAllowed = false;
+    var priming = false;
+    var origin =
+      window.location && window.location.origin && window.location.protocol !== 'file:';
+    origin = origin ? window.location.origin : undefined;
+
+    var playerVars = {
+      autoplay: 0,
+      controls: 0,
+      disablekb: 1,
+      fs: 0,
+      start: startSec,
+      loop: 1,
+      playlist: ytId,
+      modestbranding: 1,
+      playsinline: 1,
+      rel: 0,
+      mute: 1,
+      cc_load_policy: 0,
+      iv_load_policy: 3,
+      enablejsapi: 1
+    };
+    if (origin) {
+      playerVars.origin = origin;
+    }
 
     // eslint-disable-next-line no-undef, no-new
     new YT.Player(ytPlayerDiv.id, {
       videoId: ytId,
-      playerVars: {
-        autoplay: 0,
-        controls: 0,
-        disablekb: 1,
-        fs: 0,
-        start: startSec,
-        loop: 1,
-        playlist: ytId,
-        modestbranding: 1,
-        playsinline: 1,
-        rel: 0,
-        mute: 1,
-        cc_load_policy: 0,
-        iv_load_policy: 3
-      },
+      playerVars: playerVars,
       events: {
         onReady: function (event) {
           player = event.target;
           player.mute();
           playAllowed = false;
-          cueAtStart(player, ytId, startSec);
+          priming = true;
+          loadAtStart(player, ytId, startSec);
+
           setTimeout(function () {
+            if (!player) return;
             try {
+              playAllowed = false;
+              priming = true;
+              player.mute();
+              player.playVideo();
+            } catch (e) {
+              /* no-op */
+            }
+          }, 280);
+
+          function onEnter() {
+            if (!player) return;
+            priming = false;
+            mouseInside = true;
+            playAllowed = true;
+            try {
+              player.mute();
               player.seekTo(startSec, true);
+              player.setPlaybackRate(2);
+              player.playVideo();
+            } catch (e) {
+              /* no-op */
+            }
+          }
+
+          function onLeave() {
+            priming = false;
+            mouseInside = false;
+            playAllowed = false;
+            if (!player) return;
+            try {
               player.pauseVideo();
             } catch (e) {
               /* no-op */
             }
-          }, 0);
-
-          function onEnter() {
-            if (!player) return;
-            mouseInside = true;
-            playAllowed = true;
-            player.mute();
-            player.seekTo(startSec, true);
-            player.setPlaybackRate(2);
-            player.playVideo();
           }
 
-          function onLeave() {
-            mouseInside = false;
-            playAllowed = false;
-            if (!player) return;
-            player.pauseVideo();
+          var evIn = ['mouseenter', 'pointerenter'];
+          var evOut = ['mouseleave', 'pointerleave'];
+          var a;
+          for (a = 0; a < evIn.length; a++) {
+            card.addEventListener(evIn[a], onEnter);
           }
+          for (a = 0; a < evOut.length; a++) {
+            card.addEventListener(evOut[a], onLeave);
+          }
+          card.addEventListener(
+            'touchstart',
+            function () {
+              onEnter();
+            },
+            { passive: true }
+          );
 
-          card.addEventListener('mouseenter', onEnter);
-          card.addEventListener('mouseleave', onLeave);
+          function onDocTouch(e) {
+            if (!player || !playAllowed) return;
+            if (card.contains(e.target)) return;
+            onLeave();
+          }
+          document.addEventListener('touchstart', onDocTouch, { capture: true, passive: true });
         },
         onStateChange: function (event) {
           if (!player) return;
+          if (event.data === ST_BUFFERING) {
+            return;
+          }
           if (event.data === ST_PLAYING) {
             if (!playAllowed) {
               try {
                 player.pauseVideo();
+                player.seekTo(startSec, true);
+                if (priming) {
+                  priming = false;
+                }
               } catch (e) {
                 /* no-op */
               }
-              return;
-            }
-            try {
-              player.setPlaybackRate(2);
-            } catch (e) {
-              /* no-op */
+            } else {
+              try {
+                player.setPlaybackRate(2);
+              } catch (e) {
+                /* no-op */
+              }
             }
             return;
           }
           if (event.data === ST_ENDED) {
-            player.seekTo(getStartSeconds(card), true);
-            if (mouseInside) {
-              playAllowed = true;
-              player.playVideo();
+            try {
+              player.seekTo(getStartSeconds(card), true);
+              if (mouseInside) {
+                playAllowed = true;
+                player.playVideo();
+              }
+            } catch (e) {
+              /* no-op */
             }
           }
         }
@@ -206,7 +258,6 @@
 
   window.addEventListener('siteRevealed', onSiteRevealed, { once: true });
 
-  // Preloader can dispatch `siteRevealed` before this file runs — listener would miss the event.
   if (document.body && document.body.classList.contains('is-revealing')) {
     onSiteRevealed();
   }
@@ -215,14 +266,12 @@
     initPlayers();
   }
 
-  /* Backup: IFrame API sometimes loads before onYouTubeIframeAPIReady is assigned (strict order). */
   window.addEventListener('load', function () {
     if (window.YT && window.YT.Player) {
       initPlayers();
     }
   });
 
-  // Poll briefly for late API (slow networks / ad blockers with delayed inject)
   var yTry = 0;
   var yPoll = setInterval(function () {
     yTry += 1;

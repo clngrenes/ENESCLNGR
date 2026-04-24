@@ -16,6 +16,8 @@
     var globalImagesToPreload = [
       'ASSETS/COVERS/pulse-cover.jpg?v=8',
       'ASSETS/images/PULSE/screens.jpg',
+      'ASSETS/COVERS/aidea-cover.jpg?v=2',
+      'ASSETS/images/AIDEA/realtime.jpg',
       'ASSETS/COVERS/mykorrizha-cover.jpg?v=2',
       'ASSETS/images/MYKORRIZHA/teacher-view.jpg',
       'ASSETS/images/PULSE/appicon.jpg',
