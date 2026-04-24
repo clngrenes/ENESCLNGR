@@ -11,6 +11,8 @@
 
 .about__description .columns-equal-height {
   gap: var(--space-2);
+  align-items: stretch;
+  min-height: 0;
 }
 
 .about__description .columns-equal-height__col {
@@ -28,7 +30,7 @@
   gap: var(--space-2);
   flex: 1;
   min-height: 0;
-  align-items: stretch;
+  align-items: start;
 }
 
 .about__young-frame {
@@ -37,7 +39,6 @@
   box-sizing: border-box;
   border: 1px solid var(--color-border);
   overflow: hidden;
-  align-self: start;
 }
 
 .about__young-img {
@@ -48,11 +49,39 @@
   object-position: center;
 }
 
+/* Square primary block, same footprint as the framed photo */
 .about__twin .about__philosophy {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
+  justify-content: center;
+  overflow: auto;
+  min-height: 0;
+  text-align: left;
+}
+
+.about__twin .about__philosophy p {
+  max-width: 100%;
+}
+
+/* Right column: single portrait, full height of the left column (grid row) */
+.about__description .about__description-photo {
   min-height: 0;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.about__description .about__description-photo .about__portrait {
+  flex: 1 1 0;
+  width: 100%;
+  min-height: 0;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
 }
 
 @media (max-width: 768px) {
@@ -60,17 +89,11 @@
     grid-template-columns: 1fr;
   }
 
-  .about__twin .about__philosophy {
-    height: auto;
+  .about__description .about__description-photo .about__portrait {
+    flex: 0 0 auto;
+    min-height: min(100vw, 32rem);
+    max-height: 70svh;
   }
-}
-
-.about__portrait {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  display: block;
-  object-fit: cover;
-  object-position: center top;
 }
 
 
