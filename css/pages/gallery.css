@@ -1,9 +1,9 @@
 /* ============================================
-   Gallery Page Styles
-   10-column grid:
-     Row 1 — 6 col + 4 col (Reach)
-     Row 2–3 — 4 col tall (Retarget) + 6/6 stacked (mockups, logo)
-   Staggered blur-fade: .gallery__grid--reveal (JS after preloader)
+   Gallery Page — 10-column grid
+   Reach → reach3 → Retarget cover → illu-1+2 →
+   Fendi → Momentum 1&2 → Astraeon →
+   link + noviper + square UI → dashboard
+   Stagger: .gallery__grid--reveal (gallery-reveal.js)
    ============================================ */
 
 @keyframes gallery-item-reveal {
@@ -23,7 +23,7 @@
   gap: var(--space-4);
 }
 
-/* Hidden until preloader is done, then .gallery__grid--reveal triggers staggered animation */
+/* Hidden until preloader finishes */
 .page.gallery .gallery__item {
   opacity: 0;
   filter: blur(18px);
@@ -35,21 +35,21 @@
   animation: gallery-item-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.page.gallery .gallery__grid--reveal .gallery__item--1 {
-  animation-delay: 0.04s;
-}
-.page.gallery .gallery__grid--reveal .gallery__item--2 {
-  animation-delay: 0.1s;
-}
-.page.gallery .gallery__grid--reveal .gallery__item--3 {
-  animation-delay: 0.16s;
-}
-.page.gallery .gallery__grid--reveal .gallery__item--4 {
-  animation-delay: 0.22s;
-}
-.page.gallery .gallery__grid--reveal .gallery__item--5 {
-  animation-delay: 0.28s;
-}
+/* Stagger (14 tiles) */
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(1) { animation-delay: 0.04s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(2) { animation-delay: 0.08s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(3) { animation-delay: 0.12s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(4) { animation-delay: 0.16s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(5) { animation-delay: 0.2s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(6) { animation-delay: 0.24s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(7) { animation-delay: 0.28s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(8) { animation-delay: 0.32s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(9) { animation-delay: 0.36s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(10) { animation-delay: 0.4s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(11) { animation-delay: 0.44s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(12) { animation-delay: 0.48s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(13) { animation-delay: 0.52s; }
+.page.gallery .gallery__grid--reveal .gallery__item:nth-child(14) { animation-delay: 0.56s; }
 
 @media (prefers-reduced-motion: reduce) {
   .page.gallery .gallery__item,
@@ -66,12 +66,13 @@
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: var(--space-1);
+  align-items: stretch;
 }
 
-/* Stroke on light/white-background images that would bleed into page bg */
 .gallery__item {
   overflow: hidden;
   position: relative;
+  min-width: 0;
 }
 
 .gallery__image {
@@ -81,19 +82,23 @@
   display: block;
 }
 
-/* --- Grid placement --- */
+/* Row 1: Reach (6 + 4) */
+.gallery__item--1 { grid-column: 1 / 7; grid-row: 1; }
+.gallery__item--2 { grid-column: 7 / 11; grid-row: 1; }
 
-/* Row 1: 6 + 4 */
-.gallery__item--1 { grid-column: 1 / 7; }
-.gallery__item--2 { grid-column: 7 / 11; }
+/* reach3 */
+.gallery__item--3 { grid-column: 1 / 11; grid-row: 2; }
 
-/* Row 2–3: tall left + two stacked on the right */
-.gallery__item--3 { grid-column: 1 / 5; grid-row: 2 / 4; }
-.gallery__item--4 { grid-column: 5 / 11; grid-row: 2 / 3; }
-.gallery__item--5 { grid-column: 5 / 11; grid-row: 3 / 4; }
+/* Retarget cover */
+.gallery__item--4 { grid-column: 1 / 11; grid-row: 3; }
+
+/* illu 1 + 2 */
+.gallery__item--5 { grid-column: 1 / 6; grid-row: 4; }
+.gallery__item--6 { grid-column: 6 / 11; grid-row: 4; }
 
 .gallery__item--4::after,
-.gallery__item--5::after {
+.gallery__item--5::after,
+.gallery__item--6::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -101,7 +106,40 @@
   pointer-events: none;
 }
 
-/* --- Mobile: single column --- */
+/* Full-width blocks */
+.gallery__item--7 { grid-column: 1 / 11; grid-row: 5; }
+.gallery__item--8 { grid-column: 1 / 11; grid-row: 6; }
+.gallery__item--9 { grid-column: 1 / 11; grid-row: 7; }
+.gallery__item--10 { grid-column: 1 / 11; grid-row: 8; }
+
+/* link (3) + noviper (3) + UI square (4) */
+.gallery__item--11 { grid-column: 1 / 4; grid-row: 9; }
+.gallery__item--12 { grid-column: 4 / 7; grid-row: 9; }
+.gallery__item--13 { grid-column: 7 / 11; grid-row: 9; }
+
+.gallery__item--11::after,
+.gallery__item--12::after,
+.gallery__item--13::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-border);
+  pointer-events: none;
+}
+
+/* UI tile: square (4er-Spalte = Breite bestimmt die Höhe) */
+.gallery__item--ui-square {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  align-self: center;
+}
+
+/* dashboard */
+.gallery__item--14 { grid-column: 1 / 11; grid-row: 10; }
+
+/* --- Mobile: single column, natural order --- */
 @media (max-width: 768px) {
   .gallery__grid {
     grid-template-columns: 1fr;
@@ -111,8 +149,25 @@
   .gallery__item--2,
   .gallery__item--3,
   .gallery__item--4,
-  .gallery__item--5 {
+  .gallery__item--5,
+  .gallery__item--6,
+  .gallery__item--7,
+  .gallery__item--8,
+  .gallery__item--9,
+  .gallery__item--10,
+  .gallery__item--11,
+  .gallery__item--12,
+  .gallery__item--13,
+  .gallery__item--14 {
     grid-column: 1 / -1;
     grid-row: auto;
+  }
+
+  .gallery__item--13.gallery__item--ui-square {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    align-self: stretch;
+    justify-self: stretch;
   }
 }

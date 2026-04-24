@@ -16,13 +16,11 @@
   <link rel="stylesheet" href="css/components/footer.css">
   <link rel="stylesheet" href="css/components/button.css">
   <link rel="stylesheet" href="css/components/preloader.css">
-  <link rel="stylesheet" href="css/pages/gallery.css?v=5">
+  <link rel="stylesheet" href="css/pages/gallery.css?v=6">
 
   <link rel="preload" as="image" href="ASSETS/images/REACH/phone-bottom.jpg">
   <link rel="preload" as="image" href="ASSETS/images/REACH/reachlogo.jpg">
   <link rel="preload" as="image" href="ASSETS/images/COVERS/retarget-cover.jpg">
-  <link rel="preload" as="image" href="ASSETS/images/RETARGET/mockups-secondary.png">
-  <link rel="preload" as="image" href="ASSETS/images/RETARGET/logo-combination.png">
 </head>
 <body class="is-loading" data-page="gallery">
   <!-- Preloader — same as home; preloader.js loads gallery images only (no home cover pack) -->
@@ -45,33 +43,59 @@
     <!-- Nav -->
     <nav class="nav" data-nav-page="gallery"></nav>
 
-    <!-- Main Content -->
+    <!-- Main Content — 10-col grid, top to bottom: Reach, Reach3, Retarget, illu pair, Fendi, Momentum, Astraeon, link / noviper / UI, dashboard -->
     <main>
       <div class="gallery__grid">
 
-        <!-- Item 1: Row 1, left -->
+        <!-- Reach: row 1 -->
         <div class="gallery__item gallery__item--1">
           <img class="gallery__image" src="ASSETS/images/REACH/phone-bottom.jpg" alt="Reach app on phone">
         </div>
-
-        <!-- Item 2: Row 1, right -->
         <div class="gallery__item gallery__item--2">
           <img class="gallery__image" src="ASSETS/images/REACH/reachlogo.jpg" alt="Reach project logo">
         </div>
-
-        <!-- Item 3: Row 2, left (tall, spans 2 rows) — was 5 after AIDEA row removed -->
         <div class="gallery__item gallery__item--3">
+          <img class="gallery__image" src="ASSETS/images/REACH/reach3.jpg" alt="Reach project">
+        </div>
+
+        <!-- Retarget -->
+        <div class="gallery__item gallery__item--4">
           <img class="gallery__image" src="ASSETS/images/COVERS/retarget-cover.jpg" alt="Retarget project cover">
         </div>
-
-        <!-- Item 4: Row 2, right top -->
-        <div class="gallery__item gallery__item--4">
-          <img class="gallery__image" src="ASSETS/images/RETARGET/mockups-secondary.png" alt="Retarget project mockups">
+        <div class="gallery__item gallery__item--5">
+          <img class="gallery__image" src="ASSETS/images/RETARGET/illu-1.jpg" alt="Retarget illustration 1">
+        </div>
+        <div class="gallery__item gallery__item--6">
+          <img class="gallery__image" src="ASSETS/images/RETARGET/illu-2.jpg" alt="Retarget illustration 2">
         </div>
 
-        <!-- Item 5: Row 3, right bottom -->
-        <div class="gallery__item gallery__item--5">
-          <img class="gallery__image" src="ASSETS/images/RETARGET/logo-combination.png" alt="Retarget logo combinations">
+        <!-- Fendi, Momentum, Astraeon -->
+        <div class="gallery__item gallery__item--7">
+          <img class="gallery__image" src="ASSETS/images/GALLERY/fendi.jpg" alt="Fendi project">
+        </div>
+        <div class="gallery__item gallery__item--8">
+          <img class="gallery__image" src="ASSETS/images/GALLERY/momentum-1.jpg" alt="Momentum project 1">
+        </div>
+        <div class="gallery__item gallery__item--9">
+          <img class="gallery__image" src="ASSETS/images/GALLERY/momentum-2.jpg" alt="Momentum project 2">
+        </div>
+        <div class="gallery__item gallery__item--10">
+          <img class="gallery__image" src="ASSETS/images/GALLERY/astraeon.jpg" alt="Astraeon project">
+        </div>
+
+        <!-- link | noviper | UI (square) -->
+        <div class="gallery__item gallery__item--11">
+          <img class="gallery__image" src="ASSETS/images/GALLERY/link.jpg" alt="Link project">
+        </div>
+        <div class="gallery__item gallery__item--12">
+          <img class="gallery__image" src="ASSETS/images/GALLERY/noviper.jpg" alt="Noviper project">
+        </div>
+        <div class="gallery__item gallery__item--13 gallery__item--ui-square">
+          <img class="gallery__image" src="ASSETS/images/GALLERY/ui.jpg" alt="UI work">
+        </div>
+
+        <div class="gallery__item gallery__item--14">
+          <img class="gallery__image" src="ASSETS/images/GALLERY/dashboard.jpg" alt="Dashboard design">
         </div>
 
       </div>
