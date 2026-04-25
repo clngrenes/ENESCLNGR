@@ -1,6 +1,4 @@
 (function () {
-  console.log('[Preloader] init —', window.location.pathname);
-
   var preloader = document.getElementById('preloader');
   var progressCircle = document.getElementById('preloader-progress');
 
@@ -17,16 +15,16 @@
   // ── Background cache-fill (fire and forget — never blocks reveal) ─────────
   var page = (document.body && document.body.getAttribute('data-page')) || '';
   var toCache = page === 'home' ? [
-    'assets/COVERS/pulse-cover.jpg?v=8',
-    'assets/images/PULSE/screens.jpg',
-    'assets/COVERS/aidea-cover.jpg?v=2',
-    'assets/images/AIDEA/realtime.jpg',
-    'assets/COVERS/mykorrizha-cover.jpg?v=2',
-    'assets/images/MYKORRIZHA/skill-tree.jpeg',
-    'assets/COVERS/reps-cover.jpg?v=5',
-    'assets/COVERS/reps-hover.jpg?v=1',
-    'assets/COVERS/orientation-cover.jpg?v=3',
-    'assets/images/ORIENTATION/Necklace%20Form.jpeg'
+    'ASSETS/COVERS/pulse-cover.jpg?v=8',
+    'ASSETS/images/PULSE/screens.jpg',
+    'ASSETS/COVERS/aidea-cover.jpg?v=2',
+    'ASSETS/images/AIDEA/realtime.jpg',
+    'ASSETS/COVERS/mykorrizha-cover.jpg?v=2',
+    'ASSETS/images/MYKORRIZHA/1.jpg',
+    'ASSETS/COVERS/reps-cover.jpg?v=5',
+    'ASSETS/COVERS/reps-hover.jpg?v=1',
+    'ASSETS/COVERS/orientation-cover.jpg?v=3',
+    'ASSETS/images/ORIENTATION/Necklace%20Form.jpeg'
   ] : [];
 
   for (var i = 0; i < document.images.length; i++) {
