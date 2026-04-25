@@ -1,139 +1,83 @@
 (function () {
   console.log('[Preloader] init —', window.location.pathname);
 
-  function initPreloader() {
-    var preloader = document.getElementById('preloader');
-    var progressCircle = document.getElementById('preloader-progress');
+  var preloader = document.getElementById('preloader');
+  var progressCircle = document.getElementById('preloader-progress');
 
-    if (!preloader || !progressCircle) {
+  // No preloader in DOM → reveal immediately (e.g. no-JS fallback pages)
+  if (!preloader || !progressCircle) {
+    if (document.body) {
+      document.body.classList.remove('is-loading');
+      document.body.classList.add('is-revealing');
+    }
+    window.dispatchEvent(new CustomEvent('siteRevealed'));
+    return;
+  }
+
+  // ── Background cache-fill (fire and forget — never blocks reveal) ─────────
+  var page = (document.body && document.body.getAttribute('data-page')) || '';
+  var toCache = page === 'home' ? [
+    'assets/COVERS/pulse-cover.jpg?v=8',
+    'assets/images/PULSE/screens.jpg',
+    'assets/COVERS/aidea-cover.jpg?v=2',
+    'assets/images/AIDEA/realtime.jpg',
+    'assets/COVERS/mykorrizha-cover.jpg?v=2',
+    'assets/images/MYKORRIZHA/skill-tree.jpeg',
+    'assets/COVERS/reps-cover.jpg?v=5',
+    'assets/COVERS/reps-hover.jpg?v=1',
+    'assets/COVERS/orientation-cover.jpg?v=3',
+    'assets/images/ORIENTATION/Necklace%20Form.jpeg'
+  ] : [];
+
+  for (var i = 0; i < document.images.length; i++) {
+    var cacheSrc = document.images[i].src;
+    if (cacheSrc) { try { var ci = new Image(); ci.src = cacheSrc; } catch (e) {} }
+  }
+  for (var j = 0; j < toCache.length; j++) {
+    try { var ci2 = new Image(); ci2.src = toCache[j]; } catch (e) {}
+  }
+
+  // ── Ring animation + reveal ───────────────────────────────────────────────
+  var CIRCUMFERENCE = 301.59;
+  var RING_DURATION = 900; // ms to fill ring
+  var startTime = null;
+  var revealed = false;
+
+  function reveal() {
+    if (revealed) return;
+    revealed = true;
+    try { progressCircle.style.strokeDashoffset = '0px'; } catch (e) {}
+    setTimeout(function () {
+      preloader.classList.add('is-hidden');
       if (document.body) {
         document.body.classList.remove('is-loading');
         document.body.classList.add('is-revealing');
       }
       window.dispatchEvent(new CustomEvent('siteRevealed'));
-      return;
-    }
+      setTimeout(function () {
+        if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+      }, 1000);
+    }, 200);
+  }
 
-    // Only preload home cover pack on the home page; all other pages track DOM images only
-    var page = (document.body && document.body.getAttribute('data-page')) || '';
-    var globalImagesToPreload = page === 'home'
-      ? [
-          'ASSETS/COVERS/pulse-cover.jpg?v=8',
-          'ASSETS/images/PULSE/screens.jpg',
-          'ASSETS/COVERS/aidea-cover.jpg?v=2',
-          'ASSETS/images/AIDEA/realtime.jpg',
-          'ASSETS/COVERS/mykorrizha-cover.jpg?v=2',
-          'ASSETS/images/MYKORRIZHA/skill-tree.jpeg',
-          'ASSETS/COVERS/reps-cover.jpg?v=5',
-          'ASSETS/COVERS/reps-hover.jpg?v=1',
-          'ASSETS/COVERS/orientation-cover.jpg?v=3',
-          'ASSETS/images/ORIENTATION/Necklace Form.jpeg'
-        ]
-      : [];
-
-    var totalImages = 0;
-    var loadedImages = 0;
-    var circumference = 301.59;
-    var imagesToTrack = [];
-
-    // 1. Gather all DOM images and load them via JS Image objects to bypass lazy-load blocking
-    for (var i = 0; i < document.images.length; i++) {
-      var src = document.images[i].src;
-      if (src) {
-        var img = new Image();
-        img.src = src;
-        imagesToTrack.push(img);
-      }
-    }
-
-    // 2. Add global ones
-    for (var j = 0; j < globalImagesToPreload.length; j++) {
-      var globalImg = new Image();
-      globalImg.src = globalImagesToPreload[j];
-      imagesToTrack.push(globalImg);
-    }
-
-    totalImages = imagesToTrack.length;
-
-    // Fallback: If it takes longer than 6 seconds, just force open
-    var fallbackTimeout = setTimeout(finishLoading, 4000);
-    var isFinished = false;
-
-    // We use a target offset and smoothly animate towards it via rAF
-    var currentOffset = circumference;
-    var targetOffset = circumference;
-
-    function updateVisualProgress() {
-      if (isFinished) return;
-      
-      // Smooth lerp towards the target offset
-      currentOffset += (targetOffset - currentOffset) * 0.15;
-      progressCircle.style.strokeDashoffset = currentOffset + 'px';
-
-      // Keep animating until finished
-      requestAnimationFrame(updateVisualProgress);
-    }
-
-    function setTargetProgress(percent) {
-      targetOffset = circumference - (percent * circumference);
-    }
-
-    function onImageLoaded() {
-      loadedImages++;
-      var percent = totalImages > 0 ? (loadedImages / totalImages) : 1;
-      
-      // Ensure we never go backwards and always progress
-      setTargetProgress(percent);
-      
-      if (loadedImages >= totalImages) {
-        // All loaded! Wait a tiny bit for the smooth bar to catch up
-        setTimeout(finishLoading, 300);
-      }
-    }
-
-    function finishLoading() {
-      if (isFinished) return;
-      isFinished = true;
-      clearTimeout(fallbackTimeout);
-      
-      // Force ring to full
-      progressCircle.style.strokeDashoffset = '0px';
-      
-      setTimeout(function() {
-        preloader.classList.add('is-hidden');
-        if (document.body) {
-          document.body.classList.remove('is-loading');
-          document.body.classList.add('is-revealing');
-        }
-        window.dispatchEvent(new CustomEvent('siteRevealed'));
-        
-        setTimeout(function() {
-          if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
-        }, 1000);
-      }, 200);
-    }
-
-    if (totalImages === 0) {
-      finishLoading();
+  function animateRing(timestamp) {
+    if (revealed) return;
+    if (!startTime) startTime = timestamp;
+    var elapsed = timestamp - startTime;
+    var t = Math.min(elapsed / RING_DURATION, 1);
+    var eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+    try {
+      progressCircle.style.strokeDashoffset = (CIRCUMFERENCE * (1 - eased)) + 'px';
+    } catch (e) {}
+    if (t < 1) {
+      requestAnimationFrame(animateRing);
     } else {
-      // Start the visual lerp loop
-      requestAnimationFrame(updateVisualProgress);
-
-      for (var k = 0; k < totalImages; k++) {
-        var trackImg = imagesToTrack[k];
-        if (trackImg.complete) {
-          onImageLoaded();
-        } else {
-          trackImg.addEventListener('load', onImageLoaded, false);
-          trackImg.addEventListener('error', onImageLoaded, false);
-        }
-      }
+      reveal();
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPreloader);
-  } else {
-    initPreloader();
-  }
+  requestAnimationFrame(animateRing);
+
+  // Absolute hard safety: if rAF is suspended (background tab, etc.), force reveal
+  setTimeout(reveal, 2000);
 })();

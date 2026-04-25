@@ -1,8 +1,14 @@
 /* ============================================
    Gallery Page Styles
    10-column grid:
-     Row 1 — 6 col + 4 col (Reach)
-     Row 2–3 — 4 col tall (Retarget) + 6/6 stacked (mockups, logo)
+     Row 1 — 6+4 (Reach phone, logo)
+     Row 2 — full width (reach3)
+     Row 3–4 — 4 col tall (Retarget cover) + 6/6 stacked (mockups, logo)
+     Row 5 — 5+5 (illu-1, illu-2)
+     Row 6 — full width (fendi)
+     Row 7 — full width (astraeon)
+     Row 8 — 6+4 (noviper, ui square)
+     Row 9 — full width (dashboard)
    Staggered blur-fade: .gallery__grid--reveal (JS after preloader)
    ============================================ */
 
@@ -23,7 +29,6 @@
   gap: var(--space-4);
 }
 
-/* Hidden until preloader is done, then .gallery__grid--reveal triggers staggered animation */
 .page.gallery .gallery__item {
   opacity: 0;
   filter: blur(18px);
@@ -35,21 +40,20 @@
   animation: gallery-item-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.page.gallery .gallery__grid--reveal .gallery__item--1 {
-  animation-delay: 0.04s;
-}
-.page.gallery .gallery__grid--reveal .gallery__item--2 {
-  animation-delay: 0.1s;
-}
-.page.gallery .gallery__grid--reveal .gallery__item--3 {
-  animation-delay: 0.16s;
-}
-.page.gallery .gallery__grid--reveal .gallery__item--4 {
-  animation-delay: 0.22s;
-}
-.page.gallery .gallery__grid--reveal .gallery__item--5 {
-  animation-delay: 0.28s;
-}
+/* Stagger delays — side-by-side pairs share the same delay */
+.page.gallery .gallery__grid--reveal .gallery__item--1  { animation-delay: 0.04s; }
+.page.gallery .gallery__grid--reveal .gallery__item--2  { animation-delay: 0.04s; }
+.page.gallery .gallery__grid--reveal .gallery__item--3  { animation-delay: 0.12s; }
+.page.gallery .gallery__grid--reveal .gallery__item--4  { animation-delay: 0.20s; }
+.page.gallery .gallery__grid--reveal .gallery__item--5  { animation-delay: 0.20s; }
+.page.gallery .gallery__grid--reveal .gallery__item--6  { animation-delay: 0.26s; }
+.page.gallery .gallery__grid--reveal .gallery__item--7  { animation-delay: 0.32s; }
+.page.gallery .gallery__grid--reveal .gallery__item--8  { animation-delay: 0.32s; }
+.page.gallery .gallery__grid--reveal .gallery__item--9  { animation-delay: 0.38s; }
+.page.gallery .gallery__grid--reveal .gallery__item--10 { animation-delay: 0.44s; }
+.page.gallery .gallery__grid--reveal .gallery__item--11 { animation-delay: 0.50s; }
+.page.gallery .gallery__grid--reveal .gallery__item--12 { animation-delay: 0.50s; }
+.page.gallery .gallery__grid--reveal .gallery__item--13 { animation-delay: 0.56s; }
 
 @media (prefers-reduced-motion: reduce) {
   .page.gallery .gallery__item,
@@ -68,7 +72,6 @@
   gap: var(--space-1);
 }
 
-/* Stroke on light/white-background images that would bleed into page bg */
 .gallery__item {
   overflow: hidden;
   position: relative;
@@ -83,17 +86,38 @@
 
 /* --- Grid placement --- */
 
-/* Row 1: 6 + 4 */
+/* Row 1: Reach */
 .gallery__item--1 { grid-column: 1 / 7; }
 .gallery__item--2 { grid-column: 7 / 11; }
 
-/* Row 2–3: tall left + two stacked on the right */
-.gallery__item--3 { grid-column: 1 / 5; grid-row: 2 / 4; }
-.gallery__item--4 { grid-column: 5 / 11; grid-row: 2 / 3; }
-.gallery__item--5 { grid-column: 5 / 11; grid-row: 3 / 4; }
+/* Row 2: Reach3 full width */
+.gallery__item--3 { grid-column: 1 / 11; }
 
-.gallery__item--4::after,
-.gallery__item--5::after {
+/* Rows 3–4: Retarget (cover spans 2 rows, mockups + logo stacked right) */
+.gallery__item--4 { grid-column: 1 / 5; grid-row: 3 / 5; }
+.gallery__item--5 { grid-column: 5 / 11; grid-row: 3 / 4; }
+.gallery__item--6 { grid-column: 5 / 11; grid-row: 4 / 5; }
+
+/* Row 5: illu-1 + illu-2 */
+.gallery__item--7 { grid-column: 1 / 6; }
+.gallery__item--8 { grid-column: 6 / 11; }
+
+/* Row 6: Fendi */
+.gallery__item--9 { grid-column: 1 / 11; }
+
+/* Row 7: Noviper left + UI right (equal height) */
+.gallery__item--10 { grid-column: 1 / 7; }
+.gallery__item--11 { grid-column: 7 / 11; }
+
+/* Row 8: Dashboard */
+.gallery__item--12 { grid-column: 1 / 11; }
+
+/* Row 9: Astraeon (bottom) */
+.gallery__item--13 { grid-column: 1 / 11; }
+
+/* Border inset on light-background Retarget items */
+.gallery__item--5::after,
+.gallery__item--6::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -111,8 +135,18 @@
   .gallery__item--2,
   .gallery__item--3,
   .gallery__item--4,
-  .gallery__item--5 {
+  .gallery__item--5,
+  .gallery__item--6,
+  .gallery__item--7,
+  .gallery__item--8,
+  .gallery__item--9,
+  .gallery__item--10,
+  .gallery__item--11,
+  .gallery__item--12,
+  .gallery__item--13 {
     grid-column: 1 / -1;
     grid-row: auto;
+    aspect-ratio: auto;
+    align-self: auto;
   }
 }

@@ -116,20 +116,20 @@
   bottom: var(--work-card-hover-inset-bottom);
 }
 
-/* [data-yt-id]: on hover, hide static/secondary cover immediately; show iframe layer.
-   (Playback still starts in JS; a brief YouTube buffer is unavoidable.) */
-.work-card[data-yt-id]:hover .work-card__image,
-.work-card[data-yt-id]:focus-within .work-card__image,
-.work-card[data-yt-id]:focus-visible .work-card__image {
+/* [data-yt-id]: only switch to video overlay once JS has primed the player (.yt-ready).
+   Before ready: normal secondary-image hover. After ready: video replaces everything. */
+.work-card[data-yt-id].yt-ready:hover .work-card__image,
+.work-card[data-yt-id].yt-ready:focus-within .work-card__image,
+.work-card[data-yt-id].yt-ready:focus-visible .work-card__image {
   opacity: 0 !important;
   filter: none !important;
   transform: none !important;
   pointer-events: none;
 }
 
-.work-card[data-yt-id]:hover .work-card__yt-wrapper,
-.work-card[data-yt-id]:focus-within .work-card__yt-wrapper,
-.work-card[data-yt-id]:focus-visible .work-card__yt-wrapper {
+.work-card[data-yt-id].yt-ready:hover .work-card__yt-wrapper,
+.work-card[data-yt-id].yt-ready:focus-within .work-card__yt-wrapper,
+.work-card[data-yt-id].yt-ready:focus-visible .work-card__yt-wrapper {
   opacity: 1;
   z-index: 10;
 }
@@ -179,6 +179,16 @@
 .work-card--pulse:hover .work-card__image,
 .work-card--pulse:focus-visible .work-card__image {
   object-position: center center;
+}
+
+/* Mykorrizha: hover state shows hero (1.jpg) with top-left framing */
+.work-card--mykorrizha .work-card__image--secondary {
+  object-position: left top;
+}
+
+.work-card--mykorrizha:hover .work-card__image--secondary,
+.work-card--mykorrizha:focus-visible .work-card__image--secondary {
+  object-position: left top;
 }
 
 .work-card__title {

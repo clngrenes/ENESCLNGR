@@ -11,21 +11,23 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/tokens.css?v=2">
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/base.css?v=1">
+  <link rel="stylesheet" href="css/base.css?v=2">
   <link rel="stylesheet" href="css/components/nav.css?v=10">
   <link rel="stylesheet" href="css/components/footer.css">
   <link rel="stylesheet" href="css/components/button.css">
   <link rel="stylesheet" href="css/components/preloader.css">
-  <link rel="stylesheet" href="css/pages/gallery.css?v=5">
+  <link rel="stylesheet" href="css/pages/gallery.css?v=8">
 
-  <link rel="preload" as="image" href="ASSETS/images/REACH/phone-bottom.jpg">
-  <link rel="preload" as="image" href="ASSETS/images/REACH/reachlogo.jpg">
-  <link rel="preload" as="image" href="ASSETS/images/COVERS/retarget-cover.jpg">
-  <link rel="preload" as="image" href="ASSETS/images/RETARGET/mockups-secondary.png">
-  <link rel="preload" as="image" href="ASSETS/images/RETARGET/logo-combination.png">
+  <link rel="preload" as="image" href="assets/images/REACH/phone-bottom.jpg">
+  <link rel="preload" as="image" href="assets/images/REACH/reachlogo.jpg">
+  <link rel="preload" as="image" href="reach3.jpg">
+  <link rel="preload" as="image" href="assets/images/COVERS/retarget-cover.jpg">
+  <link rel="preload" as="image" href="assets/images/RETARGET/mockups-secondary.png">
+  <link rel="preload" as="image" href="assets/images/RETARGET/logo-combination.png">
+  <link rel="preload" as="image" href="illu-1.png">
+  <link rel="preload" as="image" href="illlu-2.png">
 </head>
 <body class="is-loading" data-page="gallery">
-  <!-- Preloader — same as home; preloader.js loads gallery images only (no home cover pack) -->
   <div id="preloader" class="preloader">
     <div class="preloader__inner">
       <svg class="preloader__ring" viewBox="0 0 100 100">
@@ -42,42 +44,69 @@
 
   <div class="page gallery">
 
-    <!-- Nav -->
     <nav class="nav" data-nav-page="gallery"></nav>
 
-    <!-- Main Content -->
     <main>
       <div class="gallery__grid">
 
-        <!-- Item 1: Row 1, left -->
+        <!-- Row 1: Reach -->
         <div class="gallery__item gallery__item--1">
-          <img class="gallery__image" src="ASSETS/images/REACH/phone-bottom.jpg" alt="Reach app on phone">
+          <img class="gallery__image" src="assets/images/REACH/phone-bottom.jpg" alt="Reach app on phone">
         </div>
-
-        <!-- Item 2: Row 1, right -->
         <div class="gallery__item gallery__item--2">
-          <img class="gallery__image" src="ASSETS/images/REACH/reachlogo.jpg" alt="Reach project logo">
+          <img class="gallery__image" src="assets/images/REACH/reachlogo.jpg" alt="Reach project logo">
         </div>
 
-        <!-- Item 3: Row 2, left (tall, spans 2 rows) — was 5 after AIDEA row removed -->
+        <!-- Row 2: Reach3 — full width, above Retarget -->
         <div class="gallery__item gallery__item--3">
-          <img class="gallery__image" src="ASSETS/images/COVERS/retarget-cover.jpg" alt="Retarget project cover">
+          <img class="gallery__image" src="reach3.jpg" alt="Reach project detail">
         </div>
 
-        <!-- Item 4: Row 2, right top -->
+        <!-- Rows 3–4: Retarget -->
         <div class="gallery__item gallery__item--4">
-          <img class="gallery__image" src="ASSETS/images/RETARGET/mockups-secondary.png" alt="Retarget project mockups">
+          <img class="gallery__image" src="assets/images/COVERS/retarget-cover.jpg" alt="Retarget project cover">
+        </div>
+        <div class="gallery__item gallery__item--5">
+          <img class="gallery__image" src="assets/images/RETARGET/mockups-secondary.png" alt="Retarget project mockups">
+        </div>
+        <div class="gallery__item gallery__item--6">
+          <img class="gallery__image" src="assets/images/RETARGET/logo-combination.png" alt="Retarget logo combinations">
         </div>
 
-        <!-- Item 5: Row 3, right bottom -->
-        <div class="gallery__item gallery__item--5">
-          <img class="gallery__image" src="ASSETS/images/RETARGET/logo-combination.png" alt="Retarget logo combinations">
+        <!-- Row 5: illu-1 + illu-2 side by side -->
+        <div class="gallery__item gallery__item--7">
+          <img class="gallery__image" src="illu-1.png" alt="Illustration 1">
+        </div>
+        <div class="gallery__item gallery__item--8">
+          <img class="gallery__image" src="illlu-2.png" alt="Illustration 2">
+        </div>
+
+        <!-- Row 6: Fendi -->
+        <div class="gallery__item gallery__item--9">
+          <img class="gallery__image" src="fendi.png" alt="Fendi type exploration">
+        </div>
+
+        <!-- Row 7: Noviper (left) + UI (right, equal height) -->
+        <div class="gallery__item gallery__item--10">
+          <img class="gallery__image" src="no-bite-club.png" alt="Noviper project">
+        </div>
+        <div class="gallery__item gallery__item--11">
+          <img class="gallery__image" src="ui.jpg" alt="UI design">
+        </div>
+
+        <!-- Row 8: Dashboard -->
+        <div class="gallery__item gallery__item--12">
+          <img class="gallery__image" src="dashboard.jpg" alt="Dashboard design">
+        </div>
+
+        <!-- Row 9: Astraeon (bottom) -->
+        <div class="gallery__item gallery__item--13">
+          <img class="gallery__image" src="astraeon.png" alt="Astraeon project">
         </div>
 
       </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
       <span class="footer__copyright">&copy; 2026 Enes Cilingir</span>
       <a href="imprint.html" class="footer__link">Imprint</a>
@@ -85,13 +114,13 @@
 
   </div>
 
-  <script src="ASSETS/js/gallery-reveal.js?v=1"></script>
-  <script src="ASSETS/js/preloader.js?v=5"></script>
-  <script src="ASSETS/js/nav.js?v=4"></script>
-  <script src="ASSETS/js/theme.js"></script>
-  <script src="ASSETS/js/copy-mail.js"></script>
+  <script src="assets/js/gallery-reveal.js?v=1"></script>
+  <script src="assets/js/preloader.js?v=8"></script>
+  <script src="assets/js/nav.js?v=4"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/copy-mail.js"></script>
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
-  <script src="ASSETS/js/smooth-scroll.js"></script>
+  <script src="assets/js/smooth-scroll.js"></script>
   <noscript>
     <style>
       .page.gallery .gallery__item { opacity: 1 !important; filter: none !important; transform: none !important; }

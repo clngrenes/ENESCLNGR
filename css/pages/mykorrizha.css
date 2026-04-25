@@ -123,7 +123,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--space-1);
-  align-items: start;
+  align-items: stretch;
   width: 100%;
   min-width: 0;
 }
@@ -134,13 +134,21 @@
   gap: var(--space-1);
   min-width: 0;
   width: 100%;
+  min-height: 0;
 }
 
-/* Placeholders never flex-grow in this section — fill column width only */
+/* Placeholders: width only. Do not set min-height: 0 here — it overrides --tall / --very-tall. */
 .mykorrizha__skills-cell .mykorrizha__placeholder {
   flex: 0 0 auto;
   width: 100%;
-  min-height: 0;
+}
+
+.mykorrizha__skills-cell .mykorrizha__placeholder--tall {
+  min-height: clamp(20rem, 30vw, 28rem);
+}
+
+.mykorrizha__skills-cell .mykorrizha__placeholder--very-tall {
+  min-height: clamp(34rem, 45vw, 42rem);
 }
 
 .mykorrizha__placeholder--tall {
@@ -169,12 +177,24 @@
   box-sizing: border-box;
 }
 
-/* Right column: copy block, then grey box — stack naturally */
+/* Right column: headers + text; bottom grey block grows to match row height */
 .mykorrizha__skills-cell--stack {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
   min-width: 0;
+  min-height: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.mykorrizha__skills-cell--stack > .text-block {
+  flex: none;
+}
+
+.mykorrizha__skills-cell--stack .mykorrizha__placeholder--tall {
+  flex: 1 1 auto;
+  min-height: clamp(20rem, 30vw, 28rem);
 }
 
 @media (max-width: 768px) {
