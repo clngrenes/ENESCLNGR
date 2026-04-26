@@ -2,11 +2,7 @@
    Orientation Project Page — Page-specific styles
    ============================================ */
 
-/* Tight grids (collage rhythm): meta + multi-column content */
-
-.page.orientation > main {
-  gap: var(--space-1);
-}
+/* Tight grids (collage rhythm). Section↔section spacing uses .page>main (base.css --space-main-sections) like other projects. */
 
 .columns-equal-height,
 .columns-equal-height__col {
