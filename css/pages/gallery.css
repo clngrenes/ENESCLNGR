@@ -1,6 +1,6 @@
 /* ============================================
    Gallery Page Styles
-   10-column grid; images in ASSETS/images/EXHIBITION (exhibition / loose work).
+   10-column grid: top REACH + RETARGET, then EXHIBITION (illu pair, momentum, rest).
    Staggered blur-fade: .gallery__grid--reveal (JS after preloader)
    ============================================ */
 
@@ -46,6 +46,7 @@
 .page.gallery .gallery__grid--reveal .gallery__item--11 { animation-delay: 0.50s; }
 .page.gallery .gallery__grid--reveal .gallery__item--12 { animation-delay: 0.50s; }
 .page.gallery .gallery__grid--reveal .gallery__item--13 { animation-delay: 0.56s; }
+.page.gallery .gallery__grid--reveal .gallery__item--14 { animation-delay: 0.56s; }
 
 @media (prefers-reduced-motion: reduce) {
   .page.gallery .gallery__item,
@@ -90,22 +91,25 @@
 .gallery__item--5 { grid-column: 5 / 11; grid-row: 3 / 4; }
 .gallery__item--6 { grid-column: 5 / 11; grid-row: 4 / 5; }
 
-/* Row 5: illu-1 + illu-2 */
+/* Row 5: exhibition illustrations (side by side) */
 .gallery__item--7 { grid-column: 1 / 6; }
 .gallery__item--8 { grid-column: 6 / 11; }
 
-/* Row 6: Fendi */
+/* Row 6: Momentum (full) */
 .gallery__item--9 { grid-column: 1 / 11; }
 
-/* Row 7: Noviper left + UI right (equal height) */
-.gallery__item--10 { grid-column: 1 / 7; }
-.gallery__item--11 { grid-column: 7 / 11; }
+/* Row 7: Fendi */
+.gallery__item--10 { grid-column: 1 / 11; }
 
-/* Row 8: Dashboard */
-.gallery__item--12 { grid-column: 1 / 11; }
+/* Row 8: No Bite + UI */
+.gallery__item--11 { grid-column: 1 / 7; }
+.gallery__item--12 { grid-column: 7 / 11; }
 
-/* Row 9: Astraeon (bottom) */
+/* Row 9: Dashboard */
 .gallery__item--13 { grid-column: 1 / 11; }
+
+/* Row 10: Astraeon */
+.gallery__item--14 { grid-column: 1 / 11; }
 
 /* --- Mobile: single column --- */
 @media (max-width: 768px) {
@@ -125,7 +129,8 @@
   .gallery__item--10,
   .gallery__item--11,
   .gallery__item--12,
-  .gallery__item--13 {
+  .gallery__item--13,
+  .gallery__item--14 {
     grid-column: 1 / -1;
     grid-row: auto;
     aspect-ratio: auto;
