@@ -46,7 +46,6 @@
 .page.gallery .gallery__grid--reveal .gallery__item--11 { animation-delay: 0.50s; }
 .page.gallery .gallery__grid--reveal .gallery__item--12 { animation-delay: 0.50s; }
 .page.gallery .gallery__grid--reveal .gallery__item--13 { animation-delay: 0.56s; }
-.page.gallery .gallery__grid--reveal .gallery__item--14 { animation-delay: 0.56s; }
 
 @media (prefers-reduced-motion: reduce) {
   .page.gallery .gallery__item,
@@ -83,33 +82,30 @@
 .gallery__item--1 { grid-column: 1 / 7; }
 .gallery__item--2 { grid-column: 7 / 11; }
 
-/* Row 2: Reach3 full width */
-.gallery__item--3 { grid-column: 1 / 11; }
-
-/* Rows 3–4: Retarget (cover spans 2 rows, mockups + logo stacked right) */
-.gallery__item--4 { grid-column: 1 / 5; grid-row: 3 / 5; }
+/* Rows 2–3: Retarget (under Reach; no reach3 row) */
+.gallery__item--3 { grid-column: 1 / 5; grid-row: 2 / 4; }
+.gallery__item--4 { grid-column: 5 / 11; grid-row: 2 / 3; }
 .gallery__item--5 { grid-column: 5 / 11; grid-row: 3 / 4; }
-.gallery__item--6 { grid-column: 5 / 11; grid-row: 4 / 5; }
 
-/* Row 5: exhibition illustrations (side by side) */
-.gallery__item--7 { grid-column: 1 / 6; }
-.gallery__item--8 { grid-column: 6 / 11; }
+/* Row 4: exhibition illustrations (side by side) */
+.gallery__item--6 { grid-column: 1 / 6; }
+.gallery__item--7 { grid-column: 6 / 11; }
 
-/* Row 6: Momentum (full) */
+/* Row 5: Momentum (full) */
+.gallery__item--8 { grid-column: 1 / 11; }
+
+/* Row 6: Fendi */
 .gallery__item--9 { grid-column: 1 / 11; }
 
-/* Row 7: Fendi */
-.gallery__item--10 { grid-column: 1 / 11; }
+/* Row 7: No Bite + UI */
+.gallery__item--10 { grid-column: 1 / 7; }
+.gallery__item--11 { grid-column: 7 / 11; }
 
-/* Row 8: No Bite + UI */
-.gallery__item--11 { grid-column: 1 / 7; }
-.gallery__item--12 { grid-column: 7 / 11; }
+/* Row 8: Dashboard */
+.gallery__item--12 { grid-column: 1 / 11; }
 
-/* Row 9: Dashboard */
+/* Row 9: Astraeon */
 .gallery__item--13 { grid-column: 1 / 11; }
-
-/* Row 10: Astraeon */
-.gallery__item--14 { grid-column: 1 / 11; }
 
 /* --- Mobile: single column --- */
 @media (max-width: 768px) {
@@ -129,8 +125,7 @@
   .gallery__item--10,
   .gallery__item--11,
   .gallery__item--12,
-  .gallery__item--13,
-  .gallery__item--14 {
+  .gallery__item--13 {
     grid-column: 1 / -1;
     grid-row: auto;
     aspect-ratio: auto;
