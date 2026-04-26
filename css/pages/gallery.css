@@ -1,14 +1,6 @@
 /* ============================================
    Gallery Page Styles
-   10-column grid:
-     Row 1 — 6+4 (Reach phone, logo)
-     Row 2 — full width (reach3)
-     Row 3–4 — 4 col tall (Retarget cover) + 6/6 stacked (mockups, logo)
-     Row 5 — 5+5 (illu-1, illu-2)
-     Row 6 — full width (fendi)
-     Row 7 — full width (astraeon)
-     Row 8 — 6+4 (noviper, ui square)
-     Row 9 — full width (dashboard)
+   10-column grid; images in ASSETS/images/EXHIBITION (exhibition / loose work).
    Staggered blur-fade: .gallery__grid--reveal (JS after preloader)
    ============================================ */
 
@@ -114,16 +106,6 @@
 
 /* Row 9: Astraeon (bottom) */
 .gallery__item--13 { grid-column: 1 / 11; }
-
-/* Border inset on light-background Retarget items */
-.gallery__item--5::after,
-.gallery__item--6::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 1px solid var(--color-border);
-  pointer-events: none;
-}
 
 /* --- Mobile: single column --- */
 @media (max-width: 768px) {
