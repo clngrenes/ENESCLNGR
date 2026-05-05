@@ -67,6 +67,18 @@
   /* Vertical gap between sibling sections in <main> (project pages, about, imprint, …) */
   --space-main-sections: var(--space-6);
 
+  /* --- Motion --- */
+  --ease-standard:  cubic-bezier(0.4, 0, 0.2, 1);   /* material standard */
+  --ease-entrance:  cubic-bezier(0.22, 1, 0.36, 1);  /* overshoot-free decelerate */
+  --ease-exit:      cubic-bezier(0.4, 0, 1, 1);       /* accelerate out */
+
+  --blur-sm:  4px;
+  --blur-md:  8px;
+  --blur-lg:  16px;
+
+  --aspect-portrait:  4 / 5;
+  --aspect-landscape: 16 / 10;
+
   /* --- Layout --- */
   --max-width: 85rem;         /* 1360px — slightly inset vs full 1440 for calmer line length; nav + main stay aligned */
   --content-width: 78rem;     /* 1248px */

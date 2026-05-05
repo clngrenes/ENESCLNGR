@@ -49,7 +49,7 @@
   object-position: center;
   border-radius: 0;
   display: block;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s var(--ease-standard);
   z-index: 0;
 }
 
@@ -68,16 +68,16 @@
 /* Secondary image is hidden by default */
 .work-card__image--secondary {
   opacity: 0;
-  filter: blur(8px);
-  transform: scale(1.05); /* Slight zoom out effect */
+  filter: blur(var(--blur-md));
+  transform: scale(1.05);
 }
 
 /* On hover, primary fades out and blurs ONLY if secondary exists */
 .work-card.has-secondary:hover .work-card__image--primary,
 .work-card.has-secondary:focus-visible .work-card__image--primary {
   opacity: 0;
-  filter: blur(8px);
-  transform: scale(0.95); /* Shrinks back */
+  filter: blur(var(--blur-md));
+  transform: scale(0.95);
 }
 
 /* On hover, secondary fades in and unblurs */
@@ -103,8 +103,8 @@
   pointer-events: none;
   z-index: 1;
   border-radius: inherit;
-  background-color: #000;
-  transition: opacity 0.2s ease, top 0.4s cubic-bezier(0.4, 0, 0.2, 1), left 0.4s cubic-bezier(0.4, 0, 0.2, 1), right 0.4s cubic-bezier(0.4, 0, 0.2, 1), bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: var(--color-mocha-6);
+  transition: opacity 0.2s ease, top 0.4s var(--ease-standard), left 0.4s var(--ease-standard), right 0.4s var(--ease-standard), bottom 0.4s var(--ease-standard);
 }
 
 .work-card:hover .work-card__yt-wrapper,
@@ -215,5 +215,12 @@
 .home__work-grid .work-card:focus-visible {
   transform: none;
   z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-card__image,
+  .work-card__image--secondary,
+  .work-card__content,
+  .work-card__yt-wrapper { transition: none; }
 }
 

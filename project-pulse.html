@@ -4,8 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pulse — Enes Cilingir</title>
+  <meta name="description" content="Pulse — a blood donation app designed to make giving accessible and motivating for young people.">
 
-  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="ASSETS/FAVICON/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="ASSETS/FAVICON/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="ASSETS/FAVICON/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="ASSETS/FAVICON/favicon-16x16.png">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://enes-cilingir.vercel.app/project-pulse.html">
+  <meta property="og:title" content="Pulse — Enes Cilingir">
+  <meta property="og:description" content="A blood donation app designed to make giving accessible and motivating for young people.">
+  <meta property="og:image" content="https://enes-cilingir.vercel.app/ASSETS/images/COVERS/pulse-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pulse — Enes Cilingir">
+  <meta name="twitter:description" content="A blood donation app designed to make giving accessible and motivating for young people.">
+  <meta name="twitter:image" content="https://enes-cilingir.vercel.app/ASSETS/images/COVERS/pulse-cover.jpg">
+
+  <!-- Font preload -->
+  <link rel="preload" as="font" href="ASSETS/fonts/Gambarino-Regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="ASSETS/fonts/Geist-Regular.woff2" type="font/woff2" crossorigin>
+
+  <script>try{if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
 
   <link rel="stylesheet" href="css/tokens.css?v=2">
   <link rel="stylesheet" href="css/reset.css">
@@ -24,6 +46,7 @@
   <link rel="stylesheet" href="css/components/preloader.css">
 </head>
 <body class="is-loading">
+  <a href="#main" class="skip-to-content">Skip to content</a>
   <!-- Preloader Overlay -->
   <div id="preloader" class="preloader">
     <div class="preloader__inner">
@@ -46,7 +69,7 @@
     <!-- Nav with scroll progress -->
     <nav class="nav" data-nav-page="pulse" data-nav-progress="true"></nav>
 
-    <main>
+    <main id="main">
 
       <!-- ─── HERO ──────────────────────────────────────────────────── -->
       <section class="section section--loose" data-section-label="Pulse">
@@ -99,7 +122,7 @@
       <!-- ─── SECTION 2: The Problem ────────────────────────────────── -->
       <section class="section pulse__problem-section" data-section-label="Problem">
 
-        <h2 class="heading-lg">2.5 million in blood donations are missing annually regularly.</h2>
+        <h2 class="heading-lg reveal">2.5 million in blood donations are missing annually regularly.</h2>
 
         <div class="columns-equal-height columns-equal-height--6-4 pulse__problem-layout">
           <div class="columns-equal-height__col columns-equal-height__col--natural">
@@ -116,7 +139,7 @@
 
       <!-- ─── SECTION 3: Finding the Root Cause ────────────────────── -->
       <section class="section pulse__root-cause-section" data-section-label="Research">
-        <h2 class="heading-lg">Finding the Root Cause</h2>
+        <h2 class="heading-lg reveal">Finding the Root Cause</h2>
 
         <!-- 10-column grid: row 1 = five posters (span 2 each); row 2 = insights 6+4 so gutters align -->
         <div class="pulse__root-cause-layout" aria-label="Root cause research and survey insights">
@@ -157,7 +180,7 @@
 
       <!-- ─── SECTION 3.5: Framing the Action ──────────────────────── -->
       <section class="section pulse__framing-section" data-section-label="Framing">
-        <h2 class="heading-lg">Framing the Action</h2>
+        <h2 class="heading-lg reveal">Framing the Action</h2>
 
         <div class="pulse__framing-content">
           <div class="text-block text-block--secondary">
@@ -211,7 +234,7 @@
 
       <!-- ─── SECTION 4: Final Designs ─────────────────────────────── -->
       <section class="section pulse__final-designs-section" data-section-label="Designs">
-        <h2 class="heading-lg">Final Designs</h2>
+        <h2 class="heading-lg reveal">Final Designs</h2>
 
         <div class="columns-equal-height pulse__final-designs-layout">
           <div class="columns-equal-height__col columns-equal-height__col--natural">
@@ -281,7 +304,7 @@
 
       <!-- ─── SECTION 5: Key Takeaways ─────────────────────────────── -->
       <section class="section pulse__takeaways-section" data-section-label="Takeaways">
-        <h2 class="heading-lg">Key Takeaways</h2>
+        <h2 class="heading-lg reveal">Key Takeaways</h2>
 
         <div class="columns-equal-height columns-equal-height--6-4">
           <div class="columns-equal-height__col pulse__takeaways-col">
@@ -313,7 +336,7 @@
 
       <!-- ─── MORE PROJECTS ────────────────────────────────────────── -->
       <section class="section">
-        <h2 class="heading-lg">More Projects</h2>
+        <h2 class="heading-lg reveal">More Projects</h2>
         <div class="more-projects-grid">
           
           <!-- Card 3: REPS -->
@@ -388,5 +411,7 @@
   <script src="ASSETS/js/smooth-scroll.js"></script>
   <script src="ASSETS/js/hover-video.js?v=11"></script>
   <script src="ASSETS/js/pulse-final-screens.js?v=1"></script>
+  <script src="ASSETS/js/page-transition.js"></script>
+  <script src="ASSETS/js/scroll-reveal.js"></script>
 </body>
 </html>

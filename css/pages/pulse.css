@@ -233,7 +233,7 @@
 .pulse__poster-cell {
   grid-column: span 2;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: var(--aspect-portrait);
   object-fit: cover;
   display: block;
 }
@@ -292,7 +292,7 @@
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: var(--aspect-portrait);
   object-fit: cover;
   object-position: center;
   display: block;

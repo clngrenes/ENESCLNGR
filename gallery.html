@@ -4,9 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery — Enes Cilingir</title>
+  <meta name="description" content="A visual collection of branding, UI, and illustration work by Enes Cilingir.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="ASSETS/FAVICON/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="ASSETS/FAVICON/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="ASSETS/FAVICON/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="ASSETS/FAVICON/favicon-16x16.png">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://enes-cilingir.vercel.app/gallery.html">
+  <meta property="og:title" content="Gallery — Enes Cilingir">
+  <meta property="og:description" content="A visual collection of branding, UI, and illustration work by Enes Cilingir.">
+  <meta property="og:image" content="https://enes-cilingir.vercel.app/ASSETS/images/COVERS/retarget-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gallery — Enes Cilingir">
+  <meta name="twitter:description" content="A visual collection of branding, UI, and illustration work by Enes Cilingir.">
+  <meta name="twitter:image" content="https://enes-cilingir.vercel.app/ASSETS/images/COVERS/retarget-cover.jpg">
+
+  <!-- Font preload -->
+  <link rel="preload" as="font" href="ASSETS/fonts/Gambarino-Regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="ASSETS/fonts/Geist-Regular.woff2" type="font/woff2" crossorigin>
 
   <!-- Theme init: must run before paint to prevent flash -->
-  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+  <script>try{if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/tokens.css?v=2">
@@ -25,6 +47,7 @@
   <link rel="preload" as="image" href="ASSETS/images/EXHIBITION/illlu-2.png">
 </head>
 <body class="is-loading" data-page="gallery">
+  <a href="#main" class="skip-to-content">Skip to content</a>
   <div id="preloader" class="preloader">
     <div class="preloader__inner">
       <svg class="preloader__ring" viewBox="0 0 100 100">
@@ -43,7 +66,7 @@
 
     <nav class="nav" data-nav-page="gallery"></nav>
 
-    <main>
+    <main id="main">
       <div class="gallery__grid">
 
         <!-- Row 1: Reach (pair) -->
@@ -67,33 +90,33 @@
 
         <!-- illustrations; Momentum; rest -->
         <div class="gallery__item gallery__item--6">
-          <img class="gallery__image" src="ASSETS/images/EXHIBITION/illu-1.png" alt="Illustration" loading="lazy" decoding="async">
+          <img class="gallery__image" src="ASSETS/images/EXHIBITION/illu-1.png" alt="Exhibition illustration — organic forms in warm earth tones" loading="lazy" decoding="async">
         </div>
         <div class="gallery__item gallery__item--7">
-          <img class="gallery__image" src="ASSETS/images/EXHIBITION/illlu-2.png" alt="Illustration" loading="lazy" decoding="async">
+          <img class="gallery__image" src="ASSETS/images/EXHIBITION/illlu-2.png" alt="Exhibition illustration — abstract composition study" loading="lazy" decoding="async">
         </div>
 
         <div class="gallery__item gallery__item--8">
-          <img class="gallery__image" src="ASSETS/images/EXHIBITION/momentum-1.jpg" alt="Exhibition work" loading="lazy" decoding="async">
+          <img class="gallery__image" src="ASSETS/images/EXHIBITION/momentum-1.jpg" alt="Momentum — exhibition piece exploring motion and energy" loading="lazy" decoding="async">
         </div>
 
         <div class="gallery__item gallery__item--9">
-          <img class="gallery__image" src="ASSETS/images/EXHIBITION/fendi.png" alt="Fendi type exploration" loading="lazy" decoding="async">
+          <img class="gallery__image" src="ASSETS/images/EXHIBITION/fendi.png" alt="Fendi type exploration — custom lettering study" loading="lazy" decoding="async">
         </div>
 
         <div class="gallery__item gallery__item--10">
-          <img class="gallery__image" src="ASSETS/images/EXHIBITION/no-bite-club.png" alt="No Bite Club" loading="lazy" decoding="async">
+          <img class="gallery__image" src="ASSETS/images/EXHIBITION/no-bite-club.png" alt="No Bite Club — brand identity concept" loading="lazy" decoding="async">
         </div>
         <div class="gallery__item gallery__item--11">
-          <img class="gallery__image" src="ASSETS/images/EXHIBITION/ui.jpg" alt="UI design" loading="lazy" decoding="async">
+          <img class="gallery__image" src="ASSETS/images/EXHIBITION/ui.jpg" alt="Mobile UI design — clean interface exploration" loading="lazy" decoding="async">
         </div>
 
         <div class="gallery__item gallery__item--12">
-          <img class="gallery__image" src="ASSETS/images/EXHIBITION/dashboard.jpg" alt="Dashboard design" loading="lazy" decoding="async">
+          <img class="gallery__image" src="ASSETS/images/EXHIBITION/dashboard.jpg" alt="Dashboard design — data visualization interface" loading="lazy" decoding="async">
         </div>
 
         <div class="gallery__item gallery__item--13">
-          <img class="gallery__image" src="ASSETS/images/EXHIBITION/astraeon.png" alt="Astraeon" loading="lazy" decoding="async">
+          <img class="gallery__image" src="ASSETS/images/EXHIBITION/astraeon.png" alt="Astraeon — brand identity and logo system" loading="lazy" decoding="async">
         </div>
 
       </div>
@@ -113,6 +136,7 @@
   <script src="ASSETS/js/copy-mail.js"></script>
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="ASSETS/js/smooth-scroll.js"></script>
+  <script src="ASSETS/js/page-transition.js"></script>
   <noscript>
     <style>
       .page.gallery .gallery__item { opacity: 1 !important; filter: none !important; transform: none !important; }

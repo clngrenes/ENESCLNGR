@@ -4,9 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enes Cilingir — UX Designer</title>
+  <meta name="description" content="UX Designer based in Tallinn. Designing what a product should be, not just what it looks like.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="ASSETS/FAVICON/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="ASSETS/FAVICON/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="ASSETS/FAVICON/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="ASSETS/FAVICON/favicon-16x16.png">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://enes-cilingir.vercel.app/">
+  <meta property="og:title" content="Enes Cilingir — UX Designer">
+  <meta property="og:description" content="UX Designer based in Tallinn. Designing what a product should be, not just what it looks like.">
+  <meta property="og:image" content="https://enes-cilingir.vercel.app/ASSETS/images/COVERS/pulse-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Enes Cilingir — UX Designer">
+  <meta name="twitter:description" content="UX Designer based in Tallinn. Designing what a product should be, not just what it looks like.">
+  <meta name="twitter:image" content="https://enes-cilingir.vercel.app/ASSETS/images/COVERS/pulse-cover.jpg">
+
+  <!-- Font preload -->
+  <link rel="preload" as="font" href="ASSETS/fonts/Gambarino-Regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="ASSETS/fonts/Geist-Regular.woff2" type="font/woff2" crossorigin>
 
   <!-- Theme init: must run before paint to prevent flash -->
-  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+  <script>try{if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/tokens.css?v=2">
@@ -21,6 +43,7 @@
   <link rel="stylesheet" href="css/components/preloader.css">
 </head>
 <body class="is-loading" data-page="home">
+  <a href="#main" class="skip-to-content">Skip to content</a>
   <!-- Preloader Overlay -->
   <div id="preloader" class="preloader">
     <div class="preloader__inner">
@@ -44,7 +67,7 @@
     <nav class="nav" data-nav-page="home"></nav>
 
     <!-- Main Content -->
-    <main class="home__hero">
+    <main id="main" class="home__hero">
 
       <!-- Hero Heading -->
       <h1 class="heading-xl">
@@ -166,5 +189,7 @@
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="ASSETS/js/smooth-scroll.js"></script>
   <script src="ASSETS/js/hover-video.js?v=14"></script>
+  <script src="ASSETS/js/page-transition.js"></script>
+  <script src="ASSETS/js/scroll-reveal.js"></script>
 </body>
 </html>

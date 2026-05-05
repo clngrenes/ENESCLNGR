@@ -4,9 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Enes Cilingir</title>
+  <meta name="description" content="UX Designer Enes Cilingir — background, design journey, and CV.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="ASSETS/FAVICON/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="ASSETS/FAVICON/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="ASSETS/FAVICON/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="ASSETS/FAVICON/favicon-16x16.png">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://enes-cilingir.vercel.app/about.html">
+  <meta property="og:title" content="About — Enes Cilingir">
+  <meta property="og:description" content="UX Designer Enes Cilingir — background, design journey, and CV.">
+  <meta property="og:image" content="https://enes-cilingir.vercel.app/ASSETS/images/about-portrait.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About — Enes Cilingir">
+  <meta name="twitter:description" content="UX Designer Enes Cilingir — background, design journey, and CV.">
+  <meta name="twitter:image" content="https://enes-cilingir.vercel.app/ASSETS/images/about-portrait.jpg">
+
+  <!-- Font preload -->
+  <link rel="preload" as="font" href="ASSETS/fonts/Gambarino-Regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="ASSETS/fonts/Geist-Regular.woff2" type="font/woff2" crossorigin>
 
   <!-- Theme init: must run before paint to prevent flash -->
-  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+  <script>try{if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/tokens.css?v=2">
@@ -19,15 +41,17 @@
   <link rel="stylesheet" href="css/components/section.css?v=5">
   <link rel="stylesheet" href="css/components/cv-entry.css">
   <link rel="stylesheet" href="css/pages/about.css?v=5">
+  <link rel="stylesheet" href="css/components/preloader.css">
 </head>
-<body>
+<body class="is-loading">
+  <a href="#main" class="skip-to-content">Skip to content</a>
   <div class="page">
 
     <!-- Nav -->
     <nav class="nav" data-nav-page="about"></nav>
 
     <!-- Main Content -->
-    <main>
+    <main id="main">
 
       <!-- Description -->
       <section class="about__description">
@@ -303,7 +327,7 @@
           </div>
 
           <!-- Download CV -->
-          <a href="#" class="cv-download">
+          <a href="#" class="cv-download" aria-label="Download CV — file coming soon" title="CV coming soon">
             <span class="cv-download__text">Download CV</span>
           </a>
 
@@ -320,10 +344,13 @@
 
   </div>
 
+  <script src="ASSETS/js/preloader.js?v=9"></script>
   <script src="ASSETS/js/nav.js?v=4"></script>
   <script src="ASSETS/js/theme.js"></script>
   <script src="ASSETS/js/copy-mail.js"></script>
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="ASSETS/js/smooth-scroll.js"></script>
+  <script src="ASSETS/js/page-transition.js"></script>
+  <script src="ASSETS/js/scroll-reveal.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
 .feature-card {
   background-color: var(--color-surface-mid);
   padding: var(--space-2) var(--space-3);
-  cursor: default;
+  cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
@@ -26,10 +26,11 @@
 .feature-card__body-wrap {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: grid-template-rows 0.35s var(--ease-standard);
 }
 
-.feature-card:hover .feature-card__body-wrap {
+.feature-card:hover .feature-card__body-wrap,
+.feature-card:focus-visible .feature-card__body-wrap {
   grid-template-rows: 1fr;
 }
 
@@ -50,6 +51,25 @@
   transition: opacity 0.25s ease 0.08s;
 }
 
-.feature-card:hover .feature-card__body {
+.feature-card:hover .feature-card__body,
+.feature-card:focus-visible .feature-card__body {
   opacity: 1;
+}
+
+/* Keyboard focus ring */
+.feature-card:focus-visible {
+  outline: 2px solid var(--color-text-inverse);
+  outline-offset: -2px;
+}
+
+/* Touch devices: no hover, so expand all cards statically */
+@media (hover: none) {
+  .feature-card__body-wrap { grid-template-rows: 1fr; }
+  .feature-card__body { opacity: 1; }
+}
+
+/* Respect user motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .feature-card__body-wrap { transition: none; }
+  .feature-card__body { transition: none; }
 }

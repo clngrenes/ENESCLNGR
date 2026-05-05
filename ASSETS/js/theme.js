@@ -5,11 +5,17 @@
    Icons: moon (→ dark) / sun (→ light).
    ============================================ */
 
-/* Early init — runs before paint to prevent FOUC */
+/* Early init — runs before paint to prevent FOUC.
+   Checks localStorage first, falls back to system preference. */
 (function () {
-  if (localStorage.getItem('theme') === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }
+  try {
+    var stored = localStorage.getItem('theme');
+    if (stored === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else if (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) { /* localStorage unavailable (e.g. private browsing) */ }
 })();
 
 /* SVG icon strings */
@@ -21,39 +27,40 @@ function initThemeToggle() {
   var page = document.querySelector('.page');
   if (!btn || !page) return;
 
+  var isToggling = false;
+
   function isDark() {
     return document.documentElement.getAttribute('data-theme') === 'dark';
   }
 
   function updateBtn() {
-    /* Show the icon for the TARGET mode (what clicking will do) */
     btn.innerHTML = isDark() ? ICON_SUN : ICON_MOON;
     btn.setAttribute('aria-label', isDark() ? 'Switch to light mode' : 'Switch to dark mode');
   }
 
   btn.addEventListener('click', function () {
-    /* 1 — fade out */
+    if (isToggling) return;
+    isToggling = true;
+
     page.classList.add('page--fading');
 
     setTimeout(function () {
-      /* 2 — switch theme at opacity:0 (invisible, no flash) */
-      if (isDark()) {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-      } else {
+      var nextDark = !isDark();
+      if (nextDark) {
         document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
       }
+      try { localStorage.setItem('theme', nextDark ? 'dark' : 'light'); } catch (e) {}
       updateBtn();
 
-      /* 3 — fade back in (requestAnimationFrame ensures the
-             class removal happens in the next paint cycle) */
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
           page.classList.remove('page--fading');
+          isToggling = false;
         });
       });
-    }, 220); /* match CSS transition duration */
+    }, 220);
   });
 
   updateBtn();

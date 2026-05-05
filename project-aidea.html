@@ -5,7 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AIDEA — Enes Cilingir</title>
 
-  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="ASSETS/FAVICON/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="ASSETS/FAVICON/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="ASSETS/FAVICON/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="ASSETS/FAVICON/favicon-16x16.png">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://enes-cilingir.vercel.app/project-aidea.html">
+  <meta property="og:title" content="AIDEA — Enes Cilingir">
+  <meta property="og:description" content="AIDEA — an AI-powered educational platform redesign.">
+  <meta property="og:image" content="https://enes-cilingir.vercel.app/ASSETS/images/AIDEA/logo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Font preload -->
+  <link rel="preload" as="font" href="ASSETS/fonts/Gambarino-Regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="ASSETS/fonts/Geist-Regular.woff2" type="font/woff2" crossorigin>
+
+  <script>try{if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
 
   <link rel="stylesheet" href="css/tokens.css?v=2">
   <link rel="stylesheet" href="css/reset.css">
@@ -22,6 +40,7 @@
   <link rel="stylesheet" href="css/components/preloader.css">
 </head>
 <body class="is-loading">
+  <a href="#main" class="skip-to-content">Skip to content</a>
   <!-- Preloader Overlay -->
   <div id="preloader" class="preloader">
     <div class="preloader__inner">
@@ -42,7 +61,7 @@
     <!-- Nav -->
     <nav class="nav" data-nav-page="aidea" data-nav-progress="true"></nav>
 
-    <main>
+    <main id="main">
 
       <!-- ─── HERO ──────────────────────────────────────────────────── -->
       <section class="section section--loose" data-section-label="Home">
@@ -411,5 +430,7 @@
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="ASSETS/js/smooth-scroll.js"></script>
   <script src="ASSETS/js/hover-video.js?v=11"></script>
+  <script src="ASSETS/js/page-transition.js"></script>
+  <script src="ASSETS/js/scroll-reveal.js"></script>
 </body>
 </html>
